@@ -40,7 +40,7 @@ $total_users = $total_tenant + $total_landlords;
 
                 <div class="col border">
                     <h2 class='text-center p-2'>Reports</h2>
-                    <div class="container border overflow-auto" style='height:85%' id='feedback_container'>
+                    <div class="container border overflow-auto" style='height:85%' id='report_container'>
                         
                     </div>
                 </div>
@@ -99,7 +99,64 @@ $total_users = $total_tenant + $total_landlords;
                 }
             });
 
+
+            $.ajax({
+                url: "../backend/report_get.php",
+                success: (response) => {
+                    let notif = JSON.parse(response);
+                    for (let i = 0; i < notif.length; i++) {
+                        let notif_info = [notif[i].sender_email, notif[i].sender_fullnamem, notif[i].message]
+                        let component = `
+                        <button class="report alert ${notif[i].report_type === 'unread' ? "alert-danger" : "alert-dark"} m-0 text-start" style='width : 100%' value=${notif[i].report_id}>
+                            from ${notif[i].sender_fullname}
+                        </button>
+                        `;
+                        $("#report_container").append(component);
+                    }
+                    
+                    $(".report").click((event) => {
+                        let id = event.target.value
+                        $.ajax({
+                            url : "../backend/report_info.php",
+                            method : "post",
+                            data : { report_id : id},
+                            success : (response) => {
+                                console.log(response)
+                                let report_information = JSON.parse(response)
+                                component = `
+                                    <div id='pop_up_report' class="border bg-light shadow p-5" style=" z-index: 9999; position: absolute; top: 45%; left: 60%; transform: translate(-50%, -50%);  height:70%; width :70%; font-size: 1.5em;">
+                                        <h2 class="text-center mb-4">Report Notification</h2>
+                                        <div class="mb-3">
+                                            <strong>From:</strong> ${report_information[0].sender_fullname}
+                                        </div>
+                                        <div class="mb-3">
+                                            <strong>Reported Account:</strong> ${report_information[0].report_account_fullname}
+                                        </div>
+                                        <div class="mb-3">
+                                            <strong>Account ID:</strong> ${report_information[0].report_account_id}
+                                        </div>
+                                        <div class="mb-3">
+                                            <strong>Report Type:</strong> ${report_information[0].report_reason}
+                                        </div>
+                                        <div class="mb-3">
+                                            <strong>Message:</strong> ${report_information[0].report_message}
+                                        </div>    
+                                        <button id='close_report' type="button" class="btn btn-primary" style="position: absolute; top: 10px; right: 10px;">Close</button>
+                                    </div>                                
+                                `
+
+                                $("body").append(component)
+
+                                $("#close_report").click(() => {
+                                    $("#pop_up_report").remove()
+                                })
+                            }
+                        })
+                    })
+                }
+            });
             
+
 
         })
     </script>

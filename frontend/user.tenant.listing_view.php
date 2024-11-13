@@ -20,13 +20,13 @@
     <title>Document</title>
 </head>
 <body>
-
+    <input type="hidden" id="sender_fullname" value="<?= $_SESSION['user']['fullname'] ?>">
     <input type="hidden" id="landlord_id" value="<?= $landlord_id['account_id'] ?>">
-    <input type="hidden" id="landlord_fullname" value="<?= $landlord_id['fullname'] ?>">
-    <input type="hidden" id='post_id' value="<?= $property['post_id'] ?>" >
-    <input type="hidden" id="account_type" value="landlord">
-    <input type="hidden" id='latitude'  value="<?= $property['latitude'] ?>" >
-    <input type="hidden" id='longitude' value="<?= $property['longitude'] ?>" >
+    <input type="hidden" id="landlord_fullname" value="<?= $property['fullname'] ?>">
+    <input type="hidden" id='post_id' value="<?= $property['post_id'] ?>">
+    <input type="hidden" id="account_type" value="<?= $property['account_type'] ?>">
+    <input type="hidden" id='latitude' value="<?= $property['latitude'] ?>">
+    <input type="hidden" id='longitude' value="<?= $property['longitude'] ?>">
 
     <!-- report pop up-->
     <div id="reportPopup" class="border shadadow bg-light p-4" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; z-index: 9999;">
@@ -201,7 +201,21 @@
             })
 
             $("#submit_report").click(()=>{
-                
+                $.ajax({
+                    url : "../backend/submit_report.php",
+                    method : "post",
+                    data : {
+                        report_account_id : $("#landlord_id").val(),
+                        report_account_fullname : $("#landlord_fullname").val(),
+                        post_id : $("#post_id").val(),
+                        report_message: $("#report_message").val(),
+                        report_reason: $("#report_reason").val(),
+                        sender_fullname: $("#sender_fullname").val()
+                    },
+                    success : (response) => {
+                        alert(response)
+                    }
+                })
             })
             
 
