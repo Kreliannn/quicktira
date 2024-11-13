@@ -27,9 +27,9 @@ nav ul li{
 }
 
 .side-menu {
-    position: fixed;
+    position: relative;
     background: #faf7f0;
-    width: 250px;
+    width: 100%;
     height: 100%;
     z-index: 9999; /* Ensures it's always on top */
     top: 0; /* Aligns to the top of the viewport */

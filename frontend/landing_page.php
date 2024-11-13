@@ -171,7 +171,6 @@ $property_data = $database->get('select * from post_property join landlords on p
 
     
     <?php require('public_component/contact.php'); ?>
-
     <?php require('public_component/scripts.php'); ?>
     <?php require('public_component/contact_script.php'); ?>
     <?php require('public_component/sidebar.jquery.php'); ?>

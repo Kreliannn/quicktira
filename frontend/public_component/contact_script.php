@@ -1,3 +1,5 @@
+<?php require('public_component/sweetAlert.php'); ?>
+
 <script>
 
     $(document).ready(()=>{
@@ -14,7 +16,16 @@
                 success : (response) => {
                     console.log(response)
                     let res = JSON.parse(response)
-                    alert(res.type)
+                    switch(res.type)
+                    {
+                        case 'success':
+                            alertSuccess(res.text)
+                        break;
+
+                        case 'error':
+                            alertError(res.text)
+                        break;
+                    }
                 }               
             })
         })

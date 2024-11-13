@@ -42,7 +42,7 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
                                 <span class="ms-2"><?php echo $tenant['fullname']; ?></span>
                                 <span class="ms-2"> id: <?php echo $tenant['account_id']; ?></span>
                             </div>
-                            <button class="btn btn-danger">Delete</button>
+                            <button class="delete_account btn btn-danger " value="<?=$tenant['account_id']?>">Delete</button>
                         </div>
                     <?php endforeach; ?>
 
@@ -72,7 +72,7 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
                                 <span class="ms-2"><?php echo $landlords['fullname']; ?></span>
                                 <span class="ms-2"> id: <?php echo $landlords['account_id']; ?></span>
                             </div>
-                            <button class="btn btn-danger">Delete</button>
+                            <button class="btn btn-danger delete_account_landlord" id='' value='<?=$landlords['account_id']?>'>Delete</button>
                         </div>
                     <?php endforeach; ?>
 
@@ -121,7 +121,7 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
                                             <span class="ms-2">${res.account.fullname}</span>
                                             <span class="ms-2"> id: ${res.account.account_id}</span>
                                         </div>
-                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-danger delete_account"  id='' value=${res.account.account_id}>Delete</button>
                                     </div>
                                 `
                                 $("#tenant_container").html(component)
@@ -134,6 +134,23 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
                     }
                 })
             })
+
+
+            $(".delete_account").click((event)=>{
+                $.ajax({
+                    url : "../backend/delete_account.php",
+                    method : "post",
+                    data : {
+                        account_type : "tenant",
+                        account_id : event.target.value
+                    },
+                    success : (response) => {
+                        window.location.reload()
+                    }
+                })
+            })
+
+
 
             $("#landlord_search").click(()=>{
                 $.ajax({
@@ -170,6 +187,22 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
                     }
                 })
             })
+
+
+            $(".delete_account_landlord").click((event)=>{
+                $.ajax({
+                    url : "../backend/delete_account.php",
+                    method : "post",
+                    data : {
+                        account_type : "landlord",
+                        account_id : event.target.value
+                    },
+                    success : (response) => {
+                        window.location.reload()
+                    }
+                })
+            })
+
         })
     </script>
 </body>

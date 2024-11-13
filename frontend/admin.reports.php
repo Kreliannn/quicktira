@@ -27,7 +27,7 @@ $total_users = $total_tenant + $total_landlords;
     <div class="row">
         <div class="col-12 col-md-2"> 
             <?php  require('public_component/sidebar.admin.php')  ?>
-        </div>          
+        </div>              
 
         <div class="col">
             <div class="row container  gap-2 shadow ms-3 mt-3" style='height : 90dvh'>
@@ -70,6 +70,8 @@ $total_users = $total_tenant + $total_landlords;
                     }
 
                     $(".feedback").click((event) => {
+                        event.target.classList.remove("alert-success")
+                        event.target.classList.add("alert-dark");
                         let id = event.target.value
                         $.ajax({
                             url : "../backend/feedback_info.php",
@@ -115,6 +117,8 @@ $total_users = $total_tenant + $total_landlords;
                     }
                     
                     $(".report").click((event) => {
+                        event.target.classList.remove("alert-danger")
+                        event.target.classList.add("alert-dark");
                         let id = event.target.value
                         $.ajax({
                             url : "../backend/report_info.php",
