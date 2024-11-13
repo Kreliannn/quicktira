@@ -39,8 +39,9 @@ $total_users = $total_tenant + $total_landlords;
                 </div>
 
                 <div class="col border">
-                    <div class="alert alert-danger" >
-                        This is a success alert—check it out!
+                    <h2 class='text-center p-2'>Reports</h2>
+                    <div class="container border overflow-auto" style='height:85%' id='feedback_container'>
+                        
                     </div>
                 </div>
             </div>

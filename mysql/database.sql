@@ -80,3 +80,13 @@ create table admin_feedback(
     message_type varchar(255)
 );
 
+create table admin_report(
+    report_id int AUTO_INCREMENT PRIMARY KEY,
+    report_account_id varchar(255),
+    report_account_fullname varchar(255),
+    post_id varchar(255),
+    report_message varchar(255),
+    report_reason varchar(255),
+    sender_fullname varchar(255),
+    report_type varchar(255)
+);

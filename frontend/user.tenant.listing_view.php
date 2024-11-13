@@ -22,9 +22,30 @@
 <body>
 
     <input type="hidden" id="landlord_id" value="<?= $landlord_id['account_id'] ?>">
+    <input type="hidden" id="landlord_fullname" value="<?= $landlord_id['fullname'] ?>">
+    <input type="hidden" id='post_id' value="<?= $property['post_id'] ?>" >
     <input type="hidden" id="account_type" value="landlord">
     <input type="hidden" id='latitude'  value="<?= $property['latitude'] ?>" >
     <input type="hidden" id='longitude' value="<?= $property['longitude'] ?>" >
+
+    <!-- report pop up-->
+    <div id="reportPopup" class="border shadadow bg-light p-4" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; z-index: 9999;">
+        <div class="popup-content">
+            <button type="button" class="btn-close" id="close_report" aria-label="Close" style="position: absolute; top: 10px; right: 10px;"></button>
+            <h3>Report</h3>
+            <textarea id="report_message" class="form-control" rows="4" placeholder="Enter your report here..." style="height: 100px;"></textarea>
+            <select id="report_reason" class="form-select" style="margin-top: 10px;">
+                <option value="Inaccurate Information ">Inaccurate Information </option>
+                <option value="Violation of Terms"> Violation of Terms </option>
+                <option value="Inappropriate Content">Inappropriate Content</option>
+                <option value="Unavailable Property">Unavailable Property</option>
+                <option value="Misleading Photos"> Misleading Photos</option>
+            </select>
+            <button id="submit_report" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+        </div>
+    </div>
+
+
 
     <div class="row">
         <div class="col-12 col-md-2">
@@ -45,6 +66,7 @@
                                     <p class="text-muted mb-1">User ID: <?= $property['account_id'] ?></p>
                                     <button class="btn btn-primary mt-3" id='message_landlord' <?= $_SESSION['user']['account_type'] == 'landlord' ? 'disabled' : '' ?>>Message</button>
                                     <button class="btn btn-primary mt-3" id='visit_account'>Visit Account</button>
+                                    <button class="btn btn-danger mt-3" id='report_button'> Report </button>
                                 </div>
                             </div>
                         </div>
@@ -167,9 +189,23 @@
             });
 
 
+
+
+
+            $("#close_report").click(()=>{
+                $("#reportPopup").hide()
+            })
+
+            $("#report_button").click(()=>{
+                $("#reportPopup").show()
+            })
+
+            $("#submit_report").click(()=>{
+                
+            })
+            
+
         });
-
-
 
     </script>
 </body>
