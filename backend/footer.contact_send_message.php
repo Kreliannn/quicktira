@@ -11,7 +11,7 @@ if($custom_func->checkEmpty([$fullname, $message, $email ]))
     die(json_encode(['type' => 'error', 'text' => 'empty input, Please fill out all field.']));
 }
 
-$query = "insert into admin_feedback(message, sender_fullname, sender_email) values (?,?,?)";
-$database->insert($query, [$message, $fullname,  $email ]);
+$query = "insert into admin_feedback(message, sender_fullname, sender_email, message_type) values (?,?,?,?)";
+$database->insert($query, [$message, $fullname,  $email, "unread" ]);
 
 echo(json_encode(['type' => 'success', 'text' => 'message sent succesfully']));
