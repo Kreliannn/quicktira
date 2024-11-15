@@ -62,15 +62,18 @@
                                     <h5 class="card-title ">Request Details</h5>
                                 </div>
                                 <div class="card-body">
-                                    <p><strong>Tenant Fullname:</strong> ${request_data.tenant_fullname}</p>
-                                    <p><strong>Contact Phone:</strong> ${request_data.contact_phone}</p>
-                                    <p><strong>Contact Email:</strong> ${request_data.contact_email}</p>
-                                    <p><strong>Number of Occupants:</strong> ${request_data.num_occupants}</p>
-                                    <p><strong>Move In Date:</strong> ${request_data.move_in_date}</p>
-                                    <p><strong>Employment/Work:</strong> ${request_data.employment_work}</p>
+                                    <input type="hidden" id="post_id" value="${request_data.post_id}">
+                                    <input type="hidden" id="tenant_id" value="${request_data.tenant_id}">
+                                    <input type="hidden" id="landlord_id" value="${request_data.landlord_id}">
+                                    <p><strong>Tenant Fullname:</strong> <font id="tenant_fullname">${request_data.tenant_fullname}</font></p>
+                                    <p><strong>Contact Phone:</strong> <font id="contact_phone">${request_data.contact_phone}</font></p>
+                                    <p><strong>Contact Email:</strong> <font id="contact_email">${request_data.contact_email}</font></p>
+                                    <p><strong>Number of Occupants:</strong> <font id="num_occupants">${request_data.num_occupants}</font></p>
+                                    <p><strong>Move In Date:</strong> <font id="move_in_date">${request_data.move_in_date}</font></p>
+                                    <p><strong>Employment/Work:</strong> <font id="employment_work">${request_data.employment_work}</font></p>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="button" class="btn btn-success" style="width: 100px; height: 50px;">Approve</button>
+                                    <button type="button" id='approve'class="btn btn-success" style="width: 100px; height: 50px;">Approve</button>
                                     <button type="button" class="btn btn-danger" style="width: 100px; height: 50px;">Reject</button>
                                     <button type="button"id='close_req' class="btn btn-dark" style="width: 100px; height: 50px;">Close</button>
                                 </div>
@@ -83,7 +86,26 @@
                             $("#popUp").remove();
                         })
 
-                        
+                        $("#approve").click(()=>{
+                            $.ajax({
+                                url : "../backend/landlord.approved_request.php",
+                                method : "post",
+                                data : {
+                                    post_id : $("#post_id").val(),
+                                    tenant_fullname : $("#tenant_fullname").text(),
+                                    contact_phone : $("#contact_phone").text(),
+                                    contact_email : $("#contact_email").text(),
+                                    num_occupants : $("#num_occupants").text(),
+                                    move_in_date : $("#move_in_date").text(),
+                                    tenant_id : $("#tenant_id").val(),
+                                    landlord_id : $("#landlord_id").val()
+                                },
+                                success : (response) => {
+                                    alert(response)
+                                }
+                            })
+                               
+                        })
                         
                     }
                 })

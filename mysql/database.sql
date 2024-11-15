@@ -94,7 +94,7 @@ create table admin_report(
 
 
 
-CREATE TABLE IF NOT EXISTS tenant_applications (
+CREATE TABLE  tenant_applications (
     apply_id int auto_increment primary key,
     post_id INT NOT NULL,
     landlord_id int,
@@ -106,4 +106,15 @@ CREATE TABLE IF NOT EXISTS tenant_applications (
     move_in_date DATE NOT NULL,
     employment_work VARCHAR(255) NOT NULL,
 );
+
+CREATE TABLE taken_property(
+    property_id int auto_increment primary key,
+    post_id INT NOT NULL,
+    landlord_id int,
+    tenant_id int,
+    num_occupants INT NOT NULL,
+    move_in_date DATE NOT NULL,
+    deadline vachar(255)
+);
+
 
