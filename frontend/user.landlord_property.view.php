@@ -27,6 +27,8 @@
 </head>
 <body>
     
+    <input type="text">
+
     <div class="row">
         <div class="col-12 col-md-2">  
             <?php require('public_component/sidebar.landlord.php'); ?>
@@ -35,7 +37,11 @@
         <div class="col" id='container'>
 
         <div class="row ">
-            <?php require('public_component/property_view.no_tenant.php'); ?>
+            <?php if($property_data['post_status'] == 'active') : ?>
+                <?php require('public_component/property_view.no_tenant.php'); ?>
+            <?php else : ?>
+                <script> window.location.href = `https://example.com/page?param=${value}`; </script>
+            <?php endif; ?>
         </div>
 
         </div>

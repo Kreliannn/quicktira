@@ -60,7 +60,16 @@
                     type: 'POST',
                     data: {property_id: event.target.value},
                     success: function(response) {
-                        window.location.href = "user.landlord_property.view.php";
+                        switch(response) 
+                        {
+                            case 'active':
+                                window.location.href = "user.landlord_property.view.php";
+                            break;
+
+                            case 'inactive':
+                                window.location.href = "user.landlord_property.manage.php";
+                            break;
+                        }
                     },
                 });
             });
