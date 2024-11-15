@@ -307,21 +307,18 @@ nav .menu-bar {
                 <span class="text-light">Dashboard</span>
             </a>
             <a href="user.landlord.addpost.php" class="text-light">
-                <i class="fa-solid fa-building text-light"></i>
-                <span class="text-light">Properties</span>
+                <i class="fa-solid fa-plus-circle text-light"></i>
+                <span class="text-light">Add Post</span>
             </a>
-            <a href="#" class="text-light">
-                <i class="fa-solid fa-users text-light"></i>
-                <span class="text-light">Tenants</span>
+            <a href="user.landlord_properties.php" class="text-light">
+                <i class="fa-solid fa-home"></i>
+                <span>properties</span>
             </a>
             <a href="user.messages.php" class="text-light">
                 <i class="fa-solid fa-message text-light"></i>
                 <span class="text-light">Messages</span>
             </a>
-            <a href="1addpost.php" class="text-light">
-                <i class="fa-solid fa-wrench text-light"></i>
-                <span class="text-light">Maintenance</span>
-            </a>
+    
             <a id='logout2' class="text-light">
                 <i class="fa-solid fa-sign-out-alt text-light"></i>
                 <span class="text-light">Logout</span>
@@ -358,23 +355,19 @@ nav .menu-bar {
                 <span>Dashboard</span>
             </a>
             <a href="user.landlord.addpost.php">
-                <i class="fa-solid fa-building"></i>
-                <span>Properties</span>
+                <i class="fa-solid fa-plus-circle text-green"></i>
+                <span>add post</span>
             </a>
-            <a href="#">
-                <i class="fa-solid fa-users"></i>
-                <span>Tenants</span>
+            <a href="user.landlord_properties.php">
+                <i class="fa-solid fa-home"></i>
+                <span>properties</span>
             </a>
             <a href="user.messages.php">
                 <i class="fa-solid fa-message"></i>
                 <span>Messages</span>
             </a>
-            <a href="1addpost.php">
-                <i class="fa-solid fa-wrench"></i>
-                <span>Maintenance</span>
-            </a>
-           
-
+            
+        
           
             <a id='logout1' class="">
                 <i class="fa-solid fa-sign-out-alt"></i>
