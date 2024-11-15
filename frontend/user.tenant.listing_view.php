@@ -21,12 +21,16 @@
 </head>
 <body>
     <input type="hidden" id="sender_fullname" value="<?= $_SESSION['user']['fullname'] ?>">
+    <input type="hidden" id="tenant_id" value="<?= $_SESSION['user']['account_id'] ?>">
+    <input type="hidden" id="user_contact" value="<?= $_SESSION['user']['contact'] ?>">
+    <input type="hidden" id="user_email" value="<?= $_SESSION['user']['email'] ?>">
     <input type="hidden" id="landlord_id" value="<?= $landlord_id['account_id'] ?>">
     <input type="hidden" id="landlord_fullname" value="<?= $property['fullname'] ?>">
     <input type="hidden" id='post_id' value="<?= $property['post_id'] ?>">
     <input type="hidden" id="account_type" value="<?= $property['account_type'] ?>">
     <input type="hidden" id='latitude' value="<?= $property['latitude'] ?>">
     <input type="hidden" id='longitude' value="<?= $property['longitude'] ?>">
+
 
     <!-- report pop up-->
     <div id="reportPopup" class="border shadadow bg-light p-4" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; z-index: 9999;">
@@ -42,6 +46,38 @@
                 <option value="Misleading Photos"> Misleading Photos</option>
             </select>
             <button id="submit_report" class="btn btn-primary" style="margin-top: 10px;">Submit</button>
+        </div>
+    </div>
+
+    <div id="applyPopup" class="border shadadow bg-light p-4" style="display: none; position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); width: 500px;  z-index: 9999;">
+        <div class="popup-content">
+            <button type="button" class="btn-close" id="close_apply" aria-label="Close" style="position: absolute; top: 10px; right: 10px;"></button>
+            <h3 class='text-center'>request to rent this property</h3>
+            <div class="mb-3">
+                <label for="tenant_fullname" class="form-label">Tenant's Full Name</label>
+                <input type="text" class="form-control" id="tenant_fullname" value='<?=$_SESSION['user']['fullname'] ?>' required>
+            </div>
+            <div class="mb-3">
+                <label for="contact_phone" class="form-label">Contact Phone</label>
+                <input type="text" class="form-control" id="contact_phone" value='<?=$_SESSION['user']['contact']?>' required>
+            </div>
+            <div class="mb-3">
+                <label for="contact_email" class="form-label">Contact Email</label>
+                <input type="email" class="form-control" id="contact_email" value="<?= $_SESSION['user']['email'] ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="num_occupants" class="form-label">Number of Occupants (including adults and children)</label>
+                <input type="number" class="form-control" id="num_occupants" required>
+            </div>
+            <div class="mb-3">
+                <label for="move_in_date" class="form-label">Planned Move-in Date</label>
+                <input type="date" class="form-control" id="move_in_date" required>
+            </div>
+            <div class="mb-3">
+                <label for="employment_income" class="form-label">Occupants' Employment or Source of Income (if applicable)</label>
+                <input class="form-control" id="employment_work" rows="3" value="N/A"></input>
+            </div>
+            <button id="submit_apply" class="btn btn-success" style="margin-top: 10px;">Submit</button>
         </div>
     </div>
 
@@ -64,6 +100,7 @@
                                 <div class="col-8">
                                     <h5 class="my-3"><?= $property['fullname'] ?></h5>
                                     <p class="text-muted mb-1">User ID: <?= $property['account_id'] ?></p>
+                                    <button class="btn btn-success mt-3" id='apply_button'>apply</button>
                                     <button class="btn btn-primary mt-3" id='message_landlord' <?= $_SESSION['user']['account_type'] == 'landlord' ? 'disabled' : '' ?>>Message</button>
                                     <button class="btn btn-primary mt-3" id='visit_account'>Visit Account</button>
                                     <button class="btn btn-danger mt-3" id='report_button'> Report </button>
@@ -214,10 +251,43 @@
                     },
                     success : (response) => {
                         alert(response)
+                        $("#reportPopup").hide()
                     }
                 })
             })
+
+
+
+
+            $("#apply_button").click(()=>{
+                $("#applyPopup").show()
+            })
             
+            $("#close_apply").click(()=>{
+                $("#applyPopup").hide()
+            })
+
+
+            $("#submit_apply").click(()=>{
+                $.ajax({
+                    url : "../backend/apply_submit.php",
+                    method : "post",
+                    data : {
+                    tenant_fullname : $("#tenant_fullname").val(),
+                    contact_phone : $("#contact_phone").val(),
+                    contact_email : $("#contact_email").val(),
+                    num_occupants : $("#num_occupants").val(),
+                    move_in_date : $("#move_in_date").val(),
+                    employment_work : $("#employment_work").val(),
+                    post_id : $("#post_id").val(),
+                    landlord_id : $("#landlord_id").val(),
+                    tenant_id : $("#tenant_id").val()
+                    },
+                    success : (respond) => {
+                        alert(respond)
+                    }
+                })
+            })
 
         });
 

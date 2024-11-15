@@ -90,3 +90,20 @@ create table admin_report(
     sender_fullname varchar(255),
     report_type varchar(255)
 );
+
+
+
+
+CREATE TABLE IF NOT EXISTS tenant_applications (
+    apply_id int auto_increment primary key,
+    post_id INT NOT NULL,
+    landlord_id int,
+    tenant_id int,
+    tenant_fullname VARCHAR(255) NOT NULL,
+    contact_phone VARCHAR(20) NOT NULL,
+    contact_email VARCHAR(255) NOT NULL,
+    num_occupants INT NOT NULL,
+    move_in_date DATE NOT NULL,
+    employment_work VARCHAR(255) NOT NULL,
+);
+
