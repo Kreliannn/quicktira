@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2024 at 09:51 AM
+-- Generation Time: Nov 16, 2024 at 05:02 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +24,62 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin_feedback`
+--
+
+CREATE TABLE `admin_feedback` (
+  `message_id` int(11) NOT NULL,
+  `message` varchar(255) DEFAULT NULL,
+  `sender_fullname` varchar(255) DEFAULT NULL,
+  `sender_email` varchar(255) DEFAULT NULL,
+  `message_type` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `admin_feedback`
+--
+
+INSERT INTO `admin_feedback` (`message_id`, `message`, `sender_fullname`, `sender_email`, `message_type`) VALUES
+(1, 'i like the website ', 'krelian quimson', 'krelianquimson@gmail.com', 'read'),
+(2, 'bla bla bla bla bla', 'marie badet', 'marie@gmail.com', 'read'),
+(3, 'hello this is my feedback bla bal blaa', 'hazel anne', 'hazel@gmail.com', 'read'),
+(4, 'ba;lkjfjlaksfjlavj ajvjlk ajkljv  jiaoj a ljkaj lkjfkaj klaj kj kaj kajkl faj k', 'justine doguiles', 'justine@gmail.com', 'read'),
+(5, 'thankyou!! great service', 'ian rodis', 'ian@gmail.com', 'read'),
+(6, 'asd asd asd ad asd as', 'joy krel', 'joy@gmail.com', 'read'),
+(7, 'dasdasdsa', 'joy 123', 'dasda', 'unread'),
+(8, 'asdasda', 'loyd adsd', 'asdasd', 'read'),
+(9, 'asdasdasdasdasda', 'gab camacho', 'asdasda', 'unread');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_report`
+--
+
+CREATE TABLE `admin_report` (
+  `report_id` int(11) NOT NULL,
+  `report_account_id` varchar(255) DEFAULT NULL,
+  `report_account_fullname` varchar(255) DEFAULT NULL,
+  `post_id` varchar(255) DEFAULT NULL,
+  `report_message` varchar(255) DEFAULT NULL,
+  `report_reason` varchar(255) DEFAULT NULL,
+  `sender_fullname` varchar(255) DEFAULT NULL,
+  `report_type` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `admin_report`
+--
+
+INSERT INTO `admin_report` (`report_id`, `report_account_id`, `report_account_fullname`, `post_id`, `report_message`, `report_reason`, `sender_fullname`, `report_type`) VALUES
+(1, '4', 'peppa bunyi', '18', 'this account is toxic', 'Misleading Photos', 'krelian quimson', 'read'),
+(2, '3', 'conan gray', '20', 'bla bla bla', 'Violation of Terms', 'krelian quimson', 'read'),
+(3, '2', 'joy boy', '25', 'kjnasfkjnasfnasf', 'Inappropriate Content', 'ian rodis', 'read'),
+(4, '1', 'belle catada', '17', 'asfasfasfasfaf', 'Inaccurate Information ', 'krelian quimson', 'unread');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `convo`
 --
 
@@ -38,7 +94,8 @@ CREATE TABLE `convo` (
 --
 
 INSERT INTO `convo` (`convo_id`, `tenant_id`, `landlord_id`) VALUES
-(23, 2, 1);
+(23, 2, 1),
+(24, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -61,12 +118,11 @@ INSERT INTO `favorite` (`favorite_id`, `post_id`, `user_id`) VALUES
 (22, 18, 7),
 (23, 21, 8),
 (24, 20, 8),
-(51, 26, 2),
 (64, 20, 2),
 (65, 24, 2),
 (66, 30, 2),
-(67, 17, 2),
-(68, 18, 2);
+(70, 18, 2),
+(73, 17, 2);
 
 -- --------------------------------------------------------
 
@@ -131,13 +187,11 @@ INSERT INTO `like_react` (`like_id`, `post_id`, `user_id`) VALUES
 (89, 20, 2),
 (94, 20, 8),
 (101, 26, 2),
-(102, 24, 2),
 (103, 25, 2),
 (106, 19, 2),
 (120, 27, 7),
 (122, 21, 2),
 (123, 18, 2),
-(124, 17, 2),
 (125, 28, 2),
 (126, 23, 2),
 (127, 30, 2),
@@ -148,7 +202,10 @@ INSERT INTO `like_react` (`like_id`, `post_id`, `user_id`) VALUES
 (133, 28, 7),
 (134, 30, 7),
 (135, 35, 7),
-(136, 26, 7);
+(136, 26, 7),
+(139, 24, 2),
+(141, 17, 2),
+(142, 24, 5);
 
 -- --------------------------------------------------------
 
@@ -169,31 +226,34 @@ CREATE TABLE `post_property` (
   `sqr_meters` int(11) DEFAULT NULL,
   `post_created_at` varchar(255) DEFAULT NULL,
   `address` varchar(255) DEFAULT NULL,
-  `post_status` varchar(255) DEFAULT NULL
+  `post_status` varchar(255) DEFAULT NULL,
+  `latitude` decimal(20,15) DEFAULT NULL,
+  `longitude` decimal(20,15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `post_property`
 --
 
-INSERT INTO `post_property` (`post_id`, `landlord_id`, `post_title`, `post_images`, `post_price`, `post_description`, `post_location`, `room_count`, `bathroom_count`, `sqr_meters`, `post_created_at`, `address`, `post_status`) VALUES
-(17, 1, 'house for rent', 'image_671456e759e362.10199526.jfif', 5000, 'Welcome to your new home! This spacious and inviting 3-bedroom, 2-bathroom house is perfect for families and professionals alike. With an open-concept living and dining area, it’s designed for comfort and entertaining. The well-equipped kitchen features modern appliances, ample storage, and a breakfast nook for casual dining.\r\n\r\nThe master bedroom boasts an ensuite bathroom and generous closet space, while the two additional bedrooms are bright and versatile—ideal for children, guests, or a home office. Enjoy your private backyard, perfect for outdoor relaxation or gatherings.\r\n\r\nLocated in a quiet, friendly neighborhood, this home offers easy access to local parks, schools, and shopping. With convenient public transport options nearby, commuting is a breeze.\r\n\r\nDon\'t miss this opportunity to make this charming house your home! Contact us today to schedule a viewing.', 'trece', 3, 2, 200, '10/20/24', 'lot 3 blk 2', 'active'),
-(18, 4, 'looking for tenant', 'image_671457ae1db719.21987452.jfif', 7000, 'This cozy 2-bedroom, 1-bathroom house is ready for you! Enjoy an open living area, a modern kitchen, and a private backyard. Located in a quiet neighborhood close to parks and shops. Perfect for families or professionals.\r\n\r\nContact us today to schedule a viewing!', 'indang', 2, 1, 300, '10/20/24', 'lot 5 blk 3', 'active'),
-(19, 2, 'rent this house', 'image_6714588f4ed740.31139763.jfif', 4500, 'Charming 3-bedroom, 2-bathroom home available for rent. Features a spacious living area, updated kitchen, and a nice backyard. Conveniently located near parks and shopping. Ideal for families or anyone looking for comfort.', 'lapidario', 1, 1, 300, '10/20/24', 'lot 1 blk 1', 'active'),
-(20, 3, 'modern house for rent', 'image_6714593acfdc82.77139991.jfif', 11000, 'Discover this sleek 3-bedroom, 2-bathroom home designed for contemporary living. Enjoy an open layout with stylish finishes, a gourmet kitchen with stainless steel appliances, and a spacious living area that flows into a private backyard. Located in a vibrant neighborhood with easy access to shops and parks. Perfect for those seeking a stylish and convenient lifestyle.', 'lapidario', 3, 2, 500, '10/20/24', 'lot 3  blk 5', 'active'),
-(21, 1, '3 bedroom for rent', 'image_67145998027b65.48433875.jfif', 8000, 'Step into this modern 3-bedroom, 2-bathroom house featuring an open floor plan and sleek design. Enjoy a bright living space, a gourmet kitchen with high-end appliances, and a lovely backyard perfect for relaxing. Situated in a desirable neighborhood close to amenities. Ideal for those looking for comfort and style.', 'trece', 3, 1, 100, '10/20/24', 'lot 5 blk 5', 'active'),
-(22, 5, 'new house for rent', 'image_67145a047c3c19.53401511.jfif', 9000, 'Step into this modern 3-bedroom, 2-bathroom house featuring an open floor plan and sleek design. Enjoy a bright living space, a gourmet kitchen with high-end appliances, and a lovely backyard perfect for relaxing. Situated in a desirable neighborhood close to amenities. Ideal for those looking for comfort and style.', 'indang', 1, 1, 400, '10/20/24', 'lot 1 blk 6', 'active'),
-(23, 3, 'house for rent', 'image_67146ea67f72a4.24301722.jfif', 10000, 'hahahahahahhahahaha', 'lapidario', 1, 1, 400, '10/20/24', 'lot 6 blk 8', 'active'),
-(24, 1, 'house for rent haha', 'image_6716137a124bf5.75155174.jfif', 9000, 'wala akong maisip', 'trece', 2, 1, 400, '10/21/24', 'lot 6 blk 1', 'active'),
-(25, 2, 'post', 'image_671617935319e6.66872391.jfif', 8000, 'asdasdas', 'lapidario', 2, 1, 100, '10/21/24', 'lot 4 blk 2', 'active'),
-(26, 5, 'new house', 'image_67161848518692.81918156.jfif', 11000, 'wala akong maisip ', 'indang', 3, 1, 500, '10/21/24', 'lot 4 blk 4', 'active'),
-(27, 1, 'post 3', 'image_6717b1f8634441.00536151.jfif', 7000, 'adffafasfasfasfaffffff', 'lapidario', 11, 1, 100, '10/22/24', 'blk 2 lot 3', 'active'),
-(28, 3, 'yfttyrfty', 'image_671882c1e048a6.88621894.jfif', 565, 'yggyjyg', 'trece', 1, 1, 78778, '10/23/24', 'uyfuugyy', 'active'),
-(29, 1, 'post 9', 'image_6723014a8db9e2.24614996.jpg', 9000, 'adasd adas das das da', 'trece', 1, 1, 100, '10/31/24', 'lot 4 blk 4', 'active'),
-(30, 2, 'lf tenant', 'image_672302a335ffe2.51864126.jpg', 7000, 'dadasdasdsad', 'trece', 1, 1, 100, '10/31/24', 'lot 4 blk 4', 'active'),
-(35, 2, 'dadsa', 'image_67230650bf0f26.75997413.jpg', 11000, 'asdasda', 'trece', 1, 1, 100, '10/31/24', 'lot 4 blk 4', 'active'),
-(36, 6, 'modern house for rent', 'image_6724aec6f20d36.87449323.jfif', 15000, 'anfkaskljfv aufkoafk akufasf aj fao  aok ia ', 'indang', 4, 4, 300, '11/01/24', 'lot 4 blk 4', 'active'),
-(37, 6, 'new post', 'image_6725fa9881a905.75458208.jfif', 7000, 'sadasdasd', 'lapidario', 1, 1, 100, '11/02/24', 'lot 4 blk 4', 'active');
+INSERT INTO `post_property` (`post_id`, `landlord_id`, `post_title`, `post_images`, `post_price`, `post_description`, `post_location`, `room_count`, `bathroom_count`, `sqr_meters`, `post_created_at`, `address`, `post_status`, `latitude`, `longitude`) VALUES
+(17, 1, 'house for rent', 'image_671456e759e362.10199526.jfif', 5000, 'Welcome to your new home! This spacious and inviting 3-bedroom, 2-bathroom house is perfect for families and professionals alike. With an open-concept living and dining area, it’s designed for comfort and entertaining. The well-equipped kitchen features modern appliances, ample storage, and a breakfast nook for casual dining.\r\n\r\nThe master bedroom boasts an ensuite bathroom and generous closet space, while the two additional bedrooms are bright and versatile—ideal for children, guests, or a home office. Enjoy your private backyard, perfect for outdoor relaxation or gatherings.\r\n\r\nLocated in a quiet, friendly neighborhood, this home offers easy access to local parks, schools, and shopping. With convenient public transport options nearby, commuting is a breeze.\r\n\r\nDon\'t miss this opportunity to make this charming house your home! Contact us today to schedule a viewing.', 'H2', 3, 2, 200, '10/20/24', 'lot 3 blk 2', 'inactive', 14.329839727773935, 120.958635807037370),
+(18, 4, 'looking for tenant', 'image_671457ae1db719.21987452.jfif', 7000, 'This cozy 2-bedroom, 1-bathroom house is ready for you! Enjoy an open living area, a modern kitchen, and a private backyard. Located in a quiet neighborhood close to parks and shops. Perfect for families or professionals.\r\n\r\nContact us today to schedule a viewing!', 'San Lorenzo Ruiz', 2, 1, 300, '10/20/24', 'lot 5 blk 3', 'active', 14.309734840345463, 120.956382751464860),
+(19, 2, 'rent this house', 'image_6714588f4ed740.31139763.jfif', 4500, 'Charming 3-bedroom, 2-bathroom home available for rent. Features a spacious living area, updated kitchen, and a nice backyard. Conveniently located near parks and shopping. Ideal for families or anyone looking for comfort.', 'San Mariano', 1, 1, 300, '10/20/24', 'lot 1 blk 1', 'active', 14.328633901124460, 120.975458621978770),
+(20, 3, 'modern house for rent', 'image_6714593acfdc82.77139991.jfif', 11000, 'Discover this sleek 3-bedroom, 2-bathroom home designed for contemporary living. Enjoy an open layout with stylish finishes, a gourmet kitchen with stainless steel appliances, and a spacious living area that flows into a private backyard. Located in a vibrant neighborhood with easy access to shops and parks. Perfect for those seeking a stylish and convenient lifestyle.', 'H2', 3, 2, 500, '10/20/24', 'lot 3  blk 5', 'inactive', 14.330505008667672, 120.958743095397960),
+(21, 1, '3 bedroom for rent', 'image_67145998027b65.48433875.jfif', 8000, 'Step into this modern 3-bedroom, 2-bathroom house featuring an open floor plan and sleek design. Enjoy a bright living space, a gourmet kitchen with high-end appliances, and a lovely backyard perfect for relaxing. Situated in a desirable neighborhood close to amenities. Ideal for those looking for comfort and style.', 'San Lorenzo Ruiz', 3, 1, 100, '10/20/24', 'lot 5 blk 5', 'active', 14.312001148305447, 120.957176685333270),
+(22, 5, 'new house for rent', 'image_67145a047c3c19.53401511.jfif', 9000, 'Step into this modern 3-bedroom, 2-bathroom house featuring an open floor plan and sleek design. Enjoy a bright living space, a gourmet kitchen with high-end appliances, and a lovely backyard perfect for relaxing. Situated in a desirable neighborhood close to amenities. Ideal for those looking for comfort and style.', 'San Mariano', 1, 1, 400, '10/20/24', 'lot 1 blk 6', 'active', 14.328883383032048, 120.977861881256120),
+(23, 3, 'house for rent', 'image_67146ea67f72a4.24301722.jfif', 10000, 'hahahahahahhahahaha', 'San Mariano', 1, 1, 400, '10/20/24', 'lot 6 blk 8', 'active', 14.330546588657997, 120.977067947387710),
+(24, 1, 'house for rent haha', 'image_6716137a124bf5.75155174.jfif', 9000, 'wala akong maisip', 'San Mariano', 2, 1, 400, '10/21/24', 'lot 6 blk 1', 'inactive', 14.327178584466653, 120.976853370666520),
+(25, 2, 'post', 'image_671617935319e6.66872391.jfif', 8000, 'asdasdas', 'H2', 2, 1, 100, '10/21/24', 'lot 4 blk 2', 'active', 14.331877144278488, 120.957026481628430),
+(26, 5, 'new house', 'image_67161848518692.81918156.jfif', 11000, 'wala akong maisip ', 'San Mariano', 3, 1, 500, '10/21/24', 'lot 4 blk 4', 'active', 14.326679616581997, 120.980544090271010),
+(27, 1, 'post 3', 'image_6717b1f8634441.00536151.jfif', 7000, 'adffafasfasfasfaffffff', 'San Mariano', 11, 1, 100, '10/22/24', 'blk 2 lot 3', 'active', 14.324954010759036, 120.979857444763200),
+(28, 3, 'yfttyrfty', 'image_671882c1e048a6.88621894.jfif', 565, 'yggyjyg', 'San Lorenzo Ruiz', 1, 1, 78778, '10/23/24', 'uyfuugyy', 'active', 14.311003143948225, 120.961318016052260),
+(29, 1, 'post 9', 'image_6723014a8db9e2.24614996.jpg', 9000, 'adasd adas das das da', 'San Mariano', 1, 1, 100, '10/31/24', 'lot 4 blk 4', 'active', 14.326367761090525, 120.977261066436780),
+(30, 2, 'lf tenant', 'image_672302a335ffe2.51864126.jpg', 7000, 'dadasdasdsad', 'H2', 1, 1, 100, '10/31/24', 'lot 4 blk 4', 'active', 14.331295027165861, 120.958700180053730),
+(35, 2, 'dadsa', 'image_67230650bf0f26.75997413.jpg', 11000, 'asdasda', 'San Lorenzo Ruiz', 1, 1, 100, '10/31/24', 'lot 4 blk 4', 'active', 14.310317013380180, 120.958657264709490),
+(36, 6, 'modern house for rent', 'image_6724aec6f20d36.87449323.jfif', 15000, 'anfkaskljfv aufkoafk akufasf aj fao  aok ia ', 'San Mariano', 4, 4, 300, '11/01/24', 'lot 4 blk 4', 'active', 14.324704524481685, 120.978591442108170),
+(37, 6, 'new post', 'image_6725fa9881a905.75458208.jfif', 7000, 'sadasdasd', 'H2', 1, 1, 100, '11/02/24', 'lot 4 blk 4', 'active', 14.330505008667672, 120.959558486938490),
+(38, 6, 'lf tenant', 'image_67301012d35f61.70615620.jpg', 5000, 'modern house with 2 rooms and 1  cr good for 2 head', 'San Lorenzo Ruiz', 2, 1, 100, '11/10/24', 'blck 2 lot 12 phase 1', 'active', 14.310876281423013, 120.960213951766500);
 
 -- --------------------------------------------------------
 
@@ -264,7 +324,35 @@ INSERT INTO `property_post_pictures` (`id`, `post_id`, `image_name`) VALUES
 (86, 36, 'image_6724aec6f26d15.22737096.jfif'),
 (87, 37, 'image_6725fa9881c5b4.90254050.jfif'),
 (88, 37, 'image_6725fa9881df30.58988840.jfif'),
-(89, 37, 'image_6725fa9881f9f3.14573911.jfif');
+(89, 37, 'image_6725fa9881f9f3.14573911.jfif'),
+(90, 38, 'image_67301012d3af83.42007731.jpg'),
+(91, 38, 'image_67301012d3fd04.54349397.jpg'),
+(92, 38, 'image_67301012d43a90.57239407.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `taken_property`
+--
+
+CREATE TABLE `taken_property` (
+  `property_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `landlord_id` int(11) DEFAULT NULL,
+  `tenant_id` int(11) DEFAULT NULL,
+  `num_occupants` int(11) NOT NULL,
+  `move_in_date` date NOT NULL,
+  `deadline` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `taken_property`
+--
+
+INSERT INTO `taken_property` (`property_id`, `post_id`, `landlord_id`, `tenant_id`, `num_occupants`, `move_in_date`, `deadline`) VALUES
+(2, 17, 1, 9, 2, '2024-11-17', '2024-12-17'),
+(3, 24, 1, 5, 5, '2024-11-21', '2024-12-21'),
+(4, 20, 3, 2, 3, '2024-11-17', '2024-12-17');
 
 -- --------------------------------------------------------
 
@@ -293,14 +381,53 @@ INSERT INTO `tenants` (`account_id`, `fullname`, `email`, `username`, `password`
 (7, 'ian rodis', 'ian@gmail.com', 'ian', '123', '09099897185', 'tenant', 'profile5.jpg'),
 (8, 'john doe', 'johndoe@gmail.com', 'john', '123', '09099897185', 'tenant', 'image-men-service-techniques-02.jpg'),
 (9, 'rainrix rodis', 'rainrix@gmail.com', 'rainrix', '123', '09099897185', 'tenant', 'profile6.jpg'),
-(10, 'lulu rodis', 'lulu@gmail.com', 'lulu', '123', '09099897185', 'tenant', 'DEFAULT_PROFILE.png'),
-(11, '11 11', '11@gmail.com', '11', '11', '09099897185', 'tenant', 'DEFAULT_PROFILE.png'),
-(12, '22 22', '22@gmail.com', '12', '22', '09099897185', 'tenant', 'DEFAULT_PROFILE.png'),
-(13, 'loyd dela cruz', 'loyd@gmail.com', 'loyd', '1234', '09099897185', 'tenant', 'DEFAULT_PROFILE.png');
+(10, 'lulu rodis', 'lulu@gmail.com', 'lulu', '123', '09099897185', 'tenant', 'DEFAULT_PROFILE.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tenant_applications`
+--
+
+CREATE TABLE `tenant_applications` (
+  `apply_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `landlord_id` int(11) DEFAULT NULL,
+  `tenant_id` int(11) DEFAULT NULL,
+  `tenant_fullname` varchar(255) NOT NULL,
+  `contact_phone` varchar(20) NOT NULL,
+  `contact_email` varchar(255) NOT NULL,
+  `num_occupants` int(11) NOT NULL,
+  `move_in_date` date NOT NULL,
+  `employment_work` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tenant_applications`
+--
+
+INSERT INTO `tenant_applications` (`apply_id`, `post_id`, `landlord_id`, `tenant_id`, `tenant_fullname`, `contact_phone`, `contact_email`, `num_occupants`, `move_in_date`, `employment_work`) VALUES
+(1, 17, 1, 2, 'krelian quimson', '09099897185', 'quimsonkrelian@gmail.com', 1, '2024-11-15', 'N/A'),
+(2, 17, 1, 7, 'ian rodis', '09099897185', 'ian@gmail.com', 1, '2024-11-17', 'N/A'),
+(3, 17, 1, 9, 'rainrix rodis', '09099897185', 'rainrix@gmail.com', 2, '2024-11-17', 'N/A'),
+(4, 24, 1, 5, 'josh velayo', '09099897185', 'josh@gmail.com', 5, '2024-11-21', 'N/A'),
+(5, 20, 3, 2, 'krelian quimson', '09099897185', 'quimsonkrelian@gmail.com', 3, '2024-11-17', 'N/A');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admin_feedback`
+--
+ALTER TABLE `admin_feedback`
+  ADD PRIMARY KEY (`message_id`);
+
+--
+-- Indexes for table `admin_report`
+--
+ALTER TABLE `admin_report`
+  ADD PRIMARY KEY (`report_id`);
 
 --
 -- Indexes for table `convo`
@@ -339,56 +466,92 @@ ALTER TABLE `property_post_pictures`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `taken_property`
+--
+ALTER TABLE `taken_property`
+  ADD PRIMARY KEY (`property_id`);
+
+--
 -- Indexes for table `tenants`
 --
 ALTER TABLE `tenants`
   ADD PRIMARY KEY (`account_id`);
 
 --
+-- Indexes for table `tenant_applications`
+--
+ALTER TABLE `tenant_applications`
+  ADD PRIMARY KEY (`apply_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admin_feedback`
+--
+ALTER TABLE `admin_feedback`
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `admin_report`
+--
+ALTER TABLE `admin_report`
+  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `convo`
 --
 ALTER TABLE `convo`
-  MODIFY `convo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `convo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `landlords`
 --
 ALTER TABLE `landlords`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `like_react`
 --
 ALTER TABLE `like_react`
-  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT for table `post_property`
 --
 ALTER TABLE `post_property`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `property_post_pictures`
 --
 ALTER TABLE `property_post_pictures`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+
+--
+-- AUTO_INCREMENT for table `taken_property`
+--
+ALTER TABLE `taken_property`
+  MODIFY `property_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tenants`
 --
 ALTER TABLE `tenants`
   MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `tenant_applications`
+--
+ALTER TABLE `tenant_applications`
+  MODIFY `apply_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
