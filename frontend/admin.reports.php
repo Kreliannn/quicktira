@@ -29,7 +29,7 @@ $total_users = $total_tenant + $total_landlords;
             <?php  require('public_component/sidebar.admin.php')  ?>
         </div>              
 
-        <div class="col">
+        <div class="col"  style='height:100dvh; overflow:auto'>
             <div class="row container  gap-2 shadow ms-3 mt-3" style='height : 90dvh'>
                 <div class="col border">
                     <h2 class='text-center p-2'>Feedback</h2>

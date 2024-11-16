@@ -27,7 +27,7 @@
             <?php require('public_component/sidebar.landlord.php'); ?>
         </div>          
 
-        <div class="col">
+        <div class="col"  style='height:100dvh; overflow:auto'>
             <div class="row mt-3">
                 <?php foreach ($property_data as $property): ?>
                     <div class="col-md-4 mb-4 ">

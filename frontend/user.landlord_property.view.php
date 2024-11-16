@@ -34,7 +34,7 @@
             <?php require('public_component/sidebar.landlord.php'); ?>
         </div>          
 
-        <div class="col" id='container'>
+        <div class="col" id='container'  style='height:100dvh; overflow:auto'>
 
         <div class="row ">
             <?php if($property_data['post_status'] == 'active') : ?>

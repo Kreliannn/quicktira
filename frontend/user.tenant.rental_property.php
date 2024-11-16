@@ -9,7 +9,7 @@ if($rental_property)
 
     $data = $database->get("select * from taken_property where post_id =?", [$post_id], "fetch");
 
-    $landlord_info =  $database->get("select * from tenants where account_id =?", [  $data['landlord_id'] ], "fetch");
+    $landlord_info =  $database->get("select * from landlords where account_id =?", [$rental_property['landlord_id']], "fetch");
 
     $property_info =  $database->get("select * from post_property where post_id =?", [  $post_id ], "fetch");
 
@@ -73,12 +73,16 @@ if($rental_property)
 </head>
 <body>
     
+    <input type="hidden" id="deadline" value="<?=$showDeadline?>">
+    <input type="hidden" id="today" value="<?=$today?>">
+    <input type="hidden" id="rent_start" value="<?=$data['move_in_date']?>">
+
     <div class="row">
         <div class="col-12 col-md-2"> 
             <?php $_SESSION['user']['account_type'] == 'tenant' ? require('public_component/sidebar.tenant.php') : require('public_component/sidebar.landlord.php'); ?>
         </div>          
 
-        <div class="col">
+        <div class="col " style='height:100dvh; overflow:auto'>
         <?php if($rental_property): ?>
             <div class="row p-4">
                 <div class="col-md-6 card shadow">
@@ -107,11 +111,11 @@ if($rental_property)
                 <div class="col-md-6 card shadow">
                     <div class="tenant-info">
                         <div class="p-4">
-                            <h2>Tenant Information</h2>
-                            <img src="image/profile_image/<?=landlord_info['profile_picture']?>" class="mb-3" alt="Tenant Profile Image" style="width: 20%; height: auto;">
-                            <p><strong>Name:</strong> <?=landlord_info['fullname']?></p>
-                            <p><strong>Email:</strong> <?=landlord_info['email']?></p>
-                            <p><strong>Contact:</strong> <?=landlord_info['contact']?></p>
+                            <h2>landlord Information</h2>
+                            <img src="image/profile_image/<?=$landlord_info['profile_picture']?>" class="mb-3" alt="Tenant Profile Image" style="width: 20%; height: auto;">
+                            <p><strong>Name:</strong> <?=$landlord_info['fullname']?></p>
+                            <p><strong>Email:</strong> <?=$landlord_info['email']?></p>
+                            <p><strong>Contact:</strong> <?=$landlord_info['contact']?></p>
                         </div>
                     </div>
                 </div>

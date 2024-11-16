@@ -32,7 +32,7 @@
             <?php $_SESSION['user']['account_type'] == 'tenant' ? require('public_component/sidebar.tenant.php') : require('public_component/sidebar.landlord.php'); ?>
         </div>          
 
-        <div class="col">
+        <div class="col"  style='height:100dvh; overflow:auto'>
             <div class="container mt-5">
                 <h2 class="mb-4 text-center" style="color: #4A5D23;">Conversations</h2>
                 <div class="row mb-4">

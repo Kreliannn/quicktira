@@ -27,7 +27,7 @@ $total_users = $total_tenant + $total_landlords;
             <?php  require('public_component/sidebar.admin.php')  ?>
         </div>          
 
-        <div class="col">
+        <div class="col"  style='height:100dvh; overflow:auto'>
             <div class="row mt-3">
                 <div class="col-md-6 ">
                     <div class="card" style="height: 200px;">

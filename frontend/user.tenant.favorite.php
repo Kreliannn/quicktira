@@ -25,7 +25,7 @@ $property_data = $database->get($query, [$_SESSION['user']['account_id']], 'fetc
             <?php $_SESSION['user']['account_type'] == 'tenant' ? require('public_component/sidebar.tenant.php') : require('public_component/sidebar.landlord.php'); ?>
         </div>          
 
-        <div class="col">
+        <div class="col"  style='height:100dvh; overflow:auto'>
             <div class="row">
                 <?php require('public_component/display_post.php'); ?>
             </div>

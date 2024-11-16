@@ -84,7 +84,7 @@
         <div class="col-12 col-md-2 d-none d-md-block">
             <?php $_SESSION['user']['account_type'] == 'tenant' ? require('public_component/sidebar.tenant.php') : require('public_component/sidebar.landlord.php'); ?>
         </div>          
-        <div class="col m-0 p-0">
+        <div class="col m-0 p-0"  style='height:100dvh; overflow:auto'>
             <div class="container-fluid h-100 d-flex flex-column p-0 m-0">
                 <!-- Header -->
                 <div class="row m-0">

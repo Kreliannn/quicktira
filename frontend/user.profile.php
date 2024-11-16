@@ -25,7 +25,7 @@
             <?php $_SESSION['user']['account_type'] == 'tenant' ? require('public_component/sidebar.tenant.php') : require('public_component/sidebar.landlord.php'); ?>         
         </div>
 
-        <div class="col overflow-auto" style='height:100dvh'>
+        <div class="col overflow-auto"  style='height:100dvh; overflow:auto'>
             <div class="container mt-5">
                 <div class="row align-items-center">
                     <div class="col-md-4 text-center d-flex align-items-center justify-content-center">

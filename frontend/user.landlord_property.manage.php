@@ -78,7 +78,7 @@
             <?php require('public_component/sidebar.landlord.php'); ?>
         </div>          
 
-        <div class="col">
+        <div class="col"  style='height:100dvh; overflow:auto'>
             <div class="row p-4">
                 <div class="col-md-6 card shadow">
                     <div class="property-info ">

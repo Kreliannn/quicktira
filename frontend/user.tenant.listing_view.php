@@ -87,7 +87,7 @@
         <div class="col-12 col-md-2">
             <?php require('public_component/sidebar.tenant.php'); ?>
         </div>          
-        <div class="col">
+        <div class="col"  style='height:100dvh; overflow:auto'>
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-md-12">

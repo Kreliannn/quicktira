@@ -27,7 +27,7 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
             <?php  require('public_component/sidebar.admin.php')  ?>
         </div>          
 
-        <div class="col ms-4">
+        <div class="col ms-4"  style='height:100dvh; overflow:auto'>
         <div class="row">
 
             <div class="col-md-6 mt-4">
