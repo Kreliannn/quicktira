@@ -333,7 +333,7 @@ nav .menu-bar {
         
      
 
-        <div class="side-menu shadow" id="side-menu">
+        <div class="side-menu shadow" id="side-menu" style='height : 100dvh'>
             <div class="d-none d-md-block">
                 <center>
                     <div class="img">

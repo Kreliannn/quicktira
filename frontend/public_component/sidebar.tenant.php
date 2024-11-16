@@ -314,13 +314,9 @@ nav .menu-bar {
                     <i class="fa-solid fa-message text-light"></i>
                     <span class='text-light'>Messages</span>
                 </a>
-                <a href="" class='text-light'>
+                <a href="user.tenant.rental_property.php" class='text-light'>
                     <i class="fa-solid fa-file-alt text-light"></i>
                     <span class='text-light'>My Leases</span>
-                </a>
-                <a href="1addpost.php" class='text-light'>
-                    <i class="fa-solid fa-wrench text-light"></i>
-                    <span class='text-light'>Maintenances</span>
                 </a>
                 <a id='logout1' class='text-light' >
                     <i class="fa-solid fa-sign-out-alt text-light"></i>
@@ -336,7 +332,7 @@ nav .menu-bar {
         
      
 
-        <div class="side-menu shadow col-12 " id="side-menu" >
+        <div class="side-menu shadow col-12 " id="side-menu" style='height : 100dvh'>
             <div class="d-none d-md-block">
                 <center>
                     <div class="img">
@@ -354,7 +350,7 @@ nav .menu-bar {
                 <span>Profile</span>
             </a>
             <a href="user.tenant.listing.php">
-                <i class="fa-solid fa-home"></i>             
+                <i class="fa-solid fa-building"></i>             
                 <span>Listings</span>
             </a>
             <a href="user.tenant.favorite.php">
@@ -365,14 +361,11 @@ nav .menu-bar {
                 <i class="fa-solid fa-message"></i>
                 <span> Messages </span>
             </a>
-            <a href="">
-                <i class="fa-solid fa-file-alt"></i>
-                <span> My Leases </span>
+            <a href="user.tenant.rental_property.php">
+                <i class="fa-solid fa-home"></i>
+                <span> My Rental </span>
             </a>
-            <a href="1addpost.php">
-                <i class="fa-solid fa-wrench"></i>
-                <span> Maintenances </span>
-            </a>
+          
             
 
 
