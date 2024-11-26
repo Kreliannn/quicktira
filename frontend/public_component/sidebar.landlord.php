@@ -302,10 +302,6 @@ nav .menu-bar {
                 <i class="fa-solid fa-user text-light"></i>
                 <span class="text-light">Profile</span>
             </a>
-            <a href="landing_page.php" class="text-light">
-                <i class="fa-solid fa-chart-line text-light"></i>
-                <span class="text-light">Dashboard</span>
-            </a>
             <a href="user.landlord.addpost.php" class="text-light">
                 <i class="fa-solid fa-plus-circle text-light"></i>
                 <span class="text-light">Add Post</span>
@@ -349,10 +345,6 @@ nav .menu-bar {
             <a href="user.profile.php">
                 <i class="fa-solid fa-user"></i>
                 <span>Profile</span>
-            </a>
-            <a href="landing_page.php">
-                <i class="fa-solid fa-chart-line"></i>
-                <span>Dashboard</span>
             </a>
             <a href="user.landlord.addpost.php">
                 <i class="fa-solid fa-plus-circle text-green"></i>

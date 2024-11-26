@@ -10,7 +10,8 @@ username varchar(255),
 password varchar(255),
 contact varchar(255),
 account_type varchar(255),
-profile_picture varchar(255)  
+profile_picture varchar(255),
+isRenting varchar(255)
 );
 
 
@@ -22,7 +23,8 @@ username varchar(255),
 password varchar(255),
 contact varchar(255),
 account_type varchar(255),
-profile_picture varchar(255)  
+profile_picture varchar(255) ,
+isRenting varchar(255)
 );
 
 

@@ -3,7 +3,7 @@
     $property = $database->get('select * from post_property join landlords on post_property.landlord_id = landlords.account_id where post_id = ?', [$_POST['post_id']], 'fetch');
     $property_images = $database->get('select * from property_post_pictures where post_id = ?', [$_POST['post_id']], 'fetchAll');
     $landlord_id = $database->get('select account_id from landlords where account_id = ?', [$property['landlord_id']], 'fetch');
-    
+    $isRenting = $_SESSION['user']['isRenting'];
 ?>
 
 
@@ -100,7 +100,14 @@
                                 <div class="col-8">
                                     <h5 class="my-3"><?= $property['fullname'] ?></h5>
                                     <p class="text-muted mb-1">User ID: <?= $property['account_id'] ?></p>
-                                    <button class="btn btn-success mt-3" id='apply_button'>apply</button>
+
+                                    <?php if($isRenting == 'yes'): ?>
+                                        <button class="btn btn-success mt-3" id='apply_button' disabled>red</button>
+                                    <?php else: ?>
+                                        <button class="btn btn-success mt-3" id='apply_button'>apply</button>
+                                    <?php endif; ?>
+                                    
+
                                     <button class="btn btn-primary mt-3" id='message_landlord' <?= $_SESSION['user']['account_type'] == 'landlord' ? 'disabled' : '' ?>>Message</button>
                                     <button class="btn btn-primary mt-3" id='visit_account'>Visit Account</button>
                                     <button class="btn btn-danger mt-3" id='report_button'> Report </button>

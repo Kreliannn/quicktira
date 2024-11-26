@@ -23,7 +23,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
-
 <div class="row">
         <div class="col-12 col-md-2"> 
             <?php $_SESSION['user']['account_type'] == 'tenant' ? require('public_component/sidebar.tenant.php') : require('public_component/sidebar.landlord.php'); ?>
@@ -34,10 +33,10 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="image/profile_image/<?= $account_info['profile_picture'] ?>" class="card-img-top" alt="Profile Picture">
+                            <img src="image/profile_image/<?= htmlspecialchars($account_info['profile_picture']) ?>" class="card-img-top" alt="Profile Picture">
                             <div class="card-body">
-                                <h5 class="card-title"><?= $account_info['fullname'] ?></h5>
-                                <p class="card-text">User ID: <?= $account_info['account_id'] ?></p>
+                                <h5 class="card-title"><?= htmlspecialchars($account_info['fullname']) ?></h5>
+                                <p class="card-text">User ID: <?= htmlspecialchars($account_info['account_id']) ?></p>
                             </div>
                         </div>
                     </div>
@@ -46,15 +45,15 @@
                         <table class="table">
                             <tr>
                                 <th>account_type:</th>
-                                <td><?= $account_info['account_type'] ?></td>
+                                <td><?= htmlspecialchars($account_info['account_type']) ?></td>
                             </tr>
                             <tr>
                                 <th>Email:</th>
-                                <td><?= $account_info['email'] ?></td>
+                                <td><?= htmlspecialchars($account_info['email']) ?></td>
                             </tr>
                             <tr>
                                 <th>contact:</th>
-                                <td><?= $account_info['contact'] ?></td>
+                                <td><?= htmlspecialchars($account_info['contact']) ?></td>
                             </tr>
                         </table>
                     </div>

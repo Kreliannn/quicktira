@@ -72,10 +72,9 @@ if($rental_property)
     <title>Document</title>
 </head>
 <body>
-    
-    <input type="hidden" id="deadline" value="<?=$showDeadline?>">
-    <input type="hidden" id="today" value="<?=$today?>">
-    <input type="hidden" id="rent_start" value="<?=$data['move_in_date']?>">
+    <input type="hidden" id="deadline" value="<?php echo htmlspecialchars($showDeadline); ?>">
+    <input type="hidden" id="today" value="<?php echo htmlspecialchars($today); ?>">
+    <input type="hidden" id="rent_start" value="<?php echo htmlspecialchars($data['move_in_date']); ?>">
 
     <div class="row">
         <div class="col-12 col-md-2"> 
@@ -87,7 +86,7 @@ if($rental_property)
             <div class="row p-4">
                 <div class="col-md-6 card shadow">
                     <div class="property-info ">
-                        <img src="image/post_property_image/<?=$property_info['post_images']?>" class="mt-2" alt="Property Image" style="width: 100%; height: auto;">
+                        <img src="image/post_property_image/<?php echo htmlspecialchars($property_info['post_images']); ?>" class="mt-2" alt="Property Image" style="width: 100%; height: auto;">
                     </div>
                 </div>
                 <div class="col-md-6 card shadow">
@@ -100,11 +99,11 @@ if($rental_property)
                     <div class="property-info">
                         <div class="p-4">
                             <h2>Property Details</h2>
-                            <p><strong>Address:</strong> <?=$property_info['address']?></p>
-                            <p><strong>Price:</strong> <?=$property_info['post_price']?></p>
-                            <p><strong>Current Date:</strong> <?=$today?></p>
-                            <p><strong>Deadline:</strong> <?=$showDeadline?></p>
-                            <p><strong>Days Left:</strong> <?=$days_left?></p>
+                            <p><strong>Address:</strong> <?php echo htmlspecialchars($property_info['address']); ?></p>
+                            <p><strong>Price:</strong> <?php echo htmlspecialchars($property_info['post_price']); ?></p>
+                            <p><strong>Current Date:</strong> <?php echo htmlspecialchars($today); ?></p>
+                            <p><strong>Deadline:</strong> <?php echo htmlspecialchars($showDeadline); ?></p>
+                            <p><strong>Days Left:</strong> <?php echo htmlspecialchars($days_left); ?></p>
                         </div>
                     </div>
                 </div>
@@ -112,10 +111,10 @@ if($rental_property)
                     <div class="tenant-info">
                         <div class="p-4">
                             <h2>landlord Information</h2>
-                            <img src="image/profile_image/<?=$landlord_info['profile_picture']?>" class="mb-3" alt="Tenant Profile Image" style="width: 20%; height: auto;">
-                            <p><strong>Name:</strong> <?=$landlord_info['fullname']?></p>
-                            <p><strong>Email:</strong> <?=$landlord_info['email']?></p>
-                            <p><strong>Contact:</strong> <?=$landlord_info['contact']?></p>
+                            <img src="image/profile_image/<?php echo htmlspecialchars($landlord_info['profile_picture']); ?>" class="mb-3" alt="Tenant Profile Image" style="width: 20%; height: auto;">
+                            <p><strong>Name:</strong> <?php echo htmlspecialchars($landlord_info['fullname']); ?></p>
+                            <p><strong>Email:</strong> <?php echo htmlspecialchars($landlord_info['email']); ?></p>
+                            <p><strong>Contact:</strong> <?php echo htmlspecialchars($landlord_info['contact']); ?></p>
                         </div>
                     </div>
                 </div>

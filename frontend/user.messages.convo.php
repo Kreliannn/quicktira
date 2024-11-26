@@ -77,9 +77,10 @@
     </style>
 </head>
 <body style='width: 100%; overflow: hidden;'>
+   
 
-    <input type="hidden" id='convo_id' value='<?=$_SESSION['convo_id']?>'>
-    <input type="hidden" id='user' value='<?=json_encode($_SESSION['user'])?>'>
+    <input type="hidden" id='convo_id' value='<?php echo htmlspecialchars($_SESSION['convo_id']); ?>'>
+    <input type="hidden" id='user' value='<?php echo htmlspecialchars(json_encode($_SESSION['user'])); ?>'>
     <div class="row">
         <div class="col-12 col-md-2 d-none d-md-block">
             <?php $_SESSION['user']['account_type'] == 'tenant' ? require('public_component/sidebar.tenant.php') : require('public_component/sidebar.landlord.php'); ?>

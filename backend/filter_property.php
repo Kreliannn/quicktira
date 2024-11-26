@@ -7,7 +7,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST")
     {
         $search_id = $_POST['search_id'];
 
-        $property_data = $database->get('select * from post_property join landlords on post_property.landlord_id = landlords.account_id where post_id = ?', [$search_id], 'fetchAll');
+        $property_data = $database->get("select * from post_property join landlords on post_property.landlord_id = landlords.account_id where post_id = ? && post_status = 'active'", [$search_id], 'fetchAll');
     }
 
     if(isset($_POST['filter_btn']))

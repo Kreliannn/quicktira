@@ -17,8 +17,6 @@
 </head>
 <body>
  
-    
-
     <div class="row" style='height:100dvh' >
 
         <div class="col-12 col-md-2 border" style='height:100dvh'>     
@@ -29,16 +27,16 @@
             <div class="container mt-5">
                 <div class="row align-items-center">
                     <div class="col-md-4 text-center d-flex align-items-center justify-content-center">
-                        <img id='profile_picture' src="image/profile_image/<?=$_SESSION['user']['profile_picture']?>" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 200px; height: 200px; object-fit: cover; border: 5px solid #A5B68D;">
+                        <img id='profile_picture' src="image/profile_image/<?php echo htmlspecialchars($_SESSION['user']['profile_picture']); ?>" alt="Profile Picture" class="img-fluid rounded-circle" style="width: 200px; height: 200px; object-fit: cover; border: 5px solid #A5B68D;">
                     </div>
                     <div class="col-md-8">
                         <div class="card shadow-sm" style="background-color: #ffffff; border: 1px solid #a5b68d;">
                             <div class="card-body">
-                                <h2 class="card-title h4 mb-3" style="color: #4c583a;"><?=$_SESSION['user']['fullname']?></h2>
-                                <p class="card-text" style="color: #626f47;"><strong>Account ID:</strong> <?=$_SESSION['user']['account_id']?></p>
-                                <p class="card-text" style="color: #626f47;"><strong>Account Type:</strong> <?=$_SESSION['user']['account_type']?></p>
-                                <p class="card-text" style="color: #626f47;"><strong>Email:</strong> <?=$_SESSION['user']['email']?></p>
-                                <p class="card-text" style="color: #626f47;"><strong>Contact:</strong> <?=$_SESSION['user']['contact']?></p>
+                                <h2 class="card-title h4 mb-3" style="color: #4c583a;"><?php echo htmlspecialchars($_SESSION['user']['fullname']); ?></h2>
+                                <p class="card-text" style="color: #626f47;"><strong>Account ID:</strong> <?php echo htmlspecialchars($_SESSION['user']['account_id']); ?></p>
+                                <p class="card-text" style="color: #626f47;"><strong>Account Type:</strong> <?php echo htmlspecialchars($_SESSION['user']['account_type']); ?></p>
+                                <p class="card-text" style="color: #626f47;"><strong>Email:</strong> <?php echo htmlspecialchars($_SESSION['user']['email']); ?></p>
+                                <p class="card-text" style="color: #626f47;"><strong>Contact:</strong> <?php echo htmlspecialchars($_SESSION['user']['contact']); ?></p>
                             </div>
                         </div>
                     </div>

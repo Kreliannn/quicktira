@@ -50,14 +50,16 @@ if($success)
     switch($type)
     {
         case "tenant":
-            $query = "insert into tenants (fullname, email, username, password, contact, account_type, profile_picture) values (?,?,?,?,?,?,?)";
+            $query = "insert into tenants (fullname, email, username, password, contact, account_type, profile_picture, isRenting) values (?,?,?,?,?,?,?,?)";
+            $database->insert($query, [$fullname, $email, $username, $password, $contact, $type, "DEFAULT_PROFILE.png", "no"]);
         break;
 
         case "landlord":
             $query = "insert into landlords (fullname, email, username, password, contact, account_type, profile_picture) values (?,?,?,?,?,?,?)";
-        break;
+            $database->insert($query, [$fullname, $email, $username, $password, $contact, $type, "DEFAULT_PROFILE.png"]);
+            break;
     }
     
-    $database->insert($query, [$fullname, $email, $username, $password, $contact, $type, "DEFAULT_PROFILE.png"]);
+    
     die(json_encode(['type' => 'success', 'text' => 'account created.']));
 }

@@ -38,11 +38,11 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
                     <?php foreach ($all_tenant as $tenant): ?>
                         <div class="container-fluid border d-flex justify-content-between align-items-center" style="height: 70px;">
                             <div class="d-flex align-items-center">
-                                <img src="image/profile_image/<?php echo $tenant['profile_picture']; ?>" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
-                                <span class="ms-2"><?php echo $tenant['fullname']; ?></span>
-                                <span class="ms-2"> id: <?php echo $tenant['account_id']; ?></span>
+                                <img src="image/profile_image/<?php echo htmlspecialchars($tenant['profile_picture']); ?>" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+                                <span class="ms-2"><?php echo htmlspecialchars($tenant['fullname']); ?></span>
+                                <span class="ms-2"> id: <?php echo htmlspecialchars($tenant['account_id']); ?></span>
                             </div>
-                            <button class="delete_account btn btn-danger " value="<?=$tenant['account_id']?>">Delete</button>
+                            <button class="delete_account btn btn-danger " value="<?=htmlspecialchars($tenant['account_id'])?>">Delete</button>
                         </div>
                     <?php endforeach; ?>
 
@@ -68,11 +68,11 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
                     <?php foreach ($all_landlords as $landlords): ?>
                         <div class="container-fluid border d-flex justify-content-between align-items-center" style="height: 70px;">
                             <div class="d-flex align-items-center">
-                                <img src="image/profile_image/<?php echo $landlords['profile_picture']; ?>" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
-                                <span class="ms-2"><?php echo $landlords['fullname']; ?></span>
-                                <span class="ms-2"> id: <?php echo $landlords['account_id']; ?></span>
+                                <img src="image/profile_image/<?php echo htmlspecialchars($landlords['profile_picture']); ?>" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
+                                <span class="ms-2"><?php echo htmlspecialchars($landlords['fullname']); ?></span>
+                                <span class="ms-2"> id: <?php echo htmlspecialchars($landlords['account_id']); ?></span>
                             </div>
-                            <button class="btn btn-danger delete_account_landlord" id='' value='<?=$landlords['account_id']?>'>Delete</button>
+                            <button class="btn btn-danger delete_account_landlord" id='' value='<?=htmlspecialchars($landlords['account_id'])?>'>Delete</button>
                         </div>
                     <?php endforeach; ?>
 

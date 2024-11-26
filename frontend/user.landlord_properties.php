@@ -32,14 +32,14 @@
                 <?php foreach ($property_data as $property): ?>
                     <div class="col-md-4 mb-4 ">
                         <div class="card">
-                            <img src="image/post_property_image/<?=$property['post_images']?>" class="card-img-top" alt="Property Image" style="height: 300px;">
+                            <img src="image/post_property_image/<?= htmlspecialchars($property['post_images']) ?>" class="card-img-top" alt="Property Image" style="height: 300px;">
                             <div class="card-body row">
                                 <?php if($property['post_status'] == 'active'): ?>
                                     <i class="bi bi-lock text-center border border-rounded shadow p-1 col-12 bg-dark text-white"></i>
                                 <?php else: ?>
                                     <i class="bi bi-key text-center border border-rounded shadow p-1 col-12 bg-warning"></i>
                                 <?php endif; ?>
-                                <button class="btn btn-primary col-12 mt-2" class='btn' value='<?=$property['post_id'] ?>'>  property </button>
+                                <button class="btn btn-primary col-12 mt-2" class='btn' value='<?= htmlspecialchars($property['post_id']) ?>'>  property </button>
                             </div>
                         </div>
                     </div>

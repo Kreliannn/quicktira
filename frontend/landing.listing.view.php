@@ -34,31 +34,31 @@
                 <!-- User Information -->
                 <div class="card mb-4 shadow-sm">
                     <div class="card-body text-center">
-                        <img src="image/profile_image/<?= $property['profile_picture'] ?>" alt="User Profile" class="rounded-circle img-fluid mb-3" style="width: 150px; height: 150px; object-fit: cover;">
-                        <h4 class="mb-2"><?= $property['fullname'] ?></h4>
-                        <p class="text-muted">User ID: <?= $property['account_id'] ?></p>
+                        <img src="image/profile_image/<?= htmlspecialchars($property['profile_picture']) ?>" alt="User Profile" class="rounded-circle img-fluid mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                        <h4 class="mb-2"><?= htmlspecialchars($property['fullname']) ?></h4>
+                        <p class="text-muted">User ID: <?= htmlspecialchars($property['account_id']) ?></p>
                     </div>
                 </div>
                 
                 <!-- Property Details -->
                 <div class="card mb-4 shadow-sm">
                     <div class="card-body">
-                        <img src="image/post_property_image/<?= $property['post_images'] ?>" alt="Property" class="card-img-top img-fluid mb-3" style="height: 300px; object-fit: cover;">
-                        <h3 class="card-title mb-3"><?= $property['post_title'] ?></h3>
-                        <h5 class="text-primary mb-3">$<?= number_format($property['post_price'], 2) ?></h5>
+                        <img src="image/post_property_image/<?= htmlspecialchars($property['post_images']) ?>" alt="Property" class="card-img-top img-fluid mb-3" style="height: 300px; object-fit: cover;">
+                        <h3 class="card-title mb-3"><?= htmlspecialchars($property['post_title']) ?></h3>
+                        <h5 class="text-primary mb-3">$<?= htmlspecialchars(number_format($property['post_price'], 2)) ?></h5>
                         
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <span><i class="fas fa-bed me-2"></i>Rooms</span>
-                                <span class="badge bg-primary rounded-pill"><?= $property['room_count'] ?></span>
+                                <span class="badge bg-primary rounded-pill"><?= htmlspecialchars($property['room_count']) ?></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <span><i class="fas fa-bath me-2"></i>Bathrooms</span>
-                                <span class="badge bg-primary rounded-pill"><?= $property['bathroom_count'] ?></span>
+                                <span class="badge bg-primary rounded-pill"><?= htmlspecialchars($property['bathroom_count']) ?></span>
                             </li>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <span><i class="fas fa-vector-square me-2"></i>Area</span>
-                                <span class="badge bg-primary rounded-pill"><?= $property['sqr_meters'] ?> m²</span>
+                                <span class="badge bg-primary rounded-pill"><?= htmlspecialchars($property['sqr_meters']) ?> m²</span>
                             </li>
                         </ul>
                     </div>
@@ -75,7 +75,7 @@
                             <div class="carousel-inner">
                                 <?php foreach ($property_images as $index => $image): ?>
                                     <div class="carousel-item <?= $index === 0 ? 'active' : '' ?>">
-                                        <img src="image/post_property_image/<?= $image['image_name'] ?>" alt="Property Image" class="d-block w-100 img-fluid" style="height: 500px; object-fit: cover;">
+                                        <img src="image/post_property_image/<?= htmlspecialchars($image['image_name']) ?>" alt="Property Image" class="d-block w-100 img-fluid" style="height: 500px; object-fit: cover;">
                                     </div>
                                 <?php endforeach; ?>
                             </div>
@@ -92,7 +92,7 @@
                             <div class="">
                                 <div class="">
                                     <h4 class="e mb-3">Description</h4>
-                                    <p class=""><?= nl2br(htmlspecialchars($property['post_description'])) ?></p>
+                                    <p class=""><?= htmlspecialchars(nl2br($property['post_description'])) ?></p>
                                 </div>
                              </div>
                         </div>

@@ -256,6 +256,7 @@
                         terms_condition : $('#termsConditions').prop('checked')
                     },
                     success : (response) => {
+                        console.log(response)
                         let res = JSON.parse(response);
                         switch(res.type)
                         {

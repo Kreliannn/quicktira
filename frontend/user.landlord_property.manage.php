@@ -69,9 +69,9 @@
 </head>
 <body>
 
-    <input type="hidden" id="deadline" value="<?=$showDeadline?>">
-    <input type="hidden" id="today" value="<?=$today?>">
-    <input type="hidden" id="rent_start" value="<?=$data['move_in_date']?>">
+    <input type="hidden" id="deadline" value="<?= htmlspecialchars($showDeadline) ?>">
+    <input type="hidden" id="today" value="<?= htmlspecialchars($today) ?>">
+    <input type="hidden" id="rent_start" value="<?= htmlspecialchars($data['move_in_date']) ?>">
 
     <div class="row">
         <div class="col-12 col-md-2">  
@@ -82,7 +82,7 @@
             <div class="row p-4">
                 <div class="col-md-6 card shadow">
                     <div class="property-info ">
-                        <img src="image/post_property_image/<?=$property_info['post_images']?>" class="mt-2" alt="Property Image" style="width: 100%; height: auto;">
+                        <img src="image/post_property_image/<?= htmlspecialchars($property_info['post_images']) ?>" class="mt-2" alt="Property Image" style="width: 100%; height: auto;">
                     </div>
                 </div>
                 <div class="col-md-6 card shadow">
@@ -95,11 +95,11 @@
                     <div class="property-info">
                         <div class="p-4">
                             <h2>Property Details</h2>
-                            <p><strong>Address:</strong> <?=$property_info['address']?></p>
-                            <p><strong>Price:</strong> <?=$property_info['post_price']?></p>
-                            <p><strong>Current Date:</strong> <?=$today?></p>
-                            <p><strong>Deadline:</strong> <?=$showDeadline?></p>
-                            <p><strong>Days Left:</strong> <?=$days_left?></p>
+                            <p><strong>Address:</strong> <?= htmlspecialchars($property_info['address']) ?></p>
+                            <p><strong>Price:</strong> <?= htmlspecialchars($property_info['post_price']) ?></p>
+                            <p><strong>Current Date:</strong> <?= htmlspecialchars($today) ?></p>
+                            <p><strong>Deadline:</strong> <?= htmlspecialchars($showDeadline) ?></p>
+                            <p><strong>Days Left:</strong> <?= htmlspecialchars($days_left) ?></p>
                         </div>
                     </div>
                 </div>
@@ -107,10 +107,10 @@
                     <div class="tenant-info">
                         <div class="p-4">
                             <h2>Tenant Information</h2>
-                            <img src="image/profile_image/<?=$tenant_info['profile_picture']?>" class="mb-3" alt="Tenant Profile Image" style="width: 20%; height: auto;">
-                            <p><strong>Name:</strong> <?=$tenant_info['fullname']?></p>
-                            <p><strong>Email:</strong> <?=$tenant_info['email']?></p>
-                            <p><strong>Contact:</strong> <?=$tenant_info['contact']?></p>
+                            <img src="image/profile_image/<?= htmlspecialchars($tenant_info['profile_picture']) ?>" class="mb-3" alt="Tenant Profile Image" style="width: 20%; height: auto;">
+                            <p><strong>Name:</strong> <?= htmlspecialchars($tenant_info['fullname']) ?></p>
+                            <p><strong>Email:</strong> <?= htmlspecialchars($tenant_info['email']) ?></p>
+                            <p><strong>Contact:</strong> <?= htmlspecialchars($tenant_info['contact']) ?></p>
                         </div>
                     </div>
                 </div>
