@@ -73,6 +73,10 @@
     <input type="hidden" id="today" value="<?= htmlspecialchars($today) ?>">
     <input type="hidden" id="rent_start" value="<?= htmlspecialchars($data['move_in_date']) ?>">
 
+    <input type="hidden" id="taken_property_id" value="<?php echo htmlspecialchars($data['property_id']); ?>">
+    <input type="hidden" id="post_property_id" value="<?php echo htmlspecialchars($data['post_id'] ); ?>">
+    <input type="hidden" id="tenant_id" value="<?php echo htmlspecialchars($data['tenant_id']); ?>">
+
     <div class="row">
         <div class="col-12 col-md-2">  
             <?php require('public_component/sidebar.landlord.php'); ?>
@@ -100,6 +104,7 @@
                             <p><strong>Current Date:</strong> <?= htmlspecialchars($today) ?></p>
                             <p><strong>Deadline:</strong> <?= htmlspecialchars($showDeadline) ?></p>
                             <p><strong>Days Left:</strong> <?= htmlspecialchars($days_left) ?></p>
+
                         </div>
                     </div>
                 </div>
@@ -111,6 +116,7 @@
                             <p><strong>Name:</strong> <?= htmlspecialchars($tenant_info['fullname']) ?></p>
                             <p><strong>Email:</strong> <?= htmlspecialchars($tenant_info['email']) ?></p>
                             <p><strong>Contact:</strong> <?= htmlspecialchars($tenant_info['contact']) ?></p>
+                            <button class="btn btn-danger" id='kick_btn'> kick tenant </button>
                         </div>
                     </div>
                 </div>
@@ -150,6 +156,23 @@
             });
 
             calendar.render();
+
+
+            $("#kick_btn").click(()=>{
+                $.ajax({
+                    url : "../backend/tenant.leave_property.php",
+                    method : "post",
+                    data : {
+                        taken_property_id : $("#taken_property_id").val(),
+                        post_property_id : $("#post_property_id").val(),
+                        tenant_id : $("#tenant_id").val()
+                    },
+                    success : (response) => {
+                        alert(response)
+                        window.location.reload();
+                    }
+                })
+            })
         });
     </script>
 </body>

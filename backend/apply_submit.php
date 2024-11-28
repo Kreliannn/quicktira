@@ -11,8 +11,15 @@ $post_id = $_POST['post_id'];
 $landlord_id = $_POST['landlord_id'];
 $tenant_id = $_POST['tenant_id'];
 
+if($custom_func->checkEmpty([$move_in_date]))
+{
+    die("error");
+}
+
+
+
 $query = "INSERT INTO tenant_applications (post_id, landlord_id, tenant_id, tenant_fullname, contact_phone, contact_email, num_occupants, move_in_date, employment_work) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $database->insert($query, [$post_id, $landlord_id, $tenant_id, $tenant_fullname, $contact_phone, $contact_email, $num_occupants, $move_in_date, $employment_work]);
 
-echo "successs";
+echo "success";

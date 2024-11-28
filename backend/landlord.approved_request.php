@@ -17,4 +17,7 @@ $database->insert($query, [$post_id, $landlord_id, $tenant_id, $num_occupants, $
 
 $database->update("update post_property set post_status = ? where post_id = ?",["inactive", $post_id]);
 
+$database->delete("delete from tenant_applications where tenant_id = ?", [$tenant_id]);
+$database->delete("delete from tenant_applications where post_id = ?", [$post_id]);
+
 echo "success";

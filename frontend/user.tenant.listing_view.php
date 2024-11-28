@@ -102,7 +102,7 @@
                                     <p class="text-muted mb-1">User ID: <?= $property['account_id'] ?></p>
 
                                     <?php if($isRenting == 'yes'): ?>
-                                        <button class="btn btn-success mt-3" id='apply_button' disabled>red</button>
+                                        <button class="btn btn-success mt-3" id='apply_button' disabled>apply</button>
                                     <?php else: ?>
                                         <button class="btn btn-success mt-3" id='apply_button'>apply</button>
                                     <?php endif; ?>
@@ -187,6 +187,7 @@
     <!-- Bootstrap JS -->
     <?php require('public_component/scripts.php'); ?>
     <?php require('public_component/sidebar.jquery.php'); ?>
+    <?php require('public_component/sweetAlert.php'); ?>
     <script>
         
         $(document).ready(function(){
@@ -291,7 +292,15 @@
                     tenant_id : $("#tenant_id").val()
                     },
                     success : (respond) => {
-                        alert(respond)
+                        switch(respond) {
+                            case "success":
+                                alertSuccess("request submited")
+                            break;
+
+                            case "error":
+                                alertError("empty input field");
+                            break;
+                        }
                     }
                 })
             })

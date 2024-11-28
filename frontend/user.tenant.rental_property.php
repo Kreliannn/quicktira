@@ -76,6 +76,12 @@ if($rental_property)
     <input type="hidden" id="today" value="<?php echo htmlspecialchars($today); ?>">
     <input type="hidden" id="rent_start" value="<?php echo htmlspecialchars($data['move_in_date']); ?>">
 
+    <input type="hidden" id="taken_property_id" value="<?php echo htmlspecialchars($data['property_id']); ?>">
+    <input type="hidden" id="post_property_id" value="<?php echo htmlspecialchars($data['post_id'] ); ?>">
+    <input type="hidden" id="tenant_id" value="<?php echo htmlspecialchars($data['tenant_id']); ?>">
+
+    
+
     <div class="row">
         <div class="col-12 col-md-2"> 
             <?php $_SESSION['user']['account_type'] == 'tenant' ? require('public_component/sidebar.tenant.php') : require('public_component/sidebar.landlord.php'); ?>
@@ -104,6 +110,7 @@ if($rental_property)
                             <p><strong>Current Date:</strong> <?php echo htmlspecialchars($today); ?></p>
                             <p><strong>Deadline:</strong> <?php echo htmlspecialchars($showDeadline); ?></p>
                             <p><strong>Days Left:</strong> <?php echo htmlspecialchars($days_left); ?></p>
+                            <button class="btn btn-danger" id='leave_btn'>Leave Property</button>
                         </div>
                     </div>
                 </div>
@@ -161,6 +168,27 @@ if($rental_property)
             });
 
             calendar.render();
+
+
+
+
+
+
+            $("#leave_btn").click(()=>{
+                $.ajax({
+                    url : "../backend/tenant.leave_property.php",
+                    method : "post",
+                    data : {
+                        taken_property_id : $("#taken_property_id").val(),
+                        post_property_id : $("#post_property_id").val(),
+                        tenant_id : $("#tenant_id").val()
+                    },
+                    success : (response) => {
+                        alert(response)
+                        window.location.reload();
+                    }
+                })
+            })
         })
 
     </script>

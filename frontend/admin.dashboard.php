@@ -6,6 +6,10 @@ $total_tenant = count($database->get("select * from tenants",[],"fetchAll"));
 $total_landlords = count($database->get("select * from landlords",[],"fetchAll"));
 $total_users = $total_tenant + $total_landlords;
 
+$active_post = count($database->get("select * from post_property where post_status = 'active'",[],"fetchAll"));
+$inactive_post = count($database->get("select * from post_property where post_status = 'inactive'",[],"fetchAll"));
+$total_post = count($database->get("select * from post_property",[],"fetchAll"));
+
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +33,7 @@ $total_users = $total_tenant + $total_landlords;
 
         <div class="col"  style='height:100dvh; overflow:auto'>
             <div class="row mt-3">
-                <div class="col-md-6 ">
+        <div class="col-md-6 ">
                     <div class="card" style="height: 200px;">
                         <div class="card-body">
                             <h5 class="card-title" style="font-size: 24px;">Total Users</h5>
@@ -59,7 +63,7 @@ $total_users = $total_tenant + $total_landlords;
                     <div class="card" style="height: 200px;">
                         <div class="card-body">
                             <h5 class="card-title" style="font-size: 24px;">Total Posts</h5>
-                            <p class="card-text" style="font-size: 24px; font-weight: bold;"><strong>2000</strong></p>
+                            <p class="card-text" style="font-size: 24px; font-weight: bold;"><strong><?=$total_post?></strong></p>
                         </div>
                     </div>
                 </div>
@@ -69,7 +73,7 @@ $total_users = $total_tenant + $total_landlords;
                     <div class="card" style="height: 200px;">
                         <div class="card-body">
                             <h5 class="card-title" style="font-size: 24px;">Active Posts</h5>
-                            <p class="card-text" style="font-size: 24px; font-weight: bold;"><strong>1500</strong></p>
+                            <p class="card-text" style="font-size: 24px; font-weight: bold;"><strong><?=$active_post?></strong></p>
                         </div>
                     </div>
                 </div>
@@ -77,7 +81,7 @@ $total_users = $total_tenant + $total_landlords;
                     <div class="card" style="height: 200px;">
                         <div class="card-body">
                             <h5 class="card-title" style="font-size: 24px;">Inactive Posts</h5>
-                            <p class="card-text" style="font-size: 24px; font-weight: bold;"><strong>500</strong></p>
+                            <p class="card-text" style="font-size: 24px; font-weight: bold;"><strong><?=$inactive_post?></strong></p>
                         </div>
                     </div>
                 </div>

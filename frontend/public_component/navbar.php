@@ -15,7 +15,7 @@
                     <a class="nav-link " aria-current="page" href="landing_page.php" style="font-weight: 500; padding: 0.5rem 1rem;">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="listings.php" style="font-weight: 500; padding: 0.5rem 1rem;">Listings</a>
+                    <a class="nav-link" href="listing.landing_page.php" style="font-weight: 500; padding: 0.5rem 1rem;">Listings</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about_us.php" style="font-weight: 500; padding: 0.5rem 1rem;">About</a>
