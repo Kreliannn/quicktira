@@ -2,7 +2,7 @@
 
 require_once ('../backend/Aglobal_file.php');
 
-$property_data = $database->get('select * from post_property join landlords on post_property.landlord_id = landlords.account_id LIMIT 6', [], 'fetchAll');
+$property_data = $database->get("select * from post_property join landlords on post_property.landlord_id = landlords.account_id where post_property.post_status = 'active' LIMIT 6", [], 'fetchAll');
 
 ?>
 
@@ -119,6 +119,9 @@ $property_data = $database->get('select * from post_property join landlords on p
             <option value="San Lorenzo Ruiz">San Lorenzo Ruiz</option>
             <option value="H2">H2</option>
             <option value="San Mariano">San Mariano</option>
+            <option value="San Manuel">San Manuel</option>
+            <option value="Santa Cristina">Santa Cristina</option>
+            <option value="Poblacion">Poblacion</option>
         </select>
     </div>
     <div class="container border shadow" style="height: 500px;" id='map'>
@@ -217,6 +220,18 @@ $property_data = $database->get('select * from post_property join landlords on p
 
                     case "H2":
                         map.setView([14.330588168640638 ,  120.9578847885132], 16)  
+                    break;
+
+                    case "San Manuel":
+                        map.setView([14.335868763771476 , 120.951726436615], 16)  
+                    break;
+
+                    case "Santa Cristina":
+                        map.setView([14.322521507722268, 120.96955776214601], 16)  
+                    break;
+
+                    case "Poblacion":
+                        map.setView([14.326887520002135, 120.93595504760744], 16)  
                     break;
                 }
             })

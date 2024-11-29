@@ -4,7 +4,6 @@ require_once ('../backend/Aglobal_file.php');
 $property_data = $database->get('select * from post_property join landlords on post_property.landlord_id = landlords.account_id where post_status = "active" order by post_id desc ', [], 'fetchAll');
 
 require("../backend/filter_property.php");
-
 ?>
 
 <!DOCTYPE html>
@@ -51,6 +50,9 @@ require("../backend/filter_property.php");
                             <option value="San Lorenzo Ruiz">San Lorenzo Ruiz</option>
                             <option value="H2">H2</option>
                             <option value="San Mariano">San Mariano</option>
+                            <option value="San Manuel">San Manuel</option>
+                            <option value="Santa Cristina">Santa Cristina</option>
+                            <option value="Poblacion">Poblacion</option>
                         </select>
                     </div>
                     <div class="col-md-4 mb-2">

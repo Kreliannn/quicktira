@@ -27,7 +27,7 @@
 </head>
 <body>
     
-    
+    <input type="hidden" id='post_id' value='<?=$post_id?>'>
 
     <div class="row">
         <div class="col-12 col-md-2">  
@@ -53,6 +53,21 @@
 
     <script>
         $(document).ready(()=>{
+
+            $("#delete").click(()=>{
+                $.ajax({
+                    url: "../backend/delete_post.landlord.php",
+                    method : "post",
+                    data : {
+                        post_id : $("#post_id").val()
+                    },
+                    success: (response) => {
+                        window.location.href = "user.landlord_properties.php";
+                    }
+                })    
+            })
+
+
            $(".req").click((event) => {
                 $.ajax({
                     url: "../backend/get_tenant_request.php",

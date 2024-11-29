@@ -47,6 +47,9 @@ require("../backend/filter_property.php");
                             <option value="San Lorenzo Ruiz">San Lorenzo Ruiz</option>
                             <option value="H2">H2</option>
                             <option value="San Mariano">San Mariano</option>
+                            <option value="San Manuel">San Manuel</option>
+                            <option value="Santa Cristina">Santa Cristina</option>
+                            <option value="Poblacion">Poblacion</option>
                         </select>
                     </div>
                     <div class="col-md-4 mb-2">

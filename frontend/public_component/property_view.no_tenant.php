@@ -12,6 +12,11 @@
                         <span style="font-size: 18px; font-weight: bold;"><?=htmlspecialchars($favorite)?></span>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-md-12 ms-2 mt-3">
+                        <button class='btn btn-danger' id='delete'> delete post </button>
+                    </div>
+                </div>
             </div>
 
             <div class="col border mt-2" style="padding: 10px; border-radius: 10px;">

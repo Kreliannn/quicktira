@@ -305,6 +305,10 @@ nav .menu-bar {
                 <i class="fa-solid fa-home" style="color: white;"></i>             
                 <span style="color: white;">Accounts</span>
             </a>
+            <a href="admin.listing.php" style="color: white;">
+                <i class="fa-solid fa-star" style="color: white;"></i>
+                <span style="color: white;">Listing</span>
+            </a>
             <a href="admin.reports.php" style="color: white;">
                 <i class="fa-solid fa-star" style="color: white;"></i>
                 <span style="color: white;">Reports</span>
@@ -349,6 +353,10 @@ nav .menu-bar {
             <a href="admin.reports.php">
                 <i class="fa-solid fa-star"></i>
                 <span>Reports</span>
+            </a>
+            <a href="admin.listing.php" style="color: white;">
+                <i class="fa-solid fa-star" ></i>
+                <span >Listing</span>
             </a>
             
             <br><br><br>
