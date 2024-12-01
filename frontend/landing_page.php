@@ -2,7 +2,9 @@
 
 require_once ('../backend/Aglobal_file.php');
 
-$property_data = $database->get("select * from post_property join landlords on post_property.landlord_id = landlords.account_id where post_property.post_status = 'active' LIMIT 6", [], 'fetchAll');
+$randomNum = rand(1,10);
+$query = "select * from post_property join landlords on post_property.landlord_id = landlords.account_id where post_property.post_status = 'active' LIMIT 6 offset $randomNum";
+$property_data = $database->get($query, [], 'fetchAll');
 
 ?>
 
@@ -75,7 +77,7 @@ $property_data = $database->get("select * from post_property join landlords on p
 
     <div class="container mt-5">
         <div class="text-center mb-5">
-            <h2 class="display-4 fw-bold" style="color: #4c583a;">Top Listings in Dasma</h2>
+            <h2 class="display-4 fw-bold" style="color: #4c583a;"> Listings in Dasma</h2>
         </div>
 
         <div class="row mb-4">

@@ -1,12 +1,14 @@
+
+
 <?php foreach ($property_data as $property): ?>
-	<div class="col-12 col-md-4">
+	<div class="col-12 col-md-4" class='post_box'>
 		<form class="container mt-3 " action="user.tenant.listing_view.php" method="post">
 			<div class="card shadow">
 				<div class="card-header d-flex align-items-center">
 					<img src="image/profile_image/<?= htmlspecialchars($property['profile_picture']) ?>" alt="Profile" class="rounded-circle me-2" style="width: 40px; height: 40px;">
 					<div>
 						<h6 class="card-title mb-0"> <?= htmlspecialchars($property['fullname']) ?> </h6>
-						<small class="text-muted"><?= htmlspecialchars($property['post_created_at']) ?></small>
+						<small class="text-muted" id='ian'><?= htmlspecialchars($property['post_created_at']) ?></small>
 					</div>
 				</div>
 				<img src="image/post_property_image/<?= htmlspecialchars($property['post_images']) ?>" alt="Property" class="card-img-top img-fluid" style="width:100%; height:300px;">

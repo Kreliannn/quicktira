@@ -25,7 +25,7 @@
     
     <div class="row">
         <div class="col-12 col-md-2">  
-            <?php $_SESSION['user']['account_type'] == 'tenant' ? require('public_component/sidebar.tenant.php') : require('public_component/sidebar.landlord.php'); ?>
+            <?php require('public_component/sidebar.landlord.php'); ?>
         </div>          
 
         <div class="col"  style='height:100dvh; overflow:auto'>

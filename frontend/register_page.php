@@ -262,6 +262,12 @@
                         {
                             case 'success':
                                alertSuccess(res.text)
+                                $('#firstname').val("")
+                                $('#lastname').val("")
+                                $('#email').val("")
+                                $('#contactNumber').val("")
+                                $('#username').val("")
+                                $('#password').val("")
                             break;
 
                             case 'error':
