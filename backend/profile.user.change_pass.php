@@ -24,8 +24,19 @@ else
 }
 
 if($success)
-{
-    $query = 'update tenants set username = ?, password = ? where account_id = ?';
+{   
+    $query;
+    switch($user["account_type"])
+    {
+        case "tenant":
+            $query = 'update tenants set username = ?, password = ? where account_id = ?';
+        break;
+
+        case "landlord":
+            $query = 'update landlords set username = ?, password = ? where account_id = ?';
+        break;
+    }
+    
     $database->update($query, [$new_username, $new_password, $user['account_id']] );
     $database->update_session();
     die(json_encode(['type' => 'error', 'text' => 'success.']));
