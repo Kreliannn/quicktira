@@ -119,4 +119,9 @@ CREATE TABLE taken_property(
     deadline vachar(255)
 );
 
-
+CREATE TABLE landlord_verification(
+    verification_id int auto_increment primary key,
+    landlord_id int,
+    landlord_name varchar(255),
+    verification_image varchar(255)
+);

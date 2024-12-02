@@ -55,8 +55,8 @@ if($success)
         break;
 
         case "landlord":
-            $query = "insert into landlords (fullname, email, username, password, contact, account_type, profile_picture) values (?,?,?,?,?,?,?)";
-            $database->insert($query, [$fullname, $email, $username, $password, $contact, $type, "DEFAULT_PROFILE.png"]);
+            $query = "insert into landlords (fullname, email, username, password, contact, account_type, profile_picture, isRenting) values (?,?,?,?,?,?,?,?)";
+            $database->insert($query, [$fullname, $email, $username, $password, $contact, $type, "DEFAULT_PROFILE.png",  "no"]);
             break;
     }
     

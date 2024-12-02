@@ -4,6 +4,12 @@
     $query = 'select * from post_property join landlords on post_property.landlord_id = landlords.account_id where landlords.account_id = ?';
 
     $property_data = $database->get($query, [$_SESSION['user']['account_id']], 'fetchAll');
+
+    $landlord_name = $_SESSION['user']['fullname'];
+    $landlord_id = $_SESSION['user']['account_id'];
+    $isVerified = $_SESSION['user']['isRenting'];
+
+   
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +35,7 @@
         </div>          
 
         <div class="col"  style='height:100dvh; overflow:auto'>
+            <?php if($isVerified == "yes"): ?>
             <div class="container mt-3">
                 <div class="container mt-3">
                     <h4 class="mb-3 text-center">Add New Listing</h4>
@@ -104,6 +111,18 @@
                 </div>
             </div>
         </div>
+
+        <?php else: ?>
+            <br><br><br>
+            <h1 classs='text-center'> upload valid id or papers </h1>
+            <form action="#" method="POST" enctype="multipart/form-data" id="landlord_verification">
+                <input type="file" class="form-control form-control-sm rounded-0" id="verification_img" name="verification_img" accept="image/*">
+                <input type="hidden" id='landlord_id' name='landlord_id' value="<?=$landlord_id?>">
+                <input type="hidden" id='landlord_name' name='landlord_name' value="<?=$landlord_name?>">
+                <button id='btn_landlord_verification' class="btn btn-success mt-3 ">Submit</button>
+            </form>
+        <?php endif ?>
+
     </div>
 
     <?php require('public_component/scripts.php'); ?>
@@ -113,6 +132,43 @@
 <script>
 
     $(document).ready(() => {
+
+        
+        
+        $('#btn_landlord_verification').click((e)=> {
+            e.preventDefault();
+
+            let myFormData = new FormData($('#landlord_verification')[0]);
+
+            $.ajax({
+                url: '../backend/landlord.verification.php',
+                method: 'POST',
+                data: myFormData,
+                contentType: false,
+                processData: false,
+                success: (response) => {
+                    console.log(response)
+                    let res = JSON.parse(response)
+                    switch(res.type)
+                    {
+                        case 'success':
+                            alertSuccess(res.text)
+                        break;
+
+                        case 'error':
+                            alertError(res.text)
+                        break;
+                    }                 
+                },
+            });
+          
+        })
+
+
+
+
+
+
 
         let map = L.map('map', { center: [ 14.322937322075674, 120.93887329101564 ],zoom: 13});
 
@@ -255,6 +311,14 @@
                 window.location.href = event.target.href;
             }
         });
+
+
+
+
+
+
+
+
 
     });
 
