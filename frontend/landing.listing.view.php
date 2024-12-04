@@ -17,7 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <title>Document</title>
+    <title>QuickTira</title>
     <link rel="icon" type="image/x-icon" href="image/website_image/logo-house1-removebg.png">
 </head>
 <body>
@@ -28,12 +28,12 @@
     <input type="hidden" id='longitude' value="<?= $property['longitude'] ?>">
 
     <br><br>
-
+<!--
     <div class="row mt-4">
         <div class="col-12">
             <a href="landing_page.php" class="btn btn-primary">Back to Landing Page</a>
         </div>
-    </div>
+    </div>-->
     <div class="container mt-5">
                 
                 <div class="row">
@@ -43,19 +43,19 @@
                             <div class="card-body">
                                 <img src="image/post_property_image/<?= $property['post_images'] ?>" alt="Property" class="card-img-top img-fluid" style="height: 400px; object-fit: cover; border-radius: 10px;">
                                 <h3 class="card-title mt-3 mb-3"><?= $property['post_title'] ?></h3>
-                                <h5 class="text-primary mb-3">$<?= number_format($property['post_price'], 2) ?></h5>
+                                <h5 class="mb-3" style="color: #728C69;">₱<?= number_format($property['post_price'], 2)?> per month</h5>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <span><i class="fas fa-bed me-2"></i>Rooms</span>
-                                        <span class="badge bg-primary rounded-pill"><?= $property['room_count'] ?></span>
+                                        <span class="badge rounded-pill" style="background-color: #728C69;"><?= $property['room_count'] ?></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <span><i class="fas fa-bath me-2"></i>Bathrooms</span>
-                                        <span class="badge bg-primary rounded-pill"><?= $property['bathroom_count'] ?></span>
+                                        <span class="badge rounded-pill" style="background-color: #728C69;"><?= $property['bathroom_count'] ?></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <span><i class="fas fa-vector-square me-2"></i>Area</span>
-                                        <span class="badge bg-primary rounded-pill"><?= $property['sqr_meters'] ?> m²</span>
+                                        <span class="badge rounded-pill" style="background-color: #728C69;"><?= $property['sqr_meters'] ?> m²</span>
                                     </li>
                                 </ul>
                             </div>
@@ -90,7 +90,7 @@
                     <div class="col-md-12">
                         <!-- Description -->
                         <div class="mb-4 p-3 rounded card-body border shadow">
-                            <h4 class="mb-3 text-primary">Description</h4>
+                            <h4 class="mb-3" style="color: #728C69;">Description</h4>
                             <p class="text-dark"><?= nl2br(htmlspecialchars($property['post_description'])) ?></p>
                         </div>
                     </div>

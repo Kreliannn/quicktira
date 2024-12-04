@@ -18,8 +18,21 @@ $total_users = $total_tenant + $total_landlords;
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Tailwind CSS -->
-    <title>Document</title>
+    <title>Admin Portal</title>
     <link rel="icon" type="image/x-icon" href="image/website_image/logo-house1-removebg.png">
+    <style>
+        .rap:hover{
+            border-color: green;
+            background-color:green;
+            color:white;
+        }
+
+        .baranda:hover{
+            border-color: red;
+            background-color:red;
+            color:white;
+        }
+    </style>
 </head>
 <body>
     
@@ -32,7 +45,7 @@ $total_users = $total_tenant + $total_landlords;
 
         <div class="col"  style='height:100dvh; overflow:auto'>
             <div class="row container  gap-2 shadow ms-3 mt-3" style='height : 90dvh'>
-                <div class="col border">
+                <div class="col border ">
                     <h2 class='text-center p-2'>Feedback</h2>
                     <div class="container border overflow-auto" style='height:85%' id='feedback_container'>
                         
@@ -63,8 +76,8 @@ $total_users = $total_tenant + $total_landlords;
                     for (let i = 0; i < notif.length; i++) {
                         let notif_info = [notif[i].sender_email, notif[i].sender_fullnamem, notif[i].message]
                         let component = `
-                        <button class="feedback alert ${notif[i].message_type === 'unread' ? "alert-success" : "alert-dark"} m-0 text-start" style='width : 100%' value=${notif[i].message_id}>
-                            from ${notif[i].sender_fullname}
+                        <button class="rap feedback alert ${notif[i].message_type === 'unread' ? "alert-success" : "alert-light"} m-0 text-start" style='width : 100%' value=${notif[i].message_id}>
+                            From: ${notif[i].sender_fullname}
                         </button>
                         `;
                         $("#feedback_container").append(component);
@@ -72,7 +85,7 @@ $total_users = $total_tenant + $total_landlords;
 
                     $(".feedback").click((event) => {
                         event.target.classList.remove("alert-success")
-                        event.target.classList.add("alert-dark");
+                        event.target.classList.add("alert-light")
                         let id = event.target.value
                         $.ajax({
                             url : "../backend/feedback_info.php",
@@ -84,9 +97,9 @@ $total_users = $total_tenant + $total_landlords;
                                 component = `
                                     <div id='pop_up' class="border bg-light shadow p-5" style=" z-index: 9999; position: absolute; top: 45%; left: 60%; transform: translate(-50%, -50%);  height:70%; width :70%; font-size: 1.5em;">
                                         <h2 class="text-center mb-4">Feedback Notification</h2>
-                                        <p class="mb-3">from ${feedback_information[0].sender_fullname}</p>
-                                        <p class="mb-3">${feedback_information[0].message}</p>
-                                        <p class="mb-3">sender email : ${feedback_information[0].sender_email}</p>
+                                        <p class="mb-3">From: ${feedback_information[0].sender_fullname}</p>
+                                        <p class="mb-3">Message: ${feedback_information[0].message}</p>
+                                        <p class="mb-3">Sender email: ${feedback_information[0].sender_email}</p>
                                         <button id='close' type="button" class="btn btn-primary" style="position: absolute; top: 10px; right: 10px;">x</button>
                                     </div>                                
                                 `
@@ -110,8 +123,8 @@ $total_users = $total_tenant + $total_landlords;
                     for (let i = 0; i < notif.length; i++) {
                         let notif_info = [notif[i].sender_email, notif[i].sender_fullnamem, notif[i].message]
                         let component = `
-                        <button class="report alert ${notif[i].report_type === 'unread' ? "alert-danger" : "alert-dark"} m-0 text-start" style='width : 100%' value=${notif[i].report_id}>
-                            from ${notif[i].sender_fullname}
+                        <button class="baranda report alert ${notif[i].report_type === 'unread' ? "alert-danger" : "alert-light"} m-0 text-start" style='width : 100%' value=${notif[i].report_id}>
+                            From: ${notif[i].sender_fullname}
                         </button>
                         `;
                         $("#report_container").append(component);
@@ -119,7 +132,8 @@ $total_users = $total_tenant + $total_landlords;
                     
                     $(".report").click((event) => {
                         event.target.classList.remove("alert-danger")
-                        event.target.classList.add("alert-dark");
+                        event.target.classList.add("alert-light")
+
                         let id = event.target.value
                         $.ajax({
                             url : "../backend/report_info.php",
@@ -135,19 +149,16 @@ $total_users = $total_tenant + $total_landlords;
                                             <strong>From:</strong> ${report_information[0].sender_fullname}
                                         </div>
                                         <div class="mb-3">
-                                            <strong>Reported Account:</strong> ${report_information[0].report_account_fullname}
+                                            <strong>Reported Account: </strong> ${report_information[0].report_account_fullname}
                                         </div>
                                         <div class="mb-3">
-                                            <strong>Account ID:</strong> ${report_information[0].report_account_id}
-                                        </div>
-                                        <div class="mb-3">
-                                            <strong>post ID:</strong> ${report_information[0].post_id}
+                                            <strong>Account ID: </strong> ${report_information[0].report_account_id}
                                         </div>
                                         <div class="mb-3">
                                             <strong>Report Type:</strong> ${report_information[0].report_reason}
                                         </div>
                                         <div class="mb-3">
-                                            <strong>Message:</strong> ${report_information[0].report_message}
+                                            <strong>Message: </strong> ${report_information[0].report_message}
                                         </div>    
                                         <button id='close_report' type="button" class="btn btn-primary" style="position: absolute; top: 10px; right: 10px;">Close</button>
                                     </div>                                

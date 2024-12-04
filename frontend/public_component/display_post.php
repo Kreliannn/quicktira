@@ -14,7 +14,7 @@
 				<img src="image/post_property_image/<?= htmlspecialchars($property['post_images']) ?>" alt="Property" class="card-img-top img-fluid" style="width:100%; height:300px;">
 				<div class="card-body">
 					<h5 class="card-title"><?= htmlspecialchars($property['post_title']) ?></h5>
-					<h6 class="mb-2">$<?= htmlspecialchars($property['post_price']) ?></h6>
+					<h6 class="mb-2">₱<?= htmlspecialchars($property['post_price']) ?></h6>
 					<div class="d-flex justify-content-between mb-2">
 						<small class="text-muted"><?= htmlspecialchars($property['room_count']) ?> Rooms • <?= htmlspecialchars($property['bathroom_count']) ?> Baths • <?= htmlspecialchars($property['sqr_meters']) ?> m²</small>
 					</div>

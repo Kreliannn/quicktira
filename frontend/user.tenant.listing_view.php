@@ -89,7 +89,7 @@
             <?php require('public_component/sidebar.tenant.php'); ?>
         </div>          
         <div class="col"  style='height:100dvh; overflow:auto'>
-            <div class="container mt-5">
+        <div class="container mt-5">
                 <div class="row">
                     <div class="col-md-12">
                         <!-- User Information -->
@@ -103,9 +103,9 @@
                                     <p class="text-muted mb-1">User ID: <?= $property['account_id'] ?></p>
 
                                     <?php if($isRenting == 'yes'): ?>
-                                        <button class="btn btn-success mt-3" id='apply_button' disabled>apply</button>
+                                        <button class="btn btn-success mt-3" id='apply_button' disabled>Apply</button>
                                     <?php else: ?>
-                                        <button class="btn btn-success mt-3" id='apply_button'>apply</button>
+                                        <button class="btn btn-success mt-3" id='apply_button'>Apply</button>
                                     <?php endif; ?>
                                     
 
@@ -124,19 +124,19 @@
                             <div class="card-body">
                                 <img src="image/post_property_image/<?= $property['post_images'] ?>" alt="Property" class="card-img-top img-fluid" style="height: 400px; object-fit: cover; border-radius: 10px;">
                                 <h3 class="card-title mt-3 mb-3"><?= $property['post_title'] ?></h3>
-                                <h5 class="text-primary mb-3">$<?= number_format($property['post_price'], 2) ?></h5>
+                                <h5 class="mb-3" style="color: #728C69;">₱<?= number_format($property['post_price'], 2) ?> per month</h5>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <span><i class="fas fa-bed me-2"></i>Rooms</span>
-                                        <span class="badge bg-primary rounded-pill"><?= $property['room_count'] ?></span>
+                                        <span class="badge rounded-pill" style="background-color: #728C69;"><?= $property['room_count'] ?></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <span><i class="fas fa-bath me-2"></i>Bathrooms</span>
-                                        <span class="badge bg-primary rounded-pill"><?= $property['bathroom_count'] ?></span>
+                                        <span class="badge  rounded-pill" style="background-color: #728C69;"><?= $property['bathroom_count'] ?></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <span><i class="fas fa-vector-square me-2"></i>Area</span>
-                                        <span class="badge bg-primary rounded-pill"><?= $property['sqr_meters'] ?> m²</span>
+                                        <span class="badge rounded-pill" style="background-color: #728C69;"><?= $property['sqr_meters'] ?> m²</span>
                                     </li>
                                 </ul>
                             </div>
@@ -171,7 +171,7 @@
                     <div class="col-md-12">
                         <!-- Description -->
                         <div class="mb-4 p-3 rounded card-body border shadow">
-                            <h4 class="mb-3 text-primary">Description</h4>
+                            <h4 class="mb-3" style="color: #728C69;">Description</h4>
                             <p class="text-dark"><?= nl2br(htmlspecialchars($property['post_description'])) ?></p>
                         </div>
                     </div>
@@ -259,7 +259,7 @@
                         sender_fullname: $("#sender_fullname").val()
                     },
                     success : (response) => {
-                        alert(response)
+                        alertSuccess("report submited")
                         $("#reportPopup").hide()
                     }
                 })

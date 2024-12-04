@@ -26,15 +26,16 @@ require("../backend/filter_property.php");
         </div>          
 
         <div class="col"  style='height:100dvh; overflow:auto'>
-            <div class="row mb-4">
-                <div class="ms-2 col-12 mt-3">
-                    <form action="" method="post" class="d-flex justify-content-center">
-                        <input type="text" name="search_id" class="form-control me-2" placeholder="Search...">
-                        <button type="submit" class="btn btn-primary"  name='search_btn'>Search</button>
-                    </form>
-                </div>
-            </div>
-            <div class="container border p-4 rounded shadow">
+        <div class="row mb-4 mt-5">
+        <div class="ms-2 col-12 mt-3">
+            <form action="" method="post" class="d-flex justify-content-center">
+                <input type="text" name="search_id" class="form-control me-2" placeholder="Search...">
+                <button type="submit" class="btn"  name='search_btn' style="background-color: #728C69; color:white;">Search</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="container-fluid border p-4 rounded shadow">
                 <form action="" method="post" class="row g-3">
                     <div class="col-md-4 mb-2">
                         <label for="min_price" class="form-label">Minimum Price</label>
@@ -65,7 +66,7 @@ require("../backend/filter_property.php");
                         <input type="number" class="form-control" id="bathroom_count" name="bathroom_count" placeholder="bathroom Count">
                     </div>
                     <div class="col-md-4 mb-2">
-                        <button type="submit" class="btn btn-primary w-100 mt-4" name='filter_btn'>Filter</button>
+                    <button type="submit" class="btn w-100 mt-4" name='filter_btn' style="background-color: #728C69; color:white; position:relative; top:8px;">Filter</button>
                     </div>
                 </form>
             </div>
