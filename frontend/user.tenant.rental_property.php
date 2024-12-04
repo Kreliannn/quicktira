@@ -58,6 +58,7 @@ if($rental_property)
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@6.1.15/index.global.min.js'></script>
+    <link rel="icon" type="image/x-icon" href="image/website_image/logo-house1-removebg.png">
     <style>
         .fc .fc-daygrid-day {
             background-color: #f9f9f9; /* Change the background of day cells */

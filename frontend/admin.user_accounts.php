@@ -19,6 +19,7 @@ $all_landlords = $database->get("select * from landlords",[],"fetchAll");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Tailwind CSS -->
     <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="image/website_image/logo-house1-removebg.png">
 </head>
 <body>
     

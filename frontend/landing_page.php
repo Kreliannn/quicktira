@@ -18,6 +18,7 @@ $property_data = $database->get($query, [], 'fetchAll');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="icon" type="image/x-icon" href="image/website_image/logo-house1-removebg.png">
     <style>
         
        
@@ -198,9 +199,16 @@ $property_data = $database->get($query, [], 'fetchAll');
                     }).addTo(map);
 
                     for(property of res)
-                    {
+                    {   
+                        let component = 
+                        `
+                            <form action="landing.listing.view.php" method="post" >
+                                <input type='hidden' name="post_id" value='${property.post_id}' >
+                                <input type="submit" value="view" class='btn btn-primary'>
+                            </form>
+                        `
                         L.marker([ property.latitude,  property.longitude]).addTo(map)
-                        .bindPopup(`post id: ${property.post_id }`)
+                        .bindPopup(component)
                     }
 
                 }                

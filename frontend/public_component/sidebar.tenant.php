@@ -310,6 +310,10 @@ nav .menu-bar {
                     <i class="fa-solid fa-star text-light"></i>
                     <span class='text-light'>Favorites</span>
                 </a>
+                <a href="user.tenant.map.php" class='text-light'>
+                    <i class="fa-solid fa-star text-light"></i>
+                    <span class='text-light'>Map</span>
+                </a>
                 <a href="user.messages.php" class='text-light'>
                     <i class="fa-solid fa-message text-light"></i>
                     <span class='text-light'>Messages</span>
@@ -357,6 +361,10 @@ nav .menu-bar {
                 <i class="fa-solid fa-star"></i>
                 <span>Favorites</span>
             </a>
+            <a href="user.tenant.map.php" class=''>
+                    <i class="fa-solid fa-star "></i>
+                    <span class=''>Map</span>
+              </a>
             <a href="user.messages.php">
                 <i class="fa-solid fa-message"></i>
                 <span> Messages </span>
@@ -370,7 +378,7 @@ nav .menu-bar {
 
 
             
-            <a id='logout2' class="mt-3">
+            <a id='logout2' class="mt-1">
                 <i class="fa-solid fa-sign-out-alt"></i>
                 <span>Logout</span>
             </a>

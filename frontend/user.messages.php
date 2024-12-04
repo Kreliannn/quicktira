@@ -10,6 +10,7 @@
     <title>Messenger</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="image/website_image/logo-house1-removebg.png">
     <style>
         .hover-effect:hover {
             background-color: #E8F3E8;

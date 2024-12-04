@@ -19,6 +19,7 @@ $total_users = $total_tenant + $total_landlords;
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Tailwind CSS -->
     <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="image/website_image/logo-house1-removebg.png">
 </head>
 <body>
     
@@ -138,6 +139,9 @@ $total_users = $total_tenant + $total_landlords;
                                         </div>
                                         <div class="mb-3">
                                             <strong>Account ID:</strong> ${report_information[0].report_account_id}
+                                        </div>
+                                        <div class="mb-3">
+                                            <strong>post ID:</strong> ${report_information[0].post_id}
                                         </div>
                                         <div class="mb-3">
                                             <strong>Report Type:</strong> ${report_information[0].report_reason}

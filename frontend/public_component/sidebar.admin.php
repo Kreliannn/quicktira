@@ -367,7 +367,7 @@ nav .menu-bar {
                 <span >verify landlord</span>
             </a>
             
-            <br><br><br>
+            <br>
             <a id='logout1' class="mt-3">
                 <i class="fa-solid fa-sign-out-alt"></i>
                 <span>Logout</span>

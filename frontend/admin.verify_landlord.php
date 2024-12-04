@@ -16,6 +16,7 @@ $request = $database->get("select * from landlord_verification", [], "fetchAll")
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="image/website_image/logo-house1-removebg.png">
 </head>
 <body>
     
