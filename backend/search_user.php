@@ -3,11 +3,11 @@
 require_once('Aglobal_file.php');
 
 $type = $_POST['type'];
-$account_id = $_POST['account_id'];
+$username = $_POST['username'];
 
-$query = "select * from $type where account_id = ?";
+$query = "select * from $type where username = ?";
 
-$account = $database->get($query, [$account_id], "fetch");
+$account = $database->get($query, [$username], "fetch");
 
 if(!empty($account))
 {

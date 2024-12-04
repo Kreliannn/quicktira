@@ -37,6 +37,10 @@ else if(strlen($contact) != 11)
 {
     die(json_encode(['type' => 'error', 'text' => 'Invalid contact number.']));
 }
+else if(strlen($password) < 8) 
+{
+    die(json_encode(['type' => 'error', 'text' => 'invalid password, atleast 8 character.']));
+}
 else
 {
     $success = true;

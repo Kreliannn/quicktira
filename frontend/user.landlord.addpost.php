@@ -9,6 +9,7 @@
     $landlord_id = $_SESSION['user']['account_id'];
     $isVerified = $_SESSION['user']['isRenting'];
 
+    $database->update_session();
    
 ?>
 
@@ -133,7 +134,6 @@
 
     $(document).ready(() => {
 
-        
         
         $('#btn_landlord_verification').click((e)=> {
             e.preventDefault();

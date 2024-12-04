@@ -2,8 +2,8 @@
 
 require_once ('../backend/Aglobal_file.php');
 
-$all_tenant = $database->get("select account_id, fullname, profile_picture from tenants",[],"fetchAll");
-$all_landlords = $database->get("select account_id, fullname, profile_picture from landlords",[],"fetchAll");
+$all_tenant = $database->get("select *  from tenants",[],"fetchAll");
+$all_landlords = $database->get("select * from landlords",[],"fetchAll");
 
 
 ?>
@@ -40,7 +40,7 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
                             <div class="d-flex align-items-center">
                                 <img src="image/profile_image/<?php echo htmlspecialchars($tenant['profile_picture']); ?>" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
                                 <span class="ms-2"><?php echo htmlspecialchars($tenant['fullname']); ?></span>
-                                <span class="ms-2"> id: <?php echo htmlspecialchars($tenant['account_id']); ?></span>
+                                <span class="ms-2"> @<?php echo htmlspecialchars($tenant['username']); ?></span>
                             </div>
                             <button class="delete_account btn btn-danger " value="<?=htmlspecialchars($tenant['account_id'])?>">Delete</button>
                         </div>
@@ -70,7 +70,7 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
                             <div class="d-flex align-items-center">
                                 <img src="image/profile_image/<?php echo htmlspecialchars($landlords['profile_picture']); ?>" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
                                 <span class="ms-2"><?php echo htmlspecialchars($landlords['fullname']); ?></span>
-                                <span class="ms-2"> id: <?php echo htmlspecialchars($landlords['account_id']); ?></span>
+                                <span class="ms-2"> @<?php echo htmlspecialchars($landlords['username']); ?></span>
                             </div>
                             <button class="btn btn-danger delete_account_landlord" id='' value='<?=htmlspecialchars($landlords['account_id'])?>'>Delete</button>
                         </div>
@@ -104,7 +104,7 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
                     method : "post",
                     data : {
                         type : "tenants",
-                        account_id : $("#input_tenant").val()
+                        username : $("#input_tenant").val()
                     },
                     success : (response) => {
                         console.log(response)
@@ -119,12 +119,26 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
                                         <div class="d-flex align-items-center">
                                             <img src="image/profile_image/${res.account.profile_picture}" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
                                             <span class="ms-2">${res.account.fullname}</span>
-                                            <span class="ms-2"> id: ${res.account.account_id}</span>
+                                            <span class="ms-2"> @${res.account.username}</span>
                                         </div>
-                                        <button class="btn btn-danger delete_account"  id='' value=${res.account.account_id}>Delete</button>
+                                        <button class="btn btn-danger delete_account"  id='landlord_delete_id' value=${res.account.account_id}>Delete</button>
                                     </div>
                                 `
                                 $("#tenant_container").html(component)
+                                $("#landlord_delete_id").click((event)=>{
+            
+                                    $.ajax({
+                                    url : "../backend/delete_account.php",
+                                    method : "post",
+                                    data : {
+                                        account_type : "tenant",
+                                        account_id : event.target.value
+                                    },
+                                    success : (response) => {
+                                        window.location.reload()
+                                    }
+                                    })
+                                })
                             break;
 
                             case "error":
@@ -158,7 +172,7 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
                     method : "post",
                     data : {
                         type : "landlords",
-                        account_id : $("#input_landlord").val()
+                        username : $("#input_landlord").val()
                     },
                     success : (response) => {
                         let res = JSON.parse(response);
@@ -172,12 +186,26 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
                                         <div class="d-flex align-items-center">
                                             <img src="image/profile_image/${res.account.profile_picture}" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
                                             <span class="ms-2">${res.account.fullname}</span>
-                                            <span class="ms-2"> id: ${res.account.account_id}</span>
+                                            <span class="ms-2">  @${res.account.username}</span>
                                         </div>
-                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-danger" id='landlord_delete_id' value='${res.account.account_id}'>Delete</button>
                                     </div>
                                 `
                                 $("#landord_container").html(component)
+                                $("#landlord_delete_id").click((event)=>{
+            
+                                    $.ajax({
+                                    url : "../backend/delete_account.php",
+                                    method : "post",
+                                    data : {
+                                        account_type : "landlord",
+                                        account_id : event.target.value
+                                    },
+                                    success : (response) => {
+                                        window.location.reload()
+                                    }
+                                    })
+                                })
                             break;
 
                             case "error":
@@ -190,6 +218,7 @@ $all_landlords = $database->get("select account_id, fullname, profile_picture fr
 
 
             $(".delete_account_landlord").click((event)=>{
+            
                 $.ajax({
                     url : "../backend/delete_account.php",
                     method : "post",

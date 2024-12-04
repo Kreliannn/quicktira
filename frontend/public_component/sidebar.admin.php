@@ -313,6 +313,10 @@ nav .menu-bar {
                 <i class="fa-solid fa-star" style="color: white;"></i>
                 <span style="color: white;">Reports</span>
             </a>
+            <a href="admin.verify_landlord.php" style="color: white;">
+                <i class="fa-solid fa-star" ></i>
+                <span >verify landlord</span>
+            </a>
             
             <a id='logout2' class="mt-3" style="color: white;">
                 <i class="fa-solid fa-sign-out-alt" style="color: white;"></i>
@@ -357,6 +361,10 @@ nav .menu-bar {
             <a href="admin.listing.php" style="color: white;">
                 <i class="fa-solid fa-star" ></i>
                 <span >Listing</span>
+            </a>
+            <a href="admin.verify_landlord.php" style="color: white;">
+                <i class="fa-solid fa-star" ></i>
+                <span >verify landlord</span>
             </a>
             
             <br><br><br>
