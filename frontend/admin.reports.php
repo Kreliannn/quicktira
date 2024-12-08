@@ -1,6 +1,7 @@
 <?php
 
 require_once ('../backend/Aglobal_file.php');
+require("../backend/check_user_session.php");
 
 $total_tenant = count($database->get("select * from tenants",[],"fetchAll"));
 $total_landlords = count($database->get("select * from landlords",[],"fetchAll"));
@@ -153,6 +154,9 @@ $total_users = $total_tenant + $total_landlords;
                                         </div>
                                         <div class="mb-3">
                                             <strong>Account ID: </strong> ${report_information[0].report_account_id}
+                                        </div>
+                                        <div class="mb-3">
+                                            <strong>Post ID: </strong> ${report_information[0].post_id}
                                         </div>
                                         <div class="mb-3">
                                             <strong>Report Type:</strong> ${report_information[0].report_reason}

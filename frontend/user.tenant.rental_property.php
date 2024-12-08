@@ -1,6 +1,6 @@
 <?php
 require_once ('../backend/Aglobal_file.php');
-
+require("../backend/check_user_session.php");
 $rental_property = $database->get("select * from taken_property where tenant_id = ?",[$_SESSION['user']["account_id"]], "fetch");
 
 if($rental_property)
@@ -65,9 +65,9 @@ if($rental_property)
           
         }
 
-    .fc .fc-day-today {
-        background-color: #008000; /* Highlight the current day with a theme green */
-    }
+        .fc .fc-day-today {
+            background-color: #008000; /* Highlight the current day with a theme green */
+        }
 
     </style>
     <title>Document</title>

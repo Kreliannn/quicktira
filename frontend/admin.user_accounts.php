@@ -1,6 +1,7 @@
 <?php
 
 require_once ('../backend/Aglobal_file.php');
+require("../backend/check_user_session.php");
 
 $all_tenant = $database->get("select *  from tenants",[],"fetchAll");
 $all_landlords = $database->get("select * from landlords",[],"fetchAll");

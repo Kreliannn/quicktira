@@ -1,6 +1,6 @@
 <?php
 require_once ('../backend/Aglobal_file.php');
-
+require("../backend/check_user_session.php");
 $property_data = $database->get('select * from post_property join landlords on post_property.landlord_id = landlords.account_id where post_status = "active" order by post_id desc ', [], 'fetchAll');
 
 require("../backend/filter_property.php");

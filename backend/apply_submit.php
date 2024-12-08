@@ -11,9 +11,15 @@ $post_id = $_POST['post_id'];
 $landlord_id = $_POST['landlord_id'];
 $tenant_id = $_POST['tenant_id'];
 
-if($custom_func->checkEmpty([$move_in_date]))
+
+
+if($custom_func->checkEmpty([$move_in_date] ))
 {
-    die("error");
+    die("empty");
+}
+else if(strtotime($move_in_date) < strtotime(date('Y-m-d')))
+{
+    die("invalid date");
 }
 
 

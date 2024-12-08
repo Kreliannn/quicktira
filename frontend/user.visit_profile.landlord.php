@@ -1,6 +1,6 @@
 <?php
     require_once('../backend/Aglobal_file.php');
-    
+    require("../backend/check_user_session.php");
     $account_id = $_SESSION['visit_account_id'];
 
     $account_info = $database->get('select * from landlords where account_id = ?', [$account_id], 'fetch');

@@ -37,7 +37,7 @@ $property_data = $database->get($query, [], 'fetchAll');
     <div class="container-fluid p-0" style="position: relative; z-index: 1;">
         <div class="card vh-100 border-0" style="background-color: #f8f9fa;">
             <div class="row h-100 align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0 px-5 text-center text-lg-start">
+                <div class="col-lg-6 mb-5 mb-lg-0 px-5 text-center text-lg-start" >
                     <h1 class="display-3 fw-bold" style="color: #1c3302; font-family: 'Arial', sans-serif;">Find Your Ideal Home in Dasmarinas!</h1>
                     <p class="lead" style="color: #4c583a;">Need a place to rent in Dasmarinas, Cavite? Explore top listings, compare, and rent easily with our online platform. Find your perfect home today!</p>
                     <div class="mt-4">
@@ -50,16 +50,16 @@ $property_data = $database->get($query, [], 'fetchAll');
                     <div id="homeCarousel" class="carousel slide shadow-lg w-100 " data-bs-ride="carousel">
                         <div class="carousel-inner rounded">
                             <div class="carousel-item active">
-                                <img class="d-block w-100 img-fluid" src="image/website_image/house-1.png" alt="First slide" style="height: 70vh; object-fit: cover;">
+                                <img class="d-block w-100 img-fluid" src="image/website_image/webimg2.jpg" alt="First slide" style="height: 70vh; object-fit: cover;">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100 img-fluid" src="image/website_image/house3jpg.jpg" alt="Second slide" style="height: 70vh; object-fit: cover;">
+                                <img class="d-block w-100 img-fluid" src="image/website_image/webimg3.jpg" alt="Second slide" style="height: 70vh; object-fit: cover;">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100 img-fluid" src="image/website_image/house2.jpg" alt="Third slide" style="height: 70vh; object-fit: cover;">
+                                <img class="d-block w-100 img-fluid" src="image/website_image/webimg1.jpg" alt="Third slide" style="height: 70vh; object-fit: cover;">
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block w-100 img-fluid" src="image/website_image/house6.jpg" alt="Fourth slide" style="height: 70vh; object-fit: cover;">
+                                <img class="d-block w-100 img-fluid" src="image/website_image/webimg2.jpg" alt="Fourth slide" style="height: 70vh; object-fit: cover;">
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">

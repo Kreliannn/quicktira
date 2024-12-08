@@ -16,6 +16,7 @@ if($custom_func->checkEmpty([$username, $password]))
 }
 else if($username == "admin" && $password == "123")
 {
+    $_SESSION['user'] = "admin";
     die("admin");
 }
 else if(empty($tenant) && empty($landlord))

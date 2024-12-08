@@ -1,7 +1,7 @@
 <?php
 
 require_once ('../backend/Aglobal_file.php');
-
+require("../backend/check_user_session.php");
 $total_tenant = count($database->get("select * from tenants",[],"fetchAll"));
 $total_landlords = count($database->get("select * from landlords",[],"fetchAll"));
 $total_users = $total_tenant + $total_landlords;

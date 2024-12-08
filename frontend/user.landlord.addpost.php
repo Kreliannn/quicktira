@@ -1,6 +1,6 @@
 <?php
     require_once('../backend/Aglobal_file.php');
-
+    require("../backend/check_user_session.php");   
     $query = 'select * from post_property join landlords on post_property.landlord_id = landlords.account_id where landlords.account_id = ?';
 
     $property_data = $database->get($query, [$_SESSION['user']['account_id']], 'fetchAll');
@@ -282,44 +282,6 @@
             });
           
         })
-
-        $('a').click((event) => {
-
-            event.preventDefault();
-
-            const inputs = [
-                $('#title').val(),
-                $('#price').val(),
-                $('#description').val(),
-                $('#sqr_meter').val(),
-                $('#address').val()
-            ];
-
-            let confirms = false;
-
-            inputs.forEach(input => {
-                if (input !== '') {
-                    confirms = true;
-                }
-            });
-
-            if (confirms) {
-                let text = "You have entered some information. Are you sure you want to leave this page?";
-                alertConfirm(text, () => {
-                    window.location.href = event.target.href;
-                });
-            } else {
-                window.location.href = event.target.href;
-            }
-        });
-
-
-
-
-
-
-
-
 
     });
 

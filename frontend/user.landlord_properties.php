@@ -1,6 +1,6 @@
 <?php
     require_once('../backend/Aglobal_file.php');
-
+    require("../backend/check_user_session.php");
     $query = 'select * from post_property where landlord_id = ?';
 
     $property_data = $database->get($query, [$_SESSION['user']['account_id']], 'fetchAll');

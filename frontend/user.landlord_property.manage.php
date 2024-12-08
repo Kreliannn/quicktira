@@ -1,6 +1,6 @@
 <?php
     require_once('../backend/Aglobal_file.php');
-
+    require("../backend/check_user_session.php");
     $post_id = $_SESSION['manage_property_id'];
 
     $data = $database->get("select * from taken_property where post_id =?", [$post_id], "fetch");

@@ -1,5 +1,6 @@
 <?php
     require_once ('../backend/Aglobal_file.php');
+    require("../backend/check_user_session.php");
     $property = $database->get('select * from post_property join landlords on post_property.landlord_id = landlords.account_id where post_id = ?', [$_POST['post_id']], 'fetch');
     $property_images = $database->get('select * from property_post_pictures where post_id = ?', [$_POST['post_id']], 'fetchAll');
     $landlord_id = $database->get('select account_id from landlords where account_id = ?', [$property['landlord_id']], 'fetch');
@@ -298,8 +299,12 @@
                                 alertSuccess("request submited")
                             break;
 
-                            case "error":
+                            case "empty":
                                 alertError("empty input field");
+                            break;
+
+                            case "invalid date":
+                                alertError("invalid date you cant set lower than todays date");
                             break;
                         }
                     }

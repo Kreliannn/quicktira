@@ -1,6 +1,6 @@
 <?php
     require_once('../backend/Aglobal_file.php');
-
+    require("../backend/check_user_session.php");
 
     $post_id = $_SESSION['manage_property_id'];
 

@@ -168,8 +168,10 @@ button:hover{
                   </div>
                 </div>
               </div>
-              <img class="img-fluid" src="image/website_image/rent3.gif">
+              
             </div>
+
+            <br><br><br><br><br><br><br><br>
             
             <div class="row">
               <div class="col-sm-6" style="position:relative; bottom:100px;">

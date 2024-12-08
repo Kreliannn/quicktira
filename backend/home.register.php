@@ -17,6 +17,10 @@ if($custom_func->checkEmpty([$firstname, $lastname, $email, $type, $contact, $us
 {
     die(json_encode(['type' => 'error', 'text' => 'empty input, Please fill out all field.']));
 }
+if($username == "admin")
+{
+    die(json_encode(['type' => 'error', 'text' => 'username is not available']));
+}
 else if($_POST['terms_condition'] !== 'true')
 {
     die(json_encode(['type' => 'error', 'text' => 'Read the Terms and Conditions.']));
