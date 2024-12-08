@@ -39,5 +39,5 @@ if($success)
     
     $database->update($query, [$new_username, $new_password, $user['account_id']] );
     $database->update_session();
-    die(json_encode(['type' => 'error', 'text' => 'success.']));
+    die(json_encode(['type' => 'success', 'text' => 'username and password changed.']));
 }

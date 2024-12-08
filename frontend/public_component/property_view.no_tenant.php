@@ -14,7 +14,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12 ms-2 mt-3">
-                        <button class='btn btn-danger' id='delete'> delete post </button>
+                        <button class='btn btn-danger' id='delete'> remove post </button>
                     </div>
                 </div>
             </div>

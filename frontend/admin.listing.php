@@ -1,7 +1,7 @@
 <?php
 require_once ('../backend/Aglobal_file.php');
 require("../backend/check_user_session.php");
-$property_data = $database->get('select * from post_property join landlords on post_property.landlord_id = landlords.account_id where post_status = "active" order by post_id desc ', [], 'fetchAll');
+$property_data = $database->get('select * from post_property join landlords on post_property.landlord_id = landlords.account_id  where post_status != "inactive" && post_status != "remove" order by post_id desc ', [], 'fetchAll');
 
 require("../backend/filter_property.php");
 ?>
@@ -30,7 +30,7 @@ require("../backend/filter_property.php");
                 <div class="ms-2 col-12 mt-3">
                     <form action="" method="post" class="d-flex justify-content-center">
                         <input type="text" name="search_id" class="form-control me-2" placeholder="Search...">
-                        <button type="submit" class="btn btn-primary"  name='search_btn'>Search</button>
+                        <button type="submit" class="btn btn-success" style=';' name='search_btn'>Search</button>
                     </form>
                 </div>
             </div>

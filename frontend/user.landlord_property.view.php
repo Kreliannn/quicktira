@@ -123,7 +123,7 @@
                                     landlord_id : $("#landlord_id").val()
                                 },
                                 success : (response) => {
-                                    alert(response)
+                                    window.location.href = "user.landlord_property.manage.php"
                                 }
                             })
                                

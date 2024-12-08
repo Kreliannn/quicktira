@@ -3,7 +3,7 @@
 require_once ('../backend/Aglobal_file.php');
 require("../backend/check_user_session.php");
 
-$query = 'select * from post_property join landlords on post_property.landlord_id = landlords.account_id join favorite on post_property.post_id = favorite.post_id where favorite.user_id = ?';
+$query = 'select * from post_property join landlords on post_property.landlord_id = landlords.account_id join favorite on post_property.post_id = favorite.post_id where favorite.user_id = ? && post_status = "active"';
 $property_data = $database->get($query, [$_SESSION['user']['account_id']], 'fetchAll');
 
 ?>

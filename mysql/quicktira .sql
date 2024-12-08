@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2024 at 03:06 PM
+-- Generation Time: Dec 08, 2024 at 05:19 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -48,7 +48,12 @@ INSERT INTO `admin_feedback` (`message_id`, `message`, `sender_fullname`, `sende
 (6, 'asd asd asd ad asd as', 'joy krel', 'joy@gmail.com', 'read'),
 (7, 'dasdasdsa', 'joy 123', 'dasda', 'read'),
 (8, 'asdasda', 'loyd adsd', 'asdasd', 'read'),
-(9, 'asdasdasdasdasda', 'gab camacho', 'asdasda', 'read');
+(9, 'asdasdasdasdasda', 'gab camacho', 'asdasda', 'read'),
+(10, 'nice website', 'krel quimson', 'krel@gmail.com', 'read'),
+(11, 'dasdasdasd', 'ian quimson', 'vince@gmail.com', 'read'),
+(12, '13231', 'josh quimson', 'jake@gmail.com', 'read'),
+(13, 'wadad', 'rap varde', 'vince@gmail.com', 'read'),
+(14, 'adasdasdasdsadas', 'krelian quimson', 'krelianquimson@gmail.com', 'read');
 
 -- --------------------------------------------------------
 
@@ -76,7 +81,15 @@ INSERT INTO `admin_report` (`report_id`, `report_account_id`, `report_account_fu
 (2, '3', 'conan gray', '20', 'bla bla bla', 'Violation of Terms', 'krelian quimson', 'read'),
 (3, '2', 'joy boy', '25', 'kjnasfkjnasfnasf', 'Inappropriate Content', 'ian rodis', 'read'),
 (4, '1', 'belle catada', '17', 'asfasfasfasfaf', 'Inaccurate Information ', 'krelian quimson', 'read'),
-(5, '5', 'rose marie', '39', 'tangina ', 'Misleading Photos', 'krelian quimson', 'read');
+(5, '5', 'rose marie', '39', 'tangina ', 'Misleading Photos', 'krelian quimson', 'read'),
+(6, '1', 'belle catada', '45', 'ajsdasdad', 'Misleading Photos', 'krelian quimson', 'read'),
+(7, '1', 'belle catada', '45', 'blabla', 'Inaccurate Information ', 'krelian quimson', 'read'),
+(8, '2', 'joy boy', '30', '1', 'Inaccurate Information ', 'krelian quimson', 'read'),
+(9, '2', 'joy boy', '35', '1', 'Inaccurate Information ', 'krelian quimson', 'read'),
+(10, '1', 'belle catada', '45', '1', 'Inaccurate Information ', 'krelian quimson', 'read'),
+(11, '1', 'belle catada', '45', 'a', 'Inaccurate Information ', 'krelian quimson', 'read'),
+(12, '6', 'aisen rodis', '36', 'noob', 'Inaccurate Information ', 'krelian quimson', 'read'),
+(13, '1', 'belle catada', '46', '123', 'Inappropriate Content', 'krelian quimson', 'read');
 
 -- --------------------------------------------------------
 
@@ -95,8 +108,12 @@ CREATE TABLE `convo` (
 --
 
 INSERT INTO `convo` (`convo_id`, `tenant_id`, `landlord_id`) VALUES
-(23, 2, 1),
-(24, 2, 6);
+(26, 2, 3),
+(27, 5, 6),
+(28, 5, 1),
+(29, 9, 1),
+(30, 9, 14),
+(31, 2, 14);
 
 -- --------------------------------------------------------
 
@@ -119,8 +136,11 @@ INSERT INTO `favorite` (`favorite_id`, `post_id`, `user_id`) VALUES
 (22, 18, 7),
 (23, 21, 8),
 (24, 20, 8),
-(74, 37, 2),
-(75, 40, 2);
+(75, 40, 2),
+(77, 35, 2),
+(79, 22, 2),
+(80, 22, 5),
+(81, 23, 5);
 
 -- --------------------------------------------------------
 
@@ -137,21 +157,38 @@ CREATE TABLE `landlords` (
   `contact` varchar(255) DEFAULT NULL,
   `account_type` varchar(255) DEFAULT NULL,
   `profile_picture` varchar(255) DEFAULT NULL,
-  `isRenting` varchar(255) DEFAULT NULL
+  `isRenting` varchar(255) DEFAULT NULL,
+  `account_status` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `landlords`
 --
 
-INSERT INTO `landlords` (`account_id`, `fullname`, `email`, `username`, `password`, `contact`, `account_type`, `profile_picture`, `isRenting`) VALUES
-(1, 'belle catada', 'belle@gmail.com', 'belle', '123', '09039897185', 'landlord', '672307da73fe3.jpg', NULL),
-(2, 'joy boy', 'joyboy@gmail.com', 'joyboy', '123', '09099897185', 'landlord', '67230717c89c4.jpg', NULL),
-(3, 'conan gray', 'conan@gmail.com', 'conan', '123', '09099897185', 'landlord', '6723082e31dc1.jpg', NULL),
-(4, 'peppa bunyi', 'peppa@gmail.com', 'peppa', '123', '09099897185', 'landlord', 'Anya spy x family.jfif', NULL),
-(5, 'rose marie', 'rose@gmail.com', 'rose', '123', '09099897185', 'landlord', '67188941cdf61.jfif', NULL),
-(6, 'aisen rodis', 'aisen@gmail.com', 'aisen', '123', '09099897185', 'landlord', '6724ae52eb7f4.jfif', NULL),
-(8, 'vince de la cruz', 'vince@gmail.com', 'vince', '123', '09099897185', 'landlord', 'DEFAULT_PROFILE.png', NULL);
+INSERT INTO `landlords` (`account_id`, `fullname`, `email`, `username`, `password`, `contact`, `account_type`, `profile_picture`, `isRenting`, `account_status`) VALUES
+(1, 'belle catada', 'belle@gmail.com', 'belle', '$2y$10$J3TKsIXw2y5ppUongup/hOLwh93LJeaGParH4UbJ.PrEPNPAUY5dy', '09039897185', 'landlord', '674c7b7a47362.jpg', 'yes', 'active'),
+(2, 'joy boy', 'joyboy@gmail.com', 'joyboy', '$2y$10$Dx2TdugC.vawix2lm1RpS.RrQRdnJIiMIHoFn0yTN3T2nVSq.mFwC', '09099897185', 'landlord', '67230717c89c4.jpg', 'yes', 'active'),
+(3, 'conan gray', 'conan@gmail.com', 'conan', '$2y$10$iyNbaav4PKktn6aNMln3gu2C8J3y0x3vigKSjQp0mjnWQlaEcl//K', '09099897185', 'landlord', '6723082e31dc1.jpg', 'yes', 'active'),
+(4, 'peppa bunyi', 'peppa@gmail.com', 'peppa', '$2y$10$P3gmD7JZJZZzO019I2L62ulHnmSNQ4h6XUT1Oy7R/WrbsS8BXXJE6', '09099897185', 'landlord', 'Anya spy x family.jfif', 'yes', 'active'),
+(5, 'rose marie', 'rose@gmail.com', 'rose', '$2y$10$jVeSD/0pEnHLGrwWCw2o/eptI.q9RPp5KVF7mv0WlHS31Cz5XxveK', '09099897185', 'landlord', '67188941cdf61.jfif', 'yes', 'active'),
+(6, 'aisen rodis', 'aisen@gmail.com', 'aisen', '$2y$10$qyQb3G2e0D4rZHdYuOArqePZSIFmOU6t0Et9A5gFsdsd2yrsYbgw.', '09099897185', 'landlord', '6755b3863d164.jpg', 'yes', 'active'),
+(11, 'howard 123', 'howard@gmail.com', 'howard', '$2y$10$lp7eYKmRxu1bsCJWpU6UjedOpuwWuN35vXcR0ZE8Cj/z4WwpcfwWm', '09099897185', 'landlord', 'DEFAULT_PROFILE.png', 'yes', 'banned'),
+(12, 'goy velayo', 'goy@gmail.com', 'goy', '$2y$10$KNvBGMeaWCIVEcOWZTvSrOdSokjmmVrjDl2jd6Rst/gl5LAkREGgi', '09099897185', 'landlord', '6755b4fe90ba1.jpg', 'yes', 'active'),
+(13, 'bokbok carolino', 'bokbok@gmail.com', 'bokbok', '$2y$10$x56EUnFSkEX95NG4mvKrKuVNz8O3ADgbXCjxeWp/XLqbi.q87PSZC', '09099897185', 'landlord', '6755b5ad67388.jpg', 'yes', 'active'),
+(14, 'ken beato', 'ken@gmail.com', 'ken', '$2y$10$iISUcT8.epJNukwoK4qqTeVu2.gRXtndseVUMBpX9J0C7O9zy721O', '09099897185', 'landlord', '6755b9248fd7e.jpg', 'yes', 'active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `landlord_verification`
+--
+
+CREATE TABLE `landlord_verification` (
+  `verification_id` int(11) NOT NULL,
+  `landlord_id` int(11) DEFAULT NULL,
+  `landlord_name` varchar(255) DEFAULT NULL,
+  `verification_image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -180,9 +217,7 @@ INSERT INTO `like_react` (`like_id`, `post_id`, `user_id`) VALUES
 (76, 22, 8),
 (77, 23, 8),
 (80, 17, 9),
-(81, 18, 9),
 (82, 19, 9),
-(83, 22, 9),
 (84, 21, 9),
 (89, 20, 2),
 (94, 20, 8),
@@ -195,7 +230,6 @@ INSERT INTO `like_react` (`like_id`, `post_id`, `user_id`) VALUES
 (125, 28, 2),
 (126, 23, 2),
 (127, 30, 2),
-(128, 35, 2),
 (129, 20, 7),
 (130, 22, 7),
 (132, 24, 7),
@@ -209,7 +243,60 @@ INSERT INTO `like_react` (`like_id`, `post_id`, `user_id`) VALUES
 (143, 38, 2),
 (144, 36, 2),
 (145, 40, 2),
-(146, 39, 2);
+(146, 39, 2),
+(147, 37, 2),
+(148, 35, 2),
+(150, 48, 2),
+(151, 48, 5),
+(152, 37, 5),
+(153, 36, 5),
+(154, 35, 5),
+(155, 30, 5),
+(156, 29, 5),
+(157, 28, 5),
+(158, 27, 5),
+(159, 25, 5),
+(160, 23, 5),
+(161, 20, 5),
+(162, 21, 5),
+(163, 18, 5),
+(164, 48, 8),
+(165, 37, 8),
+(166, 36, 8),
+(167, 30, 8),
+(168, 35, 8),
+(169, 29, 8),
+(170, 27, 8),
+(171, 28, 8),
+(172, 25, 8),
+(173, 24, 8),
+(174, 48, 7),
+(175, 48, 9),
+(176, 30, 9),
+(177, 28, 9),
+(178, 25, 9),
+(179, 23, 9),
+(180, 24, 9),
+(181, 61, 2),
+(182, 60, 2),
+(183, 59, 2),
+(184, 58, 2),
+(185, 57, 2),
+(186, 56, 2),
+(187, 55, 2),
+(188, 61, 7),
+(189, 60, 7),
+(190, 59, 7),
+(191, 57, 7),
+(192, 58, 7),
+(193, 55, 7),
+(194, 61, 5),
+(195, 59, 5),
+(196, 58, 5),
+(197, 57, 5),
+(198, 61, 9),
+(199, 59, 9),
+(200, 57, 9);
 
 -- --------------------------------------------------------
 
@@ -247,17 +334,28 @@ INSERT INTO `post_property` (`post_id`, `landlord_id`, `post_title`, `post_image
 (21, 1, '3 bedroom for rent', 'image_67145998027b65.48433875.jfif', 8000, 'Step into this modern 3-bedroom, 2-bathroom house featuring an open floor plan and sleek design. Enjoy a bright living space, a gourmet kitchen with high-end appliances, and a lovely backyard perfect for relaxing. Situated in a desirable neighborhood close to amenities. Ideal for those looking for comfort and style.', 'San Lorenzo Ruiz', 3, 1, 100, '10/20/24', 'lot 5 blk 5', 'active', 14.312001148305447, 120.957176685333270),
 (22, 5, 'new house for rent', 'image_67145a047c3c19.53401511.jfif', 9000, 'Step into this modern 3-bedroom, 2-bathroom house featuring an open floor plan and sleek design. Enjoy a bright living space, a gourmet kitchen with high-end appliances, and a lovely backyard perfect for relaxing. Situated in a desirable neighborhood close to amenities. Ideal for those looking for comfort and style.', 'San Mariano', 1, 1, 400, '10/20/24', 'lot 1 blk 6', 'active', 14.328883383032048, 120.977861881256120),
 (23, 3, 'house for rent', 'image_67146ea67f72a4.24301722.jfif', 10000, 'hahahahahahhahahaha', 'San Mariano', 1, 1, 400, '10/20/24', 'lot 6 blk 8', 'active', 14.330546588657997, 120.977067947387710),
-(24, 1, 'house for rent haha', 'image_6716137a124bf5.75155174.jfif', 9000, 'wala akong maisip', 'San Mariano', 2, 1, 400, '10/21/24', 'lot 6 blk 1', 'inactive', 14.327178584466653, 120.976853370666520),
+(24, 1, 'house for rent haha', 'image_6716137a124bf5.75155174.jfif', 9000, 'wala akong maisip', 'San Mariano', 2, 1, 400, '10/21/24', 'lot 6 blk 1', 'active', 14.327178584466653, 120.976853370666520),
 (25, 2, 'post', 'image_671617935319e6.66872391.jfif', 8000, 'asdasdas', 'H2', 2, 1, 100, '10/21/24', 'lot 4 blk 2', 'active', 14.331877144278488, 120.957026481628430),
-(26, 5, 'new house', 'image_67161848518692.81918156.jfif', 11000, 'wala akong maisip ', 'San Mariano', 3, 1, 500, '10/21/24', 'lot 4 blk 4', 'active', 14.326679616581997, 120.980544090271010),
+(26, 5, 'new house', 'image_67161848518692.81918156.jfif', 11000, 'wala akong maisip ', 'San Mariano', 3, 1, 500, '10/21/24', 'lot 4 blk 4', 'inactive', 14.326679616581997, 120.980544090271010),
 (27, 1, 'post 3', 'image_6717b1f8634441.00536151.jfif', 7000, 'adffafasfasfasfaffffff', 'San Mariano', 11, 1, 100, '10/22/24', 'blk 2 lot 3', 'active', 14.324954010759036, 120.979857444763200),
 (28, 3, 'yfttyrfty', 'image_671882c1e048a6.88621894.jfif', 565, 'yggyjyg', 'San Lorenzo Ruiz', 1, 1, 78778, '10/23/24', 'uyfuugyy', 'active', 14.311003143948225, 120.961318016052260),
-(29, 1, 'post 9', 'image_6723014a8db9e2.24614996.jpg', 9000, 'adasd adas das das da', 'San Mariano', 1, 1, 100, '10/31/24', 'lot 4 blk 4', 'inactive', 14.326367761090525, 120.977261066436780),
+(29, 1, 'post 9', 'image_6723014a8db9e2.24614996.jpg', 9000, 'adasd adas das das da', 'San Mariano', 1, 1, 100, '10/31/24', 'lot 4 blk 4', 'active', 14.326367761090525, 120.977261066436780),
 (30, 2, 'lf tenant', 'image_672302a335ffe2.51864126.jpg', 7000, 'dadasdasdsad', 'H2', 1, 1, 100, '10/31/24', 'lot 4 blk 4', 'active', 14.331295027165861, 120.958700180053730),
 (35, 2, 'dadsa', 'image_67230650bf0f26.75997413.jpg', 11000, 'asdasda', 'San Lorenzo Ruiz', 1, 1, 100, '10/31/24', 'lot 4 blk 4', 'active', 14.310317013380180, 120.958657264709490),
 (36, 6, 'modern house for rent', 'image_6724aec6f20d36.87449323.jfif', 15000, 'anfkaskljfv aufkoafk akufasf aj fao  aok ia ', 'San Mariano', 4, 4, 300, '11/01/24', 'lot 4 blk 4', 'active', 14.324704524481685, 120.978591442108170),
 (37, 6, 'new post', 'image_6725fa9881a905.75458208.jfif', 7000, 'sadasdasd', 'H2', 1, 1, 100, '11/02/24', 'lot 4 blk 4', 'active', 14.330505008667672, 120.959558486938490),
-(38, 6, 'lf tenant', 'image_67301012d35f61.70615620.jpg', 5000, 'modern house with 2 rooms and 1  cr good for 2 head', 'San Lorenzo Ruiz', 2, 1, 100, '11/10/24', 'blck 2 lot 12 phase 1', 'inactive', 14.310876281423013, 120.960213951766500);
+(38, 6, 'lf tenant', 'image_67301012d35f61.70615620.jpg', 5000, 'modern house with 2 rooms and 1  cr good for 2 head', 'San Lorenzo Ruiz', 2, 1, 100, '11/10/24', 'blck 2 lot 12 phase 1', 'inactive', 14.310876281423013, 120.960213951766500),
+(45, 1, 'new post', 'image_674c7c2de116c2.87039649.jpg', 7000, 'bla bla bla', 'Poblacion', 2, 1, 100, '12/01/24', 'blck 2 lot 5', 'remove', 14.327361474109965, 120.935474261641520),
+(46, 1, '13212313', 'image_6755632d0a5408.67740026.jpg', 111, '11', 'San Lorenzo Ruiz', 1, 1, 111, '12/08/24', '312312313', 'banned', 14.189702295809917, 120.693461894989030),
+(47, 1, '123123', 'image_67556e53a48740.91332646.jpg', 132, '13213', 'San Mariano', 1, 1, 213, '12/08/24', '1', 'remove', 14.236961746179093, 120.964000225067150),
+(48, 1, 'For rent Relaxing House', 'image_6755b240151c75.01908585.jpg', 9000, 'This charming house offers a comfortable living space, perfect for small families or groups. Located in a secure and peaceful neighborhood, itâ€™s ideal for those seeking a quiet retreat while still being close to essential amenities.\r\n\r\nNo pets allowed\r\n4 heads maximum\r\nFeatures:\r\n\r\n2 spacious bedrooms\r\nFully equipped kitchen\r\nComfortable living room\r\n1 clean bathroom\r\nParking space available\r\nSecure and quiet neighborhood\r\nClose to schools, markets, and public transport.\r\n\r\nContact [Your Name/Number] for more details or to schedule a viewing!', 'Santa Cristina', 3, 1, 200, '12/08/24', 'black 2 lot 4 brgy  santa cristina dasmarinas cavite', 'active', 14.323071933686132, 120.970828039571670),
+(55, 12, 'for rent', 'image_6755b800a0a3b4.41342700.jpg', 8000, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Santa Cristina', 4, 3, 300, '12/08/24', 'black 2 lot 4', 'active', 14.323681562873615, 120.969441756606100),
+(56, 6, 'house rent', 'image_6755b859c82914.29569950.jpg', 7000, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Santa Cristina', 1, 1, 200, '12/08/24', 'black 2 lot 4', 'active', 14.321560908649051, 120.970707759261150),
+(57, 5, 'lf tenant', 'image_6755b8d763a5a0.09011873.jpg', 15000, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Poblacion', 1, 1, 150, '12/08/24', 'black 2 lot 4', 'active', 14.327527796355975, 120.934422835707680),
+(58, 14, 'for rent asap', 'image_6755b96a034523.12534352.jpg', 8000, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'San Manuel', 1, 1, 100, '12/08/24', 'black 2 lot 4', 'active', 14.337590062780025, 120.950580462813390),
+(59, 4, 'post 3', 'image_6755b9ee548215.32141095.jpg', 12000, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'Poblacion', 1, 1, 100, '12/08/24', 'black 2 lot 4', 'active', 14.325677454424413, 120.936954841017740),
+(60, 3, 'for rent big house', 'image_6755bae3cafc26.25910917.jpg', 17000, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'San Manuel', 1, 1, 200, '12/08/24', 'black 2 lot 4', 'inactive', 14.335282434143075, 120.952576026320470),
+(61, 6, 'modern house for rent', 'image_6755bca886bce3.90836504.jpg', 13000, 'Here\'s the updated caption with a house description at the start:\r\n\r\nFor Rent: Cozy 2-Bedroom House in [Location]\r\nThis charming house offers a comfortable living space, perfect for small families or groups. Located in a secure and peaceful neighborhood, itâ€™s ideal for those seeking a quiet retreat while still being close to essential amenities.\r\n\r\nNo pets allowed\r\n4 heads maximum\r\nFeatures:\r\n\r\n2 spacious bedrooms\r\nFully equipped kitchen\r\nComfortable living room\r\n1 clean bathroom\r\nParking space available\r\nSecure and quiet neighborhood\r\nClose to schools, markets, and public transport.\r\n\r\nContact [Your Name/Number] for more details or to schedule a viewing!', 'Poblacion', 4, 2, 200, '12/08/24', 'black 2 lot 4 brgy poblacion', 'active', 14.327245097191666, 120.936516132205740);
 
 -- --------------------------------------------------------
 
@@ -341,7 +439,63 @@ INSERT INTO `property_post_pictures` (`id`, `post_id`, `image_name`) VALUES
 (99, 42, 'image_674956647c2e80.12846770.jpg'),
 (100, 43, 'image_674956a6a07714.74956064.jpg'),
 (101, 43, 'image_674956a6a0c591.75981423.jpg'),
-(102, 44, 'image_6749b72a443cf9.47095318.jpg');
+(102, 44, 'image_6749b72a443cf9.47095318.jpg'),
+(103, 45, 'image_674c7c2de17355.98505841.jpg'),
+(104, 45, 'image_674c7c2de1d134.04183110.jpg'),
+(105, 46, 'image_6755632d0a85d3.46094202.jpg'),
+(106, 47, 'image_67556e53a4ef24.38838206.jpg'),
+(107, 48, 'image_6755b240155e23.11038108.jpg'),
+(108, 48, 'image_6755b24015a0b2.61802674.jpg'),
+(109, 48, 'image_6755b24015e5f4.88477538.jpg'),
+(110, 48, 'image_6755b240162d19.69126641.jpg'),
+(111, 48, 'image_6755b2401681b6.09006770.jpg'),
+(112, 49, 'image_6755b3dad55916.81622398.jpg'),
+(113, 49, 'image_6755b3dad677a2.48318830.jpg'),
+(114, 49, 'image_6755b3dad6d008.30433856.jpg'),
+(115, 50, 'image_6755b4e8f25c68.27690865.jpg'),
+(116, 50, 'image_6755b4e8f29aa9.19869959.jpg'),
+(117, 50, 'image_6755b4e8f2d7c9.09183276.jpg'),
+(118, 51, 'image_6755b53eef33e3.73711888.jpg'),
+(119, 51, 'image_6755b53eef97a9.00694617.jpg'),
+(120, 51, 'image_6755b53eefe981.85698823.jpg'),
+(121, 52, 'image_6755b6021de5b8.06648732.jpg'),
+(122, 52, 'image_6755b6021e43b3.35449922.jpg'),
+(123, 52, 'image_6755b6021ea1a7.92282577.jpg'),
+(124, 52, 'image_6755b6021efc71.66079778.jpg'),
+(125, 52, 'image_6755b6021f6ae8.08628768.jpg'),
+(126, 52, 'image_6755b6021fd5f8.04987790.jpg'),
+(127, 53, 'image_6755b734a53170.37958736.jpg'),
+(128, 53, 'image_6755b734a580e3.42012423.jpg'),
+(129, 53, 'image_6755b734a5d0b2.11422266.jpg'),
+(130, 54, 'image_6755b779bc0f12.03834012.jpg'),
+(131, 54, 'image_6755b779bc4681.46185257.jpg'),
+(132, 54, 'image_6755b779bc9961.75047912.jpg'),
+(133, 55, 'image_6755b800a10421.97812600.jpg'),
+(134, 55, 'image_6755b800a154c7.61194397.jpg'),
+(135, 55, 'image_6755b800a1a519.59501993.jpg'),
+(136, 56, 'image_6755b859cad929.16723436.jpg'),
+(137, 56, 'image_6755b859cb3400.58643890.jpg'),
+(138, 56, 'image_6755b859cb8993.52747216.jpg'),
+(139, 56, 'image_6755b859cbddc1.90541987.jpg'),
+(140, 57, 'image_6755b8d7648982.49923797.jpg'),
+(141, 57, 'image_6755b8d764de44.01758516.jpg'),
+(142, 57, 'image_6755b8d76532f9.91873597.jpg'),
+(143, 57, 'image_6755b8d76584d3.30978147.jpg'),
+(144, 58, 'image_6755b96a038710.72482354.jpg'),
+(145, 58, 'image_6755b96a03c3a8.02318441.jpg'),
+(146, 58, 'image_6755b96a0402c3.20562751.jpg'),
+(147, 59, 'image_6755b9ee54cb52.30626852.jpg'),
+(148, 59, 'image_6755b9ee5508c9.86795545.jpg'),
+(149, 59, 'image_6755b9ee5545a4.85992839.jpg'),
+(150, 59, 'image_6755b9ee559732.43171457.jpg'),
+(151, 60, 'image_6755bae3cb4bc5.89795706.jpg'),
+(152, 60, 'image_6755bae3cba623.29334779.jpg'),
+(153, 60, 'image_6755bae3cbf7a7.88866723.jpg'),
+(154, 61, 'image_6755bca8871cd6.64344574.jpg'),
+(155, 61, 'image_6755bca8876ea7.06193549.jpg'),
+(156, 61, 'image_6755bca887be47.26771420.jpg'),
+(157, 61, 'image_6755bca88813e1.61011941.jpg'),
+(158, 61, 'image_6755bca8901333.38808975.jpg');
 
 -- --------------------------------------------------------
 
@@ -365,9 +519,9 @@ CREATE TABLE `taken_property` (
 
 INSERT INTO `taken_property` (`property_id`, `post_id`, `landlord_id`, `tenant_id`, `num_occupants`, `move_in_date`, `deadline`) VALUES
 (2, 17, 1, 9, 2, '2024-11-17', '2024-12-17'),
-(3, 24, 1, 5, 5, '2024-11-21', '2024-12-21'),
 (6, 38, 6, 8, 1, '2024-11-29', '2024-12-29'),
-(9, 29, 1, 2, 3, '2024-12-05', '2025-01-04');
+(10, 26, 5, 5, 2, '2024-12-03', '2025-01-02'),
+(17, 60, 3, 2, 2, '2024-12-17', '2025-01-16');
 
 -- --------------------------------------------------------
 
@@ -384,21 +538,21 @@ CREATE TABLE `tenants` (
   `contact` varchar(255) DEFAULT NULL,
   `account_type` varchar(255) DEFAULT NULL,
   `profile_picture` varchar(255) DEFAULT NULL,
-  `isRenting` varchar(255) DEFAULT NULL
+  `isRenting` varchar(255) DEFAULT NULL,
+  `account_status` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tenants`
 --
 
-INSERT INTO `tenants` (`account_id`, `fullname`, `email`, `username`, `password`, `contact`, `account_type`, `profile_picture`, `isRenting`) VALUES
-(2, 'krelian quimson', 'quimsonkrelian@gmail.com', 'krel', '123', '09099897185', 'tenant', '6722ffec2d1a4.jpg', 'no'),
-(5, 'josh velayo', 'josh@gmail.com', 'josh', '123', '09099897185', 'tenant', 'profile4.jpg', 'yes'),
-(7, 'ian rodis', 'ian@gmail.com', 'ian', '123', '09099897185', 'tenant', 'profile5.jpg', 'yes'),
-(8, 'john doe', 'johndoe@gmail.com', 'john', '123', '09099897185', 'tenant', 'image-men-service-techniques-02.jpg', 'no'),
-(9, 'rainrix rodis', 'rainrix@gmail.com', 'rainrix', '123', '09099897185', 'tenant', 'profile6.jpg', 'no'),
-(15, 'justine carolino', 'justine@gmail.com', 'justine', '123', '09099897185', 'tenant', 'DEFAULT_PROFILE.png', 'no'),
-(18, 'marie landingin', 'marie@gmail.com', 'marie', '123', '09099897185', 'tenant', 'DEFAULT_PROFILE.png', 'no');
+INSERT INTO `tenants` (`account_id`, `fullname`, `email`, `username`, `password`, `contact`, `account_type`, `profile_picture`, `isRenting`, `account_status`) VALUES
+(2, 'krelian quimson', 'quimsonkrelian@gmail.com', 'krel', '$2y$10$u50CtunPDTprF.S0QcCN4uypqdMubOjEr.zd.nB4PHtLAB2itFB7W', '09099897185', 'tenant', '6722ffec2d1a4.jpg', 'yes', 'active'),
+(5, 'josh velayo', 'josh@gmail.com', 'josh', '$2y$10$2FsHuv3r9c01pClXQ0SK1Opyove88TpwSzIllLjtdy8LYdEV2CyTS', '09099897185', 'tenant', 'profile4.jpg', 'yes', 'active'),
+(7, 'ian rodis', 'ian@gmail.com', 'ian', '$2y$10$tmAFtVyQH8/pIFVN.CQj.utyN/ALd51T/aZ/DMtIWu.V3plKdTHqe', '09099897185', 'tenant', 'profile5.jpg', 'no', 'active'),
+(8, 'john doe', 'johndoe@gmail.com', 'john', '$2y$10$TCtg5FMgvLTnpOj9yYisAugM8lQCvN5BrDv44Qh1khxc1sQqlm.ZS', '09099897185', 'tenant', 'image-men-service-techniques-02.jpg', 'no', 'active'),
+(9, 'rainrix rodis', 'rainrix@gmail.com', 'rainrix', '$2y$10$RzH2B2lg8EafRL2thlNyJORwAW8cKahatQKoVxvAJoC0M7eMdg222', '09099897185', 'tenant', 'profile6.jpg', 'no', 'active'),
+(21, 'julian beredo', 'julian@gmail.com', 'julian', '$2y$10$2yWw.W5c5nrBfNzqL57T1u7kyJ0tuxsQn66kFOL3Ithyw30oVuZCy', '09099897185', 'tenant', 'DEFAULT_PROFILE.png', 'no', 'active');
 
 -- --------------------------------------------------------
 
@@ -426,7 +580,6 @@ CREATE TABLE `tenant_applications` (
 INSERT INTO `tenant_applications` (`apply_id`, `post_id`, `landlord_id`, `tenant_id`, `tenant_fullname`, `contact_phone`, `contact_email`, `num_occupants`, `move_in_date`, `employment_work`) VALUES
 (2, 17, 1, 7, 'ian rodis', '09099897185', 'ian@gmail.com', 1, '2024-11-17', 'N/A'),
 (3, 17, 1, 9, 'rainrix rodis', '09099897185', 'rainrix@gmail.com', 2, '2024-11-17', 'N/A'),
-(4, 24, 1, 5, 'josh velayo', '09099897185', 'josh@gmail.com', 5, '2024-11-21', 'N/A'),
 (6, 38, 6, 8, 'john doe', '09099897185', 'johndoe@gmail.com', 2, '0000-00-00', 'N/A'),
 (7, 21, 1, 8, 'john doe', '09099897185', 'johndoe@gmail.com', 1, '0000-00-00', 'N/A'),
 (8, 38, 6, 8, 'john doe', '09099897185', 'johndoe@gmail.com', 1, '2024-11-29', 'N/A');
@@ -464,6 +617,12 @@ ALTER TABLE `favorite`
 --
 ALTER TABLE `landlords`
   ADD PRIMARY KEY (`account_id`);
+
+--
+-- Indexes for table `landlord_verification`
+--
+ALTER TABLE `landlord_verification`
+  ADD PRIMARY KEY (`verification_id`);
 
 --
 -- Indexes for table `like_react`
@@ -509,67 +668,73 @@ ALTER TABLE `tenant_applications`
 -- AUTO_INCREMENT for table `admin_feedback`
 --
 ALTER TABLE `admin_feedback`
-  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `admin_report`
 --
 ALTER TABLE `admin_report`
-  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `convo`
 --
 ALTER TABLE `convo`
-  MODIFY `convo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `convo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `landlords`
 --
 ALTER TABLE `landlords`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `landlord_verification`
+--
+ALTER TABLE `landlord_verification`
+  MODIFY `verification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `like_react`
 --
 ALTER TABLE `like_react`
-  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
+  MODIFY `like_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
 
 --
 -- AUTO_INCREMENT for table `post_property`
 --
 ALTER TABLE `post_property`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `property_post_pictures`
 --
 ALTER TABLE `property_post_pictures`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
 
 --
 -- AUTO_INCREMENT for table `taken_property`
 --
 ALTER TABLE `taken_property`
-  MODIFY `property_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `property_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `tenants`
 --
 ALTER TABLE `tenants`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tenant_applications`
 --
 ALTER TABLE `tenant_applications`
-  MODIFY `apply_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `apply_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

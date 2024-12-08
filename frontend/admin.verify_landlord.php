@@ -1,6 +1,6 @@
 <?php
 require_once ('../backend/Aglobal_file.php');
-require("../backend/check_user_session.php");
+
 $request = $database->get("select * from landlord_verification", [], "fetchAll");
 
 
@@ -17,6 +17,21 @@ $request = $database->get("select * from landlord_verification", [], "fetchAll")
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <title>Document</title>
     <link rel="icon" type="image/x-icon" href="image/website_image/logo-house1-removebg.png">
+
+    <style>
+        .landlord_request{
+            border: 1px solid #98BF64;
+
+        }
+
+        button.landlord_request:hover{
+            background-color:#98BF64;
+            color:black;
+        }
+
+       
+
+    </style>
 </head>
 <body>
     
@@ -26,10 +41,10 @@ $request = $database->get("select * from landlord_verification", [], "fetchAll")
         </div>          
 
         <div class="col"  style='height:100dvh; overflow:auto'>
-            <h1 class='text-center'>  landlord request </h1>
-            <div class=' border shadow container ' style='height:600px'>
+            <h1 class='text-center'> Landlord Request </h1>
+            <div class='border shadow container ' style='height:600px'>
                 <?php foreach($request as $req): ?>
-                    <button class='landlord_request container-fluid p-3' value="<?=$req['verification_id']?>"> request from <?=$req['landlord_name']?>  </button>
+                    <button class='landlord_request container-fluid p-3' value="<?=$req['verification_id']?>"> Request from <?=$req['landlord_name']?>  </button>
                 <?php endforeach ?>
             </div>
         </div>
@@ -52,16 +67,22 @@ $request = $database->get("select * from landlord_verification", [], "fetchAll")
                                 console.log(response)
                                 let req_info = JSON.parse(response)
                                 component = `
-                                    <div id='pop_up' class="border bg-light shadow p-5" style=" z-index: 9999; position: absolute; top: 45%; left: 60%; transform: translate(-50%, -50%);  height:80%; width :70%; font-size: 1.5em;">
-                                        <h1> name: ${req_info.landlord_name} </h1>
-                                        <img style='height:300px;' src="image/landlord_verification_image/${req_info.verification_image}">
-
-                                        <button id='close' type="button" class="btn btn-primary" style="position: absolute; top: 10px; right: 10px;">x</button>
-                                        <br>
-                                        <br>
-                                        <button class='btn btn-success' value='${req_info.landlord_id}' id='approve'> approve </button>
-                                        <button class='btn btn-danger' value='${req_info.landlord_id}' id='decline'> decline </button>
-                                    </div>                                
+                                    <div id="pop_up" class="card border-0 shadow-lg" style=" z-index: 9999; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70%; max-height: 80vh; overflow-y: auto;">
+                                    <div class="card-header  text-white d-flex justify-content-between align-items-center py-3" style='background: #4c583a;'>
+                                        <h5 class="card-title mb-0" style=''>Landlord Verification</h5>
+                                        <button id="close" type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+                                    </div>
+                                    <div class="card-body p-4">
+                                        <h2 class="mb-4">Name: <span class="text-dark">${req_info.landlord_name}</span></h2>
+                                        <div class="text-center mb-4">
+                                        <img class="img-fluid rounded" style="max-height: 300px; object-fit: contain;" src="image/landlord_verification_image/${req_info.verification_image}" alt="Landlord Verification Image">
+                                        </div>
+                                        <div class="d-flex justify-content-center gap-3 mt-4">
+                                        <button class="btn btn-success btn-lg" id="approve" value="${req_info.landlord_id}">Approve</button>
+                                        <button class="btn btn-danger btn-lg" id="decline" value="${req_info.landlord_id}">Decline</button>
+                                        </div>
+                                    </div>
+                                    </div>                             
                                 `
 
                                 $("body").append(component)

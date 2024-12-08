@@ -1,7 +1,7 @@
 <?php
     require_once('../backend/Aglobal_file.php');
     require("../backend/check_user_session.php");
-    $query = 'select * from post_property where landlord_id = ?';
+    $query = 'select * from post_property where landlord_id = ? && post_status != "banned" && post_status != "remove"';
 
     $property_data = $database->get($query, [$_SESSION['user']['account_id']], 'fetchAll');
 ?>

@@ -5,6 +5,7 @@
     $property_images = $database->get('select * from property_post_pictures where post_id = ?', [$_POST['post_id']], 'fetchAll');
     $landlord_id = $database->get('select account_id from landlords where account_id = ?', [$property['landlord_id']], 'fetch');
     $isRenting = $_SESSION['user']['isRenting'];
+ 
 ?>
 
 
@@ -297,6 +298,7 @@
                         switch(respond) {
                             case "success":
                                 alertSuccess("request submited")
+                                $("#applyPopup").hide()
                             break;
 
                             case "empty":

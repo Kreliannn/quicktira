@@ -2,13 +2,13 @@
 
 require_once ('../backend/Aglobal_file.php');
 require("../backend/check_user_session.php");
-$total_tenant = count($database->get("select * from tenants",[],"fetchAll"));
-$total_landlords = count($database->get("select * from landlords",[],"fetchAll"));
+$total_tenant = count($database->get("select * from tenants where account_status != 'banned'",[],"fetchAll"));
+$total_landlords = count($database->get("select * from landlords where account_status != 'banned'",[],"fetchAll"));
 $total_users = $total_tenant + $total_landlords;
 
 $active_post = count($database->get("select * from post_property where post_status = 'active'",[],"fetchAll"));
 $inactive_post = count($database->get("select * from post_property where post_status = 'inactive'",[],"fetchAll"));
-$total_post = count($database->get("select * from post_property",[],"fetchAll"));
+$total_post = count($database->get("select * from post_property where post_status != 'banned'",[],"fetchAll"));
 
 ?>
 

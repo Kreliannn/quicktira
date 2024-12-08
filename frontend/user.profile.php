@@ -146,7 +146,14 @@
                     },
                     success : (response) => {
                         let res = JSON.parse(response)
-                        alert(res.text)
+                        if(res.type == "success")
+                        {
+                            alertSuccess(res.text)
+                        }
+                        else
+                        {
+                            alertError(res.text)
+                        }
                     }
                 })
             })

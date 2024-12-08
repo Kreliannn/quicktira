@@ -41,23 +41,28 @@
                             <div class="card-body">
                                 <img src="image/post_property_image/<?= $property['post_images'] ?>" alt="Property" class="card-img-top img-fluid" style="height: 400px; object-fit: cover; border-radius: 10px;">
                                 <h3 class="card-title mt-3 mb-3"><?= $property['post_title'] ?></h3>
-                                <h5 class="text-primary mb-3">$<?= number_format($property['post_price'], 2) ?></h5>
+                                <h5 class="text-success mb-3">$<?= number_format($property['post_price'], 2) ?></h5>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <span><i class="fas fa-bed me-2"></i>Rooms</span>
-                                        <span class="badge bg-primary rounded-pill"><?= $property['room_count'] ?></span>
+                                        <span class="badge  rounded-pill" style='background: #4c583a;'><?= $property['room_count'] ?></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <span><i class="fas fa-bath me-2"></i>Bathrooms</span>
-                                        <span class="badge bg-primary rounded-pill"><?= $property['bathroom_count'] ?></span>
+                                        <span class="badge  rounded-pill" style='background: #4c583a;'><?= $property['bathroom_count'] ?></span>
                                     </li>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <span><i class="fas fa-vector-square me-2"></i>Area</span>
-                                        <span class="badge bg-primary rounded-pill"><?= $property['sqr_meters'] ?> m²</span>
+                                        <span class="badge  rounded-pill" style='background: #4c583a;'><?= $property['sqr_meters'] ?> m²</span>
                                     </li>
                                 </ul>
                                 <br>
-                                <button class='btn btn-danger' id='delete'> delete post </button>
+                                <?php if($property['post_status'] == "banned"):?>
+                                    <button class='btn btn-success' id='delete'> unBan post </button>
+                                <?php else:?>
+                                    <button class='btn btn-danger' id='delete'> ban post </button>
+                                <?php endif?>
+                                
                             </div>
                         </div>
                     </div>
@@ -133,7 +138,7 @@
                         post_id : $("#post_id").val()
                     },
                     success : (response) => {
-                        window.location.href = "admin.listing.php";
+                        window.location.reload();
                     }
                 })
             })

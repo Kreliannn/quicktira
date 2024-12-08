@@ -5,7 +5,7 @@
 
     $account_info = $database->get('select * from landlords where account_id = ?', [$account_id], 'fetch');
 
-    $query = 'select * from post_property join landlords on post_property.landlord_id = landlords.account_id where landlords.account_id = ?';
+    $query = 'select * from post_property join landlords on post_property.landlord_id = landlords.account_id where landlords.account_id = ? && post_status = "active"';
 
     $property_data = $database->get($query, [$account_id], 'fetchAll');
 

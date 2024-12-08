@@ -163,7 +163,8 @@ $total_users = $total_tenant + $total_landlords;
                                         </div>
                                         <div class="mb-3">
                                             <strong>Message: </strong> ${report_information[0].report_message}
-                                        </div>    
+                                        </div>
+                                
                                         <button id='close_report' type="button" class="btn btn-primary" style="position: absolute; top: 10px; right: 10px;">Close</button>
                                     </div>                                
                                 `

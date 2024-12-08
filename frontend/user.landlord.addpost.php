@@ -25,6 +25,31 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <link rel="icon" type="image/x-icon" href="image/website_image/logo-house1-removebg.png">
+    <style>
+        .custom-file-input::-webkit-file-upload-button {
+            visibility: hidden;
+        }
+        .custom-file-input::before {
+            content: 'Select file';
+            display: inline-block;
+            background: linear-gradient(top, #f9f9f9, #e3e3e3);
+            border: 1px solid #999;
+            border-radius: 3px;
+            padding: 5px 8px;
+            outline: none;
+            white-space: nowrap;
+            cursor: pointer;
+            text-shadow: 1px 1px #fff;
+            font-weight: 700;
+            font-size: 10pt;
+        }
+        .custom-file-input:hover::before {
+            border-color: black;
+        }
+        .custom-file-input:active::before {
+            background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+        }
+    </style>
 </head>
 <body>
     <!--alert-->
@@ -115,14 +140,42 @@
         </div>
 
         <?php else: ?>
-            <br><br><br>
-            <h1 classs='text-center'> upload valid id or papers </h1>
-            <form action="#" method="POST" enctype="multipart/form-data" id="landlord_verification">
-                <input type="file" class="form-control form-control-sm rounded-0" id="verification_img" name="verification_img" accept="image/*">
-                <input type="hidden" id='landlord_id' name='landlord_id' value="<?=$landlord_id?>">
-                <input type="hidden" id='landlord_name' name='landlord_name' value="<?=$landlord_name?>">
-                <button id='btn_landlord_verification' class="btn btn-success mt-3 ">Submit</button>
-            </form>
+            
+            <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg- text-white" style="background: #4c583a;">
+                        <h1 class="text-center mb-0">Upload Valid ID or Papers</h1>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center mb-4"> upload a picture of your valid ID before you can proceed with posting.</p>
+                        <p> upload atleast one of the following</p>
+                        <ul class="list-group">
+                            <li class="list-group-item">Philippine Passport</li>
+                            <li class="list-group-item">Unified Multi-Purpose ID (UMID)</li>
+                            <li class="list-group-item">Professional Regulation Commission (PRC) ID</li>
+                            <li class="list-group-item">Social Security System (SSS) Card</li>
+                            <li class="list-group-item">Government Service Insurance System (GSIS) eCard</li>
+                            <li class="list-group-item">Voter’s ID</li>
+                        </ul>
+
+                        <form action="#" method="POST" enctype="multipart/form-data" id="landlord_verification">
+                            <div class="mb-3">
+                                <label for="verification_img" class="form-label">Select your ID or papers:</label>
+                                <input type="file" class="form-control custom-file-input" id="verification_img" name="verification_img" accept="image/*" required>
+                            </div>
+                            <input type="hidden" id="landlord_id" name="landlord_id" value="<?=$landlord_id?>">
+                            <input type="hidden" id="landlord_name" name="landlord_name" value="<?=$landlord_name?>">
+                            <div class="d-grid">
+                                <button type="submit" id="btn_landlord_verification" style="background: #4c583a;" class="text-light btn btn-">Submit Verification</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
         <?php endif ?>
 
     </div>

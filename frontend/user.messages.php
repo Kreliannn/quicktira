@@ -33,18 +33,22 @@
         <div class="col-12 col-md-2">
             <?php $_SESSION['user']['account_type'] == 'tenant' ? require('public_component/sidebar.tenant.php') : require('public_component/sidebar.landlord.php'); ?>
         </div>          
-
+        
         <div class="col"  style='height:100dvh; overflow:auto'>
             <div class="container mt-5">
-                <h2 class="mb-4 text-center" style="color: #4A5D23;">Conversations</h2>
-                <div class="row mb-4">
-                    <div class="col-md-8 mx-auto">
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="searchBar" placeholder="Search conversations..." style="border-color: #7C9070;">
-                            <button class="btn btn-success" type="button" id='btn_search' style="background-color: #7C9070; border-color: #7C9070;">Search</button>
-                        </div>
+        <br>
+            <div class="container mt-2">
+                <div class="d-flex align-items-center border rounded p-3">
+                    <img src="image/profile_image/<?=$_SESSION['user']['profile_picture']?>" alt="User Avatar" class="rounded-circle me-3" width="100" height="100">
+                    <div>
+                        <h3 class="mb-0"><?=$_SESSION['user']['fullname']?></h3>
+                        <p class="text-muted mb-0"><?=$_SESSION['user']['account_type']?></p>
                     </div>
                 </div>
+            </div>
+            <br>
+                <h2 class="mb-4 text-center" style="color: #4A5D23;">Conversations</h2>
+               
                 <ul class="list-group shadow" id='contactList' style="border-color: #7C9070;">
                     
                  

@@ -1,6 +1,8 @@
 <?php
 require_once ('../backend/Aglobal_file.php');
 require("../backend/check_user_session.php");
+$database->update_session();
+
 $rental_property = $database->get("select * from taken_property where tenant_id = ?",[$_SESSION['user']["account_id"]], "fetch");
 
 if($rental_property)
@@ -185,7 +187,6 @@ if($rental_property)
                         tenant_id : $("#tenant_id").val()
                     },
                     success : (response) => {
-                        alert(response)
                         window.location.reload();
                     }
                 })

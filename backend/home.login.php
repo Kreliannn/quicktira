@@ -7,8 +7,9 @@ $password = $_POST['password'];
 
 $success = false;
 
-$tenant = $database->get('select * from tenants where username = ? && password = ?', [$username, $password], 'fetch');
-$landlord = $database->get('select * from landlords where username = ? && password = ?', [$username, $password], 'fetch');
+$tenant = $database->get('select * from tenants where username = ? ', [$username], 'fetch');
+$landlord = $database->get('select * from landlords where username = ? ', [$username], 'fetch');
+
 
 if($custom_func->checkEmpty([$username, $password]))
 {
@@ -31,13 +32,29 @@ else
 
 if($success)
 {
+    
     if($tenant)
     {
+        if(!password_verify($password, $tenant['password']))
+        {
+            die("incorrect password");
+        }
+
+        if($tenant['account_status'] == "banned")
+        {
+            die('your account is banned.');
+        }
+
         $_SESSION['user'] = $tenant;
         die('success');
     }
     else if($landlord)
-    {
+    {   
+        if($landlord['account_status'] == "banned")
+        {
+            die('your account is banned.');
+        }
+
         $_SESSION['user'] = $landlord;
         die('success');
     }

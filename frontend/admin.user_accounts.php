@@ -6,6 +6,24 @@ require("../backend/check_user_session.php");
 $all_tenant = $database->get("select *  from tenants",[],"fetchAll");
 $all_landlords = $database->get("select * from landlords",[],"fetchAll");
 
+if($_SERVER['REQUEST_METHOD'] == "POST")
+{
+
+    if(isset($_POST['usernameT']))
+    {
+        $all_tenant = $database->get("select *  from tenants where username = ?",[ $_POST['usernameT'] ],"fetchAll");
+    }
+
+    if(isset($_POST['usernameL']))
+    {
+        $all_landlords = $database->get("select *  from landlords where username = ?",[$_POST['usernameL'] ],"fetchAll");
+    }
+
+    
+}
+
+
+
 
 ?>
 
@@ -39,25 +57,43 @@ $all_landlords = $database->get("select * from landlords",[],"fetchAll");
 
                     <?php foreach ($all_tenant as $tenant): ?>
                         <div class="container-fluid border d-flex justify-content-between align-items-center" style="height: 70px;">
-                            <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-center" style='width:60%'>
                                 <img src="image/profile_image/<?php echo htmlspecialchars($tenant['profile_picture']); ?>" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
                                 <span class="ms-2"><?php echo htmlspecialchars($tenant['fullname']); ?></span>
                                 <span class="ms-2"> @<?php echo htmlspecialchars($tenant['username']); ?></span>
                             </div>
-                            <button class="delete_account btn btn-danger " value="<?=htmlspecialchars($tenant['account_id'])?>">Delete</button>
+                            
+                            <?php if($tenant['account_status'] == "active"): ?>
+                            <span class="ms-5 badge bg-success"> <?php echo htmlspecialchars($tenant['account_status']); ?></span>
+                            <form action="../backend/delete_account.php" class='' method='post'>
+                                <input type="hidden" name='account_type' value="<?=$tenant['account_type']?>">
+                                <input type="hidden" name='account_id' value="<?=$tenant['account_id']?>">
+                                <input type="hidden" name='account_status' value="<?=$tenant['account_status']?>">
+                                <input type="submit" class='btn btn-primary' value='ban'>
+                            </form>
+                            <?php else: ?>
+                            <span class="ms-5 badge bg-danger"> <?php echo htmlspecialchars($tenant['account_status']); ?></span>
+                            <form action="../backend/delete_account.php" class='' method='post'>
+                                <input type="hidden" name='account_type' value="<?=$tenant['account_type']?>">
+                                <input type="hidden" name='account_id' value="<?=$tenant['account_id']?>">
+                                <input type="hidden" name='account_status' value="<?=$tenant['account_status']?>">
+                                <input type="submit" class='btn btn-primary' value='unban'>
+                            </form>
+                            <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
 
                     </div>
 
-                    <div class="row mt-3">
+
+                    <form action="" method='post' class='row mt-3'> 
                         <div class="col-9">
-                            <input type="text" class="form-control form-control-lg" id='input_tenant'>
+                            <input type="text" class="form-control form-control-lg" name='usernameT'>
                         </div>
-                        <div class="col">
-                            <button class="btn btn-primary btn-lg" id='tenant_search'>Search</button>
+                        <div class="col"> 
+                            <input type="submit"  class='btn btn-primary'>          
                         </div>
-                    </div>
+                    </form>
 
                 </div>
             </div>
@@ -69,25 +105,41 @@ $all_landlords = $database->get("select * from landlords",[],"fetchAll");
 
                     <?php foreach ($all_landlords as $landlords): ?>
                         <div class="container-fluid border d-flex justify-content-between align-items-center" style="height: 70px;">
-                            <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-center" style='width:60%'>
                                 <img src="image/profile_image/<?php echo htmlspecialchars($landlords['profile_picture']); ?>" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
                                 <span class="ms-2"><?php echo htmlspecialchars($landlords['fullname']); ?></span>
                                 <span class="ms-2"> @<?php echo htmlspecialchars($landlords['username']); ?></span>
                             </div>
-                            <button class="btn btn-danger delete_account_landlord" id='' value='<?=htmlspecialchars($landlords['account_id'])?>'>Delete</button>
+                            
+                            <?php if($landlords['account_status'] == "active"): ?>
+                            <span class="ms-5 badge bg-success"> <?php echo htmlspecialchars($landlords['account_status']); ?></span>
+                            <form action="../backend/delete_account.php" class='' method='post'>
+                                <input type="hidden" name='account_type' value="<?=$landlords['account_type']?>">
+                                <input type="hidden" name='account_id' value="<?=$landlords['account_id']?>">
+                                <input type="hidden" name='account_status' value="<?=$landlords['account_status']?>">
+                                <input type="submit" class='btn btn-primary' value='ban'>
+                            </form>
+                            <?php else: ?>
+                            <span class="ms-5 badge bg-danger"> <?php echo htmlspecialchars($landlords['account_status']); ?></span>
+                            <form action="../backend/delete_account.php" class='' method='post'>
+                                <input type="hidden" name='account_type' value="<?=$landlords['account_type']?>">
+                                <input type="hidden" name='account_id' value="<?=$landlords['account_id']?>">
+                                <input type="hidden" name='account_status' value="<?=$landlords['account_status']?>">
+                                <input type="submit" class='btn btn-primary' value='unban'>
+                            </form>
+                            <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
-
                     </div>
 
-                    <div class="row mt-3">
+                    <form action="" method='post' class='row mt-3'> 
                         <div class="col-9">
-                            <input type="text" class="form-control form-control-lg" id='input_landlord'>
+                            <input type="text" class="form-control form-control-lg" name='usernameL'>
                         </div>
-                        <div class="col">
-                            <button class="btn btn-primary btn-lg" id='landlord_search'>Search</button>
+                        <div class="col"> 
+                            <input type="submit"  class='btn btn-primary'>          
                         </div>
-                    </div>
+                    </form>
 
                 </div>
             </div>
@@ -100,140 +152,7 @@ $all_landlords = $database->get("select * from landlords",[],"fetchAll");
     <?php require('public_component/sidebar.jquery.php'); ?>
     <script>
         $(document).ready(()=>{
-            $("#tenant_search").click(()=>{
-                $.ajax({
-                    url : "../backend/search_user.php",
-                    method : "post",
-                    data : {
-                        type : "tenants",
-                        username : $("#input_tenant").val()
-                    },
-                    success : (response) => {
-                        console.log(response)
-                        let res = JSON.parse(response);
-                        switch(res.type)
-                        {
-                            case "success":
-                                $("#tenant_container").empty();
-                                let component = 
-                                `
-                                    <div class="container-fluid border d-flex justify-content-between align-items-center" style="height: 70px;">
-                                        <div class="d-flex align-items-center">
-                                            <img src="image/profile_image/${res.account.profile_picture}" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
-                                            <span class="ms-2">${res.account.fullname}</span>
-                                            <span class="ms-2"> @${res.account.username}</span>
-                                        </div>
-                                        <button class="btn btn-danger delete_account"  id='landlord_delete_id' value=${res.account.account_id}>Delete</button>
-                                    </div>
-                                `
-                                $("#tenant_container").html(component)
-                                $("#landlord_delete_id").click((event)=>{
-            
-                                    $.ajax({
-                                    url : "../backend/delete_account.php",
-                                    method : "post",
-                                    data : {
-                                        account_type : "tenant",
-                                        account_id : event.target.value
-                                    },
-                                    success : (response) => {
-                                        window.location.reload()
-                                    }
-                                    })
-                                })
-                            break;
-
-                            case "error":
-                                
-                            break;
-                        }
-                    }
-                })
-            })
-
-
-            $(".delete_account").click((event)=>{
-                $.ajax({
-                    url : "../backend/delete_account.php",
-                    method : "post",
-                    data : {
-                        account_type : "tenant",
-                        account_id : event.target.value
-                    },
-                    success : (response) => {
-                        window.location.reload()
-                    }
-                })
-            })
-
-
-
-            $("#landlord_search").click(()=>{
-                $.ajax({
-                    url : "../backend/search_user.php",
-                    method : "post",
-                    data : {
-                        type : "landlords",
-                        username : $("#input_landlord").val()
-                    },
-                    success : (response) => {
-                        let res = JSON.parse(response);
-                        switch(res.type)
-                        {
-                            case "success":
-                                $("#landord_container").empty();
-                                let component = 
-                                `
-                                    <div class="container-fluid border d-flex justify-content-between align-items-center" style="height: 70px;">
-                                        <div class="d-flex align-items-center">
-                                            <img src="image/profile_image/${res.account.profile_picture}" alt="Profile Picture" class="rounded-circle" style="width: 50px; height: 50px; object-fit: cover;">
-                                            <span class="ms-2">${res.account.fullname}</span>
-                                            <span class="ms-2">  @${res.account.username}</span>
-                                        </div>
-                                        <button class="btn btn-danger" id='landlord_delete_id' value='${res.account.account_id}'>Delete</button>
-                                    </div>
-                                `
-                                $("#landord_container").html(component)
-                                $("#landlord_delete_id").click((event)=>{
-            
-                                    $.ajax({
-                                    url : "../backend/delete_account.php",
-                                    method : "post",
-                                    data : {
-                                        account_type : "landlord",
-                                        account_id : event.target.value
-                                    },
-                                    success : (response) => {
-                                        window.location.reload()
-                                    }
-                                    })
-                                })
-                            break;
-
-                            case "error":
-                                
-                            break;
-                        }
-                    }
-                })
-            })
-
-
-            $(".delete_account_landlord").click((event)=>{
-            
-                $.ajax({
-                    url : "../backend/delete_account.php",
-                    method : "post",
-                    data : {
-                        account_type : "landlord",
-                        account_id : event.target.value
-                    },
-                    success : (response) => {
-                        window.location.reload()
-                    }
-                })
-            })
-
+        
         })
     </script>
 </body>

@@ -55,16 +55,17 @@ else
 if($success)
 {
     $query;
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     switch($type)
     {
         case "tenant":
-            $query = "insert into tenants (fullname, email, username, password, contact, account_type, profile_picture, isRenting) values (?,?,?,?,?,?,?,?)";
-            $database->insert($query, [$fullname, $email, $username, $password, $contact, $type, "DEFAULT_PROFILE.png", "no"]);
+            $query = "insert into tenants (fullname, email, username, password, contact, account_type, profile_picture, isRenting, account_status) values (?,?,?,?,?,?,?,?, ?)";
+            $database->insert($query, [$fullname, $email, $username, $hashedPassword, $contact, $type, "DEFAULT_PROFILE.png", "no", "active"]);
         break;
 
         case "landlord":
-            $query = "insert into landlords (fullname, email, username, password, contact, account_type, profile_picture, isRenting) values (?,?,?,?,?,?,?,?)";
-            $database->insert($query, [$fullname, $email, $username, $password, $contact, $type, "DEFAULT_PROFILE.png",  "no"]);
+            $query = "insert into landlords (fullname, email, username, password, contact, account_type, profile_picture, isRenting, account_status) values (?,?,?,?,?,?,?,?, ?)";
+            $database->insert($query, [$fullname, $email, $username, $hashedPassword, $contact, $type, "DEFAULT_PROFILE.png",  "no", "active"]);
             break;
     }
     
