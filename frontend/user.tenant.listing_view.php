@@ -3,7 +3,7 @@
     require("../backend/check_user_session.php");
     $property = $database->get('select * from post_property join landlords on post_property.landlord_id = landlords.account_id where post_id = ?', [$_POST['post_id']], 'fetch');
     $property_images = $database->get('select * from property_post_pictures where post_id = ?', [$_POST['post_id']], 'fetchAll');
-    $landlord_id = $database->get('select account_id from landlords where account_id = ?', [$property['landlord_id']], 'fetch');
+    $landlord_id = $database->get('select username, account_id from landlords where account_id = ?', [$property['landlord_id']], 'fetch');
     $isRenting = $_SESSION['user']['isRenting'];
  
 ?>
@@ -27,6 +27,7 @@
     <input type="hidden" id="tenant_id" value="<?= $_SESSION['user']['account_id'] ?>">
     <input type="hidden" id="user_contact" value="<?= $_SESSION['user']['contact'] ?>">
     <input type="hidden" id="user_email" value="<?= $_SESSION['user']['email'] ?>">
+    <input type="hidden" id="landlord_username" value="<?= $landlord_id['username'] ?>">
     <input type="hidden" id="landlord_id" value="<?= $landlord_id['account_id'] ?>">
     <input type="hidden" id="landlord_fullname" value="<?= $property['fullname'] ?>">
     <input type="hidden" id='post_id' value="<?= $property['post_id'] ?>">
@@ -253,7 +254,7 @@
                     url : "../backend/submit_report.php",
                     method : "post",
                     data : {
-                        report_account_id : $("#landlord_id").val(),
+                        report_account_id : $("#landlord_username").val(),
                         report_account_fullname : $("#landlord_fullname").val(),
                         post_id : $("#post_id").val(),
                         report_message: $("#report_message").val(),
@@ -302,7 +303,7 @@
                             break;
 
                             case "empty":
-                                alertError("empty input field");
+                                alertError("please input all the information in the field");
                             break;
 
                             case "invalid date":

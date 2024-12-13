@@ -119,6 +119,7 @@ $property_data = $database->get($query, [], 'fetchAll');
     
     <div class="container text-center mx-auto">
         <select class="form-select form-select-sm rounded-0 mx-auto" id="location" name="location" style="width: 50%; background-color: #f8f9fa; border: 1px solid #ced4da; padding: 0.375rem 0.75rem; font-size: 0.875rem; line-height: 1.5; color: #495057;">
+            <option value=""> select barangay </option>
             <option value="San Lorenzo Ruiz">San Lorenzo Ruiz</option>
             <option value="H2">H2</option>
             <option value="San Mariano">San Mariano</option>

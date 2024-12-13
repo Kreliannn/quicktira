@@ -37,12 +37,12 @@ if($success)
     {
         if(!password_verify($password, $tenant['password']))
         {
-            die("incorrect password");
+            die("Incorrect password");
         }
 
         if($tenant['account_status'] == "banned")
         {
-            die('your account is banned.');
+            die('Your account is banned. Please contact the admin if it was a mistake');
         }
 
         $_SESSION['user'] = $tenant;

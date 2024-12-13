@@ -15,11 +15,11 @@ $password =  $_POST['password'];
 
 if($custom_func->checkEmpty([$firstname, $lastname, $email, $type, $contact, $username, $password]))
 {
-    die(json_encode(['type' => 'error', 'text' => 'empty input, Please fill out all field.']));
+    die(json_encode(['type' => 'error', 'text' => 'Empty input. Please fill out all field.']));
 }
 if($username == "admin")
 {
-    die(json_encode(['type' => 'error', 'text' => 'username is not available']));
+    die(json_encode(['type' => 'error', 'text' => 'Username is not available']));
 }
 else if($_POST['terms_condition'] !== 'true')
 {
@@ -43,7 +43,7 @@ else if(strlen($contact) != 11)
 }
 else if(strlen($password) < 8) 
 {
-    die(json_encode(['type' => 'error', 'text' => 'invalid password, atleast 8 character.']));
+    die(json_encode(['type' => 'error', 'text' => 'Invalid password, atleast 8 characters and above.']));
 }
 else
 {
@@ -70,5 +70,5 @@ if($success)
     }
     
     
-    die(json_encode(['type' => 'success', 'text' => 'account created.']));
+    die(json_encode(['type' => 'success', 'text' => 'Account created.']));
 }

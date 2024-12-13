@@ -153,7 +153,7 @@ $total_users = $total_tenant + $total_landlords;
                                             <strong>Reported Account: </strong> ${report_information[0].report_account_fullname}
                                         </div>
                                         <div class="mb-3">
-                                            <strong>Account ID: </strong> ${report_information[0].report_account_id}
+                                            <strong>username: </strong> ${report_information[0].report_account_id}
                                         </div>
                                         <div class="mb-3">
                                             <strong>Post ID: </strong> ${report_information[0].post_id}

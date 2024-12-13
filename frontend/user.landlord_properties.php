@@ -4,6 +4,13 @@
     $query = 'select * from post_property where landlord_id = ? && post_status != "banned" && post_status != "remove"';
 
     $property_data = $database->get($query, [$_SESSION['user']['account_id']], 'fetchAll');
+
+
+    function getRequest($post_id)
+    {
+        global $database;
+        return count($database->get("select * from tenant_applications where post_id = ?", [$post_id], "fetchAll"));
+    }
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +43,7 @@
                             <img src="image/post_property_image/<?= htmlspecialchars($property['post_images']) ?>" class="card-img-top" alt="Property Image" style="height: 300px;">
                             <div class="card-body row">
                                 <?php if($property['post_status'] == 'active'): ?>
-                                    <i class="bi bi-lock text-center border border-rounded shadow p-1 col-12 bg-dark text-white"></i>
+                                    <i class=" text-center border border-rounded shadow p-1 col-12 bg-success text-light"> <?=getRequest($property['post_id'])?> request</i>
                                 <?php else: ?>
                                     <i class="bi bi-key text-center border border-rounded shadow p-1 col-12 bg-warning"></i>
                                 <?php endif; ?>

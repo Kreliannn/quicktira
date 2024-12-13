@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="card-footer">
                                     <button type="button" id='approve'class="btn btn-success" style="width: 100px; height: 50px;">Approve</button>
-                                    <button type="button" class="btn btn-danger" style="width: 100px; height: 50px;">Reject</button>
+                                    <button type="button" id='reject' class="btn btn-danger" style="width: 100px; height: 50px;">Reject</button>
                                     <button type="button"id='close_req' class="btn btn-dark" style="width: 100px; height: 50px;">Close</button>
                                 </div>
                             </div>
@@ -106,6 +106,20 @@
                         
                         $("#close_req").click(()=>{
                             $("#popUp").remove();
+                        })
+
+                        $("#reject").click(()=>{
+                            $.ajax({
+                                url : "../backend/landlord.reject_request.php",
+                                method : "post",
+                                data : { 
+                                    apply_id : request_data.apply_id
+                                },
+                                success : (response) => {
+                                    window.location.reload();
+                                }
+                            })
+                               
                         })
 
                         $("#approve").click(()=>{

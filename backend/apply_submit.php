@@ -13,7 +13,7 @@ $tenant_id = $_POST['tenant_id'];
 
 
 
-if($custom_func->checkEmpty([$move_in_date] ))
+if($custom_func->checkEmpty([$move_in_date, $tenant_fullname , $contact_phone, $contact_email, $num_occupants,$move_in_date, $employment_work, ] ))
 {
     die("empty");
 }
